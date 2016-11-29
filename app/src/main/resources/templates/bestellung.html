@@ -191,16 +191,24 @@
                                                value="Bitte f&#252;llen Sie die rot markierten Felder aus:"/>
                                         <input type="hidden" name="f_invalidEmailMsg" value="keine g&#252;ltige E-Mail"/>
 
+                                        <input type="hidden" name="NAME2" id="NAME2" value="Kunden-Nr."/>
+                                        <label for="F2" class="field">Kunden-Nr.</label>
+                                        <select data-default="" class="required" id="F2" name="F2[]" size="1">
+                                            <option value="">Bitte wählen:</option>
+                                            <option>1</option>
+                                            <option> 2</option>
+                                            <option> 3</option>
+                                            <option> 4</option>
+                                            <option> 5</option>
+                                            <option> etc</option>
+                                        </select>
 
                                         <input type="hidden" name="NAME1" id="NAME1" value="Kunden-Nr."/>
-
-
                                         <label for="F1" class="field">Kunden-Nr.</label>
                                         <input class="typetext required" type="text" name="F1" id="F1"
                                                placeholder="Kunden-Nr." th:value="${kundenId}" style="width: 200px; " maxlength="20"/>
 
                                         <input type="hidden" name="NAME2" id="NAME2" value="Kunden-Nr."/>
-
                                         <label for="F2" class="field">Kunden-Nr.</label>
                                         <select data-default="" class="required" id="F2" name="F2[]" size="1">
                                             <option value="">Bitte wählen:</option>
@@ -312,8 +320,6 @@
 
 
                                         <input type="hidden" name="NAME19" id="NAME19" value="Speisen"/>
-
-
                                         <label for="F19" class="field">Speisen.</label>
                                         <select data-default="" class="required" id="F19" name="F19[]" size="1">
                                             <option value="">Bitte wählen:</option>
@@ -327,7 +333,8 @@
                                         <input class="typetext required" type="number" name="F19_1" id="F19_1"
                                                placeholder="Anzahl" value="" style="width: 100px; "
                                                maxlength="20"/>
-                                        <input type="submit" class="button" value="+" id="B1"/>
+                                        <input type="submit" class="button" value="+" id="B1" onclick="add(document.forms[0].input)"/>
+
 
                                         <label for="F20" class="field">Getränke.</label>
                                         <select data-default="" class="required" id="F20" name="F20[]" size="1">
@@ -346,7 +353,6 @@
 
 
                                         <input type="hidden" name="NAME21" id="NAME21" value="benötigtes Personal"/>
-
                                         <label for="F21" class="field">benötigtes Personal</label>
                                         <input class="typetext required" type="number" name="F21" id="F21"
                                                placeholder="benötigtes Personal" value="" style="width: 200px; "

@@ -56,14 +56,6 @@ public class WelcomeController {
 
 
 
-	
-
-	@RequestMapping("/personal")
-	public String per() {
-		return "personal";
-	}
-
-
 
 	@RequestMapping("/lager")
 	public String lag() {

@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kickstart.person.Mitarbeiter;
 import kickstart.person.MitarbeiterFormular;
@@ -23,6 +25,44 @@ public class MitarbeiterController {
 	@Autowired
 	public MitarbeiterController(PersonenVerwaltung pVerwaltung){
 		this.pVerwaltung = pVerwaltung;
+	}
+	
+	@RequestMapping("/personal")
+	public String mitarbeiter(Model model) {
+		
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAll());
+		
+		return "personal";
+	}
+	
+	@RequestMapping("/neues-personal")
+	public String registerMitarbeiter(Model model) {
+		
+		model.addAttribute("mitarbeiterDaten", new MitarbeiterFormular());
+		
+		return "neues-personal";
+	}
+	
+	@RequestMapping("/addPersonal")
+	public String addPersonal(@ModelAttribute("mitarbeiterDaten") @Valid MitarbeiterFormular mitarbeiterDaten, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "person/MitarbeiterFormular";
+		}
+		
+		Mitarbeiter m = pVerwaltung.createMitarbeiter(mitarbeiterDaten.getVorname(), mitarbeiterDaten.getNachname(), 
+													mitarbeiterDaten.getOrt(), mitarbeiterDaten.getStrasse(), mitarbeiterDaten.getPlz(),
+													mitarbeiterDaten.getUsername(), mitarbeiterDaten.getPassword(), mitarbeiterDaten.getRole(),
+													mitarbeiterDaten.getEmail());
+		pVerwaltung.saveMitarbeiter(m);
+		
+		return "redirect:/mitarbeiterListe";
+	}
+	
+	@RequestMapping(path="/suchePersonalVorname", method=RequestMethod.POST)
+	public String sucheNachVorname(Model model, @RequestParam("personalVorname") String vorname) {
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findByVorname(vorname));
+		return "personal";
 	}
 	
 	// Methoden
