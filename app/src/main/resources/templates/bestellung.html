@@ -1,0 +1,484 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Bestellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body id="square-responsive">
+<a id="top"></a>
+<div class="wrapper top">
+    <!-- Teaser "Banner" -->
+
+
+    <div class="header">
+        <a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <!-- Logo -->
+
+        <div id="logo"
+             data-type="inline-editing"
+             data-context="logo"
+             data-item-id="logo"
+        >
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+
+
+        <!-- Webname -->
+
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Eventcatering</div>
+        </div>
+
+        <div id="navbar">
+
+
+            <ul data-breakpointmobilemenu="768" class="mainmenu touchhovermenu clickhovermenu">
+
+                <li class="dropdown">
+                    <a href="main.html">Main </a>
+                </li>
+
+                <li class="haschilds dropdown">
+                    <a href="veranstaltungen.html">Admin </a>
+
+
+                    <ul class="dropdown-menu">
+
+                        <li class="dropdown">
+                            <a href="veranstaltungen.html">Veranstaltungen</a>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="personal.html">Personal</a>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="kunden.html">Kunden</a>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="lager.html">Lager</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="dropdown">
+                    <form method="post" th:action="@{/mein-bereich}">
+                        <a href="mein-bereich.html">Personal </a>
+                    </form>
+                </li>
+
+                <li class="haschilds dropdown active open">
+                    <form method="post" th:action="@{/service}">
+                        <a href="service.html">Service </a>
+                    </form>
+
+                    <ul class="dropdown-menu">
+
+                        <li class="dropdown">
+                            <form method="post" th:action="@{/neuer-kunde}">
+                                <a href="neuer-kunde.html">Neuer Kunde</a>
+                            </form>
+                        </li>
+
+
+                        <li class="dropdown active">
+                            <form method="post" th:action="@{/bestellung}">
+                                <a class="active" href="bestellung.html">Bestellung</a>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    °
+</div> <!-- header -->
+
+<div class="clearx"></div>
+
+<div class="wrapper main">
+    <div class="page">
+
+        <div class="frame">
+
+            <div class="subnav low">
+
+                <div class="submenu clearme">
+
+                    <ul>
+
+                        <li class="active">
+                            <form method="post" th:action="@{/neuer-kunde}">
+                                <a href="neuer-kunde.html">Neuer Kunde</a>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="post" th:action="@{/bestellung}">
+                                <a class="active" href="bestellung.html">Bestellung</a>
+                            </form>
+                        </li>
+                    </ul>
+                </div><!-- .submenu -->
+            </div><!-- .subnav -->
+        </div><!-- .frame -->
+
+        <div class="content">
+
+            <!-- header -->
+
+            <div class="clearx"></div>
+
+            <div class="contentbox zpgrid">
+
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+
+                    <div class="zpRow standard"
+                         data-type="inline-editing" data-context="row" data-area-name="Standard" data-row-id="231"
+                         data-item-id="231" data-column-count="1" data-column-count-max="0"
+                    >
+                        <div class="zpColumn zpColumnWidth1 c12" style=" "
+                             data-column-id="253"
+                        >
+
+                            <div class="zpColumnItem">
+                                <div id="a1578" data-articleid="1578" class="articlearea zpwFormular"
+                                     data-type="inline-editing"
+                                     data-context="article"
+                                     data-area-name="Standard"
+                                     data-item-id="1578"
+                                     data-item-state="active"
+                                     data-row-id="231"
+                                     data-item-inherited="false"
+                                >
+                                    <h2>Bestellung</h2>
+                                    <noscript>
+                                        <div class="formvalidateerror"
+                                             style="color: #fff; background-color: red; padding: 6px 12px;">
+                                            <p><strong>Um das Kontaktformular zu nutzen, aktivieren Sie bitte
+                                                JavaScript!</strong></p>
+                                            <p><strong>In order to use this form, you need to activate
+                                                JavaScript!</strong></p>
+                                        </div>
+                                    </noscript>
+                                    <form enctype="multipart/form-data" class="zp-form" id="form1578" name="form1578"
+                                          action="veranstaltungen.html" method="post">
+                                        <input type="hidden" name="f_receiver" value="4rF2V2jGFwxsXPnPD0asAw=="/>
+
+                                        <input type="hidden" name="f_title" value="Bestellung"/>
+                                        <input type="hidden" name="f_success"
+                                               value="bestandskunde.html"/>
+                                        <input type="hidden" name="f_error"
+                                               value="bestandskunde.html"/>
+                                        <input type="hidden" name="f_id" value="1578"/>
+                                        <input type="hidden" name="f_alertPrefix"
+                                               value="Bitte f&#252;llen Sie die rot markierten Felder aus:"/>
+                                        <input type="hidden" name="f_invalidEmailMsg" value="keine g&#252;ltige E-Mail"/>
+
+
+                                        <input type="hidden" name="NAME1" id="NAME1" value="Kunden-Nr."/>
+
+
+                                        <label for="F1" class="field">Kunden-Nr.</label>
+                                        <input class="typetext required" type="text" name="F1" id="F1"
+                                               placeholder="Kunden-Nr." th:value="${kundenId}" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME2" id="NAME2" value="Kunden-Nr."/>
+
+                                        <label for="F2" class="field">Kunden-Nr.</label>
+                                        <select data-default="" class="required" id="F2" name="F2[]" size="1">
+                                            <option value="">Bitte wählen:</option>
+                                            <option>1</option>
+                                            <option> 2</option>
+                                            <option> 3</option>
+                                            <option> 4</option>
+                                            <option> 5</option>
+                                            <option> etc</option>
+                                        </select>
+
+                                        <input type="hidden" name="NAME3" id="NAME3" value="—————————"/>
+
+                                        <div class="separator">&nbsp;</div>
+
+                                        <input type="hidden" name="NAME4" id="NAME4" value="Lieferadresse abweichend"/>
+
+                                        <label class="field" id="F4">Lieferadresse abweichend</label>
+
+                                        <input class="required" type="radio" name="F4" id="F4_0" value="ja"/>
+                                        <label for="F4_0">ja</label>
+
+                                        <input class="" type="radio" name="F4" id="F4_1" value=" nein"/>
+                                        <label for="F4_1"> nein</label>
+
+                                        <input type="hidden" name="NAME5" id="NAME5" value="Straße"/>
+
+                                        <label for="F5" class="field">Straße</label>
+                                        <input class="typetext required" type="text" name="F5" id="F5"
+                                               placeholder="Straße" value="" style="width: 200px; " maxlength="40"/>
+
+                                        <input type="hidden" name="NAME6" id="NAME6" value="Ort"/>
+
+                                        <label for="F6" class="field">Ort</label>
+                                        <input class="typetext required" type="text" name="F6" id="F6" placeholder="Ort"
+                                               value="" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME7" id="NAME7" value="PLZ"/>
+
+                                        <label for="F7" class="field">PLZ</label>
+                                        <input class="typetext required" type="number" name="F7" id="F7"
+                                               placeholder="PLZ" value="" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME8" id="NAME8" value="—————————"/>
+
+                                        <div class="separator">&nbsp;</div>
+
+                                        <input type="hidden" name="NAME9" id="NAME9" value="Auswahl"/>
+
+                                        <label for="F9" class="field">Auswahl</label>
+                                        <select data-default="" class="required" id="F9" name="F9[]" size="1">
+                                            <option value="">Bitte wählen:</option>
+                                            <option>Eventcatering</option>
+                                            <option> Partyservice</option>
+                                            <option> Mobile Breakfest</option>
+                                            <option> Rent-a-Cook</option>
+                                        </select>
+
+                                        <input type="hidden" name="NAME10" id="NAME10" value="Datum"/>
+
+                                        <label for="F10" class="field">Datum</label>
+                                        <input class="typetext required" type="date" name="F10" id="F10"
+                                               placeholder="Datum" value="" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME11" id="NAME11" value="Veranstaltungsbeginn"/>
+
+                                        <label for="F11" class="field">Veranstaltungsbeginn</label>
+                                        <input class="typetext required" type="time" name="F11" id="F11"
+                                               placeholder="Veranstaltungsbeginn" value="" style="width: 200px; "
+                                               maxlength="20"/>
+
+                                        <input type="hidden" name="NAME12" id="NAME12" value="Veranstaltungsschluss"/>
+
+                                        <label for="F12" class="field">Veranstaltungsschluss</label>
+                                        <input class="typetext required" type="time" name="F12" id="F12"
+                                               placeholder="Veranstaltungsschluss" value="" style="width: 200px; "
+                                               maxlength="20"/>
+
+                                        <input type="hidden" name="NAME13" id="NAME13" value="—————————"/>
+
+                                        <div class="separator">&nbsp;</div>
+
+                                        <input type="hidden" name="NAME14" id="NAME14" value="(Beschreibungstext)"/>
+
+                                        <p>Aufbau</p>
+
+                                        <input type="hidden" name="NAME15" id="NAME15" value="von"/>
+
+                                        <label for="F15" class="field">von</label>
+                                        <input class="typetext " type="time" name="F15" id="F15" placeholder="von"
+                                               value="" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME16" id="NAME16" value="bis"/>
+
+                                        <label for="F16" class="field">bis</label>
+                                        <input class="typetext " type="time" name="F16" id="F16" placeholder="bis"
+                                               value="" style="width: 200px; " maxlength="20"/>
+
+                                        <input type="hidden" name="NAME17" id="NAME17" value="—————————"/>
+
+                                        <div class="separator">&nbsp;</div>
+
+                                        <input type="hidden" name="NAME18" id="NAME18" value="Personenzahl"/>
+
+                                        <label for="F18" class="field">Personenzahl</label>
+                                        <input class="typetext required" type="number" name="F18" id="F18"
+                                               placeholder="Personenzahl" value="" style="width: 200px; "
+                                               maxlength="20"/>
+
+
+                                        <input type="hidden" name="NAME19" id="NAME19" value="Speisen"/>
+
+
+                                        <label for="F19" class="field">Speisen.</label>
+                                        <select data-default="" class="required" id="F19" name="F19[]" size="1">
+                                            <option value="">Bitte wählen:</option>
+                                            <option>1</option>
+                                            <option> 2</option>
+                                            <option> 3</option>
+                                            <option> 4</option>
+                                            <option> 5</option>
+                                            <option> etc</option>
+                                        </select>
+                                        <input class="typetext required" type="number" name="F19_1" id="F19_1"
+                                               placeholder="Anzahl" value="" style="width: 100px; "
+                                               maxlength="20"/>
+                                        <input type="submit" class="button" value="+" id="B1"/>
+
+                                        <label for="F20" class="field">Getränke.</label>
+                                        <select data-default="" class="required" id="F20" name="F20[]" size="1">
+                                            <option value="">Bitte wählen:</option>
+                                            <option>1</option>
+                                            <option> 2</option>
+                                            <option> 3</option>
+                                            <option> 4</option>
+                                            <option> 5</option>
+                                            <option> etc</option>
+                                        </select>
+                                        <input class="typetext required" type="number" name="F20_1" id="F20_1"
+                                               placeholder="Anzahl" value="" style="width: 100px;"
+                                               maxlength="20"/>
+                                        <input type="submit" class="button" value="+" id="B2"/>
+
+
+                                        <input type="hidden" name="NAME21" id="NAME21" value="benötigtes Personal"/>
+
+                                        <label for="F21" class="field">benötigtes Personal</label>
+                                        <input class="typetext required" type="number" name="F21" id="F21"
+                                               placeholder="benötigtes Personal" value="" style="width: 200px; "
+                                               maxlength="20"/>
+
+
+                                        <input type="hidden" name="NAME22" id="NAME22" value="benötigtes Zubehör"/>
+
+                                        <label for="F22" class="field">benötigtes Zubehör</label>
+                                        <textarea class="" id="F22" name="F22" placeholder="benötigtes Zubehör" rows="5"
+                                                  style="width:400px; "></textarea>
+
+
+                                        <input type="hidden" name="NAME23" id="NAME23" value="Bemerkungen"/>
+
+                                        <label for="F23" class="field">Bemerkungen</label>
+                                        <textarea class="" id="F23" name="F23" placeholder="Bemerkungen" rows="5"
+                                                  style="width:400px; "></textarea>
+
+
+                                        <input type="text" name="url" id="url" value="" class="asfield"
+                                               aria-label="Please ignore this field." style="display: none;"/>
+
+
+                                        <div class="formbuttons">
+                                            <input type="submit" class="button" value="Absenden"/>
+
+                                        </div>
+                                    </form>
+
+                                    <!--<script>
+                                        // if the browser doesn't support input type="date", use jQueryUI datepicker
+                                        if (zp.html5support && !zp.html5support["date"]) {
+                                            // test if jqueryUI is loaded, and if not, load it
+                                            var mySrc = $z('script[src*="app.js"], script[src*="bundle.js"]').first().attr("src");
+                                            var jsRelativePath = mySrc.substr(0, mySrc.lastIndexOf("assets/")) + "assets/";
+
+                                            if (!$z("link[href*='/js/jqueryui/jquery-ui-1.8.19.custom.css']").length) {
+                                                // load jqueryUI if it is not already loaded
+                                                if (!$z('link[href*="/bundle.css"], link[href*="/styles.css"]').first().length) {
+                                                    $z('<link rel="stylesheet" type="text/css" href="' + jsRelativePath + 'js/jqueryui/jquery-ui-1.8.19.custom.css" media="screen" />').appendTo("head");
+                                                }
+                                                else {
+                                                    $z('link[href*="/bundle.css"], link[href*="/styles.css"]').first().after('<link rel="stylesheet" type="text/css" href="' + jsRelativePath + 'js/jqueryui/jquery-ui-1.8.19.custom.css" media="screen" />');
+                                                }
+                                            }
+
+                                            if (!($z.ui)) {
+                                                // append after existing, known js if possible to keep loading order of CSS JS in correct order for improved loading speed
+                                                if (!$z('script[src*="app.js"], script[src*="bundle.js"]').first().length) {
+                                                    $z('<scr' + 'ipt type="text/javascript" src="' + jsRelativePath + 'js/jqueryui/jquery-ui-1.8.19.custom.min.js"></scr' + 'ipt>').appendTo("head");
+                                                }
+                                                else {
+                                                    $z('scr' + 'ipt[src*="app.js"], script[src*="bundle.js"]').first().after('<scr' + 'ipt type="text/javascript" src="' + jsRelativePath + 'js/jqueryui/jquery-ui-1.8.19.custom.min.js"></scr' + 'ipt>');
+                                                }
+                                            }
+                                            // localize the datepicker to DE
+                                            var isGermanPage = $('html')[0].lang.toLowerCase().substr(0, 2) == "de";
+                                            if (isGermanPage && !($z.datepicker.regional['de'])) {
+                                                if (!$z('script[src*="app.js"], script[src*="bundle.js"]').first().length) {
+                                                    $z('<scr' + 'ipt type="text/javascript" src="' + jsRelativePath + 'js/jqueryui/i18n/jquery.ui.datepicker-de.js"></scr' + 'ipt>').appendTo("head");
+                                                }
+                                                else {
+                                                    $z('scr' + 'ipt[src*="app.js"], script[src*="bundle.js"]').first().after('<scr' + 'ipt type="text/javascript" src="' + jsRelativePath + 'js/jqueryui/i18n/jquery.ui.datepicker-de.js"></scr' + 'ipt>');
+                                                }
+                                            }
+                                            // initialize date fields with datepicker
+                                            $z("form#form1578 input[type=date]").datepicker({
+                                                showButtonPanel: true,
+                                                changeMonth: true,
+                                                changeYear: true,
+                                                currentText: isGermanPage ? "Heute" : "Today",
+                                                closeText: isGermanPage ? "Schließen" : "Close"
+                                            });
+                                        }
+                                    </script>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .zparea -->
+            </div>
+        </div><!-- .content -->
+        <div class="frame">
+            <div id="search"
+                 data-type="inline-editing"
+                 data-context="search"
+                 data-item-id="search"
+            >
+                <form id="searchform" name="searchengine1" onsubmit="return search1()" th:action="@{/suche}"
+                      method="get">
+                    <fieldset id="searchfieldset">
+                        <input id="searchfield" type="text" name="q" value="Suchbegriff"
+                               onfocus="if(this.value=='Suchbegriff'){this.value=''}"
+                               onblur="if(this.value==''){this.value='Suchbegriff'}"/>
+                        <input id="searchbutton" type="image" name="submit"
+                               th:src="@{resources/images/stock-images/magnifier.png}"
+                               alt="searchbutton"/>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div><!-- .frame -->
+
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo">
+                    © 2016 Mampf.
+                </div>
+
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div><!-- .page -->
+</div><!-- .wrapper .main -->
+
+
+<script>
+    $z(document).ready(function () {
+        // switches the Mobile Navigation-Menu on/off, when "Menu" link is clicked.
+        $z("a#mobilenavtoggle").on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $z("#navbar").slideToggle(300, function () {
+                $z("#navbar, #mobilenavtoggle").toggleClass("on");
+                //clear inline styles set by "slideToggle" so the don't stick around e.g. after window enlargement or orientation change
+                $z(this).css("display", "");
+            });
+
+        });
+    });
+</script>
+</body>
+</html>
