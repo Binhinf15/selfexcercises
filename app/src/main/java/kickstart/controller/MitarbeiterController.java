@@ -16,87 +16,120 @@ import kickstart.person.MitarbeiterFormular;
 import kickstart.person.PersonenVerwaltung;
 
 
+/**
+ * The type Mitarbeiter controller.
+ */
 @Controller
 public class MitarbeiterController {
 	
 	private final PersonenVerwaltung pVerwaltung;
-	
-	// Konstruktor
+
+    /**
+     * Instantiates a new Mitarbeiter controller.
+     *
+     * @param pVerwaltung the p verwaltung
+     */
+// Konstruktor
 	@Autowired
 	public MitarbeiterController(PersonenVerwaltung pVerwaltung){
 		this.pVerwaltung = pVerwaltung;
 	}
-	
+
+
+    /**
+     * Mitarbeiter string.
+     *
+     * @param model the model
+     * @return the string
+     */
+// Methoden
 	@RequestMapping("/personal")
-	public String mitarbeiter(Model model) {
-		
-		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAll());
-		
+	public String mitarbeiter(Model model) {		
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAll());		
 		return "personal";
 	}
-	
-	@RequestMapping("/neues-personal")
-	public String registerMitarbeiter(Model model) {
-		
-		model.addAttribute("mitarbeiterDaten", new MitarbeiterFormular());
-		
-		return "neues-personal";
+
+    /**
+     * Kunden liste sortiert nach vorname string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @RequestMapping("/personalVornameSortiert")
+	public String kundenListeSortiertNachVorname(Model model) {
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAllByOrderByVorname());
+		return "personal";
 	}
-	
-	@RequestMapping("/addPersonal")
-	public String addPersonal(@ModelAttribute("mitarbeiterDaten") @Valid MitarbeiterFormular mitarbeiterDaten, BindingResult result) {
-		
-		if (result.hasErrors()) {
-			return "person/MitarbeiterFormular";
-		}
-		
-		Mitarbeiter m = pVerwaltung.createMitarbeiter(mitarbeiterDaten.getVorname(), mitarbeiterDaten.getNachname(), 
-													mitarbeiterDaten.getOrt(), mitarbeiterDaten.getStrasse(), mitarbeiterDaten.getPlz(),
-													mitarbeiterDaten.getUsername(), mitarbeiterDaten.getPassword(), mitarbeiterDaten.getRole(),
-													mitarbeiterDaten.getEmail());
-		pVerwaltung.saveMitarbeiter(m);
-		
-		return "redirect:/mitarbeiterListe";
+
+    /**
+     * Kunden liste sortiert nach nachname string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @RequestMapping("/personalNachnameSortiert")
+	public String kundenListeSortiertNachNachname(Model model) {
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAllByOrderByNachname());
+		return "personal";
 	}
-	
-	@RequestMapping(path="/suchePersonalVorname", method=RequestMethod.POST)
-	public String sucheNachVorname(Model model, @RequestParam("personalVorname") String vorname) {
+
+    /**
+     * Kunden liste sortiert nach id string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @RequestMapping("/personalIdSortiert")
+	public String kundenListeSortiertNachId(Model model) {
+		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAllByOrderById());
+		return "personal";
+	}
+
+    /**
+     * Suche nach vorname string.
+     *
+     * @param model   the model
+     * @param vorname the vorname
+     * @return the string
+     */
+    @RequestMapping(path="/suchePersonalVorname", method=RequestMethod.POST)
+	public String sucheNachVorname(Model model, @RequestParam("mitarbeiterVorname") String vorname) {
 		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findByVorname(vorname));
 		return "personal";
 	}
-	
-	// Methoden
-	/*
-	@RequestMapping("/mitarbeiterListe")
-	public String mitarbeiter(Model model) {
-		
-		model.addAttribute("mitarbeiterListe", pVerwaltung.getMitarbeiterRepo().findAll());
-		model.addAttribute("kundenListe", pVerwaltung.getKundenRepo().findAll());				// nur zum testen hier sollte eigentlich in den KundenController
-		
-		return "person/mitarbeiterListe";
+
+    /**
+     * Register mitarbeiter string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @RequestMapping("/neues-personal")
+	public String registerMitarbeiter(Model model) {	
+		model.addAttribute("personalDaten", new MitarbeiterFormular());
+		return "neues-personal";
 	}
-	
-	@RequestMapping("/MitarbeiterFormular")
-	public String registerMitarbeiter(Model model) {
-		
-		model.addAttribute("mitarbeiterDaten", new MitarbeiterFormular());
-		
-		return "person/MitarbeiterFormular";
-	}
-	
-	@RequestMapping("/addMitarbeiter")
-	public String newMitarbeiter(@ModelAttribute("mitarbeiterDaten") @Valid MitarbeiterFormular mitarbeiterDaten, BindingResult result) {
+
+    /**
+     * Add personal string.
+     *
+     * @param mitarbeiterDaten the mitarbeiter daten
+     * @param result           the result
+     * @return the string
+     */
+    @RequestMapping("/addPersonal")
+	public String addPersonal(@ModelAttribute("mitarbeiterDaten") @Valid MitarbeiterFormular mitarbeiterDaten, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "person/MitarbeiterFormular";
+			return "neues-personal";
 		}
 		
 		Mitarbeiter m = pVerwaltung.createMitarbeiter(mitarbeiterDaten.getVorname(), mitarbeiterDaten.getNachname(), 
 													mitarbeiterDaten.getOrt(), mitarbeiterDaten.getStrasse(), mitarbeiterDaten.getPlz(),
 													mitarbeiterDaten.getUsername(), mitarbeiterDaten.getPassword(), mitarbeiterDaten.getRole(),
-													mitarbeiterDaten.getEmail());
+													mitarbeiterDaten.getEmail(), mitarbeiterDaten.getTelefon());
 		pVerwaltung.saveMitarbeiter(m);
 		
-		return "redirect:/mitarbeiterListe";
-	}*/
+		return "personal";
+	}
 }

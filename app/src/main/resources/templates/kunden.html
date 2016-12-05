@@ -112,23 +112,29 @@
                                             <th>Straße</th>
                                             <th>Ort</th>
                                             <th>Plz</th>
+                                            <th>Telefon</th>
                                             <th>E-Mail</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>                                       
                                         <tr th:each=" kunde : ${kundenListe}"
-                                            style="color: #6C6C6C; background-color: #EDEDED">
-                                            <!--style="color: #777777; background-color: #D9D9D9"-->
-                                            <td th:text="${kunde.id}"></td>
-                                            <td th:text="${kunde.vorname}"></td>
-                                            <td th:text="${kunde.nachname}"></td>
-                                            <td th:text="${kunde.adresse.strasse}"></td>
-                                            <td th:text="${kunde.adresse.ort}"></td>
-                                            <td th:text="${kunde.adresse.plz}"></td>
-                                            <td th:text="${kunde.email}"></td>
+                                            style="color: #6C6C6C; background-color: #EDEDED"  >
+                                            <!--style="color: #777777; background-color: #D9D9D9"-->                                         
+                                            <td> 
+                                            	<form action="/kundenDetail">                                               	                              		
+                                            		<input type="submit" th:value="${kunde.id}" name="kundenId"/>
+                                            	</form>	
+                                            </td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.vorname}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.nachname}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.adresse.strasse}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.adresse.ort}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.adresse.plz}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.telefon}"></label></td>
+                                            <td><label th:for="${kunde.id}" th:text="${kunde.email}"></label></td>
                                             <td>
-                                            	<form id="form1" action="/zurBestellung" method="POST">
-                                            		<input form="form1" type="radio" name="test" th:value="${kunde.id}" />
+                                            	<form id="form1" action="/bestellung" method="POST">                                            		
+                                            		<input th:id="${kunde.id}" form="form1" type="radio" name="kundenId" th:value="${kunde.id}" />
                                             	</form>
                                             </td>
                                         </tr>
@@ -141,19 +147,18 @@
                 </div>
                 <div>
 	                <ul>
-	                    <li><a class="formbuttons" th:href="@{/neuer-kunde}" href="neuer-kunde.html">Kunde hinzufügen</a></li>
-	
-	                   	<li><input type="submit" form="form1" value="Veranstaltung erstellen für Auswahl"/></li>
-	                    
+	                    <li><a class="formbuttons" th:href="@{/neuer-kunde}" href="neuer-kunde.html">Kunde hinzufügen</a></li>	
+	                   	<li><input type="submit" form="form1" value="Veranstaltung erstellen für Auswahl"/></li>	  
 	                    <li><a class="formbuttons" th:href="@{/kundenVornameSortiert}" href="kunden.html">Kunden nach
 	                        Vorname sortieren</a></li>
+	                    <li><a class="formbuttons" th:href="@{/kundenNachnameSortiert}" href="kunden.html">Kunden nach
+	                        Nachname sortieren</a></li>    	                        
 	                    <li><a class="formbuttons" th:href="@{/kundenIdSortiert}" href="kunden.html">Kunden nach Id
 	                        sortieren</a></li>
 	                </ul>
-	                <form name="suchenNachVorname" action="/sucheVornameKunde" method="POST">
+	                <form name="suchenNachVorname" action="/sucheKundeVorname" method="POST">
 	                    <label>Vorname:</label>
-	                    <input type='text' name='vorname'/>
-	                    <label></label>
+	                    <input type='text' name='vorname'/>	                   
 	                    <input type="submit" value="Suche"/>
 	                </form>
                 </div>

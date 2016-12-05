@@ -23,62 +23,90 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kickstart.person.Kunde;
 import kickstart.person.KundenFormular;
 
+/**
+ * The type Welcome controller.
+ */
 @Controller
 public class WelcomeController {
 
-	@RequestMapping({"/","/welcome"})
+    /**
+     * Index string.
+     *
+     * @return the string
+     */
+    @RequestMapping({"/","/welcome"})
 	public String index() {
 		return "welcome";
 	}
 
-	@RequestMapping("/kontakt")
+    /**
+     * Kon string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/kontakt")
 	public String kon() {
 		return "kontakt";
 	}
 
-	@RequestMapping("/suche")
+    /**
+     * Such string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/suche")
 	public String such() {
 		return "suche";
 	}
 
-	@RequestMapping("/impressum")
+    /**
+     * Imp string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/impressum")
 	public String imp() {
 		return "impressum";
 	}
 
-	@RequestMapping("/wegbeschreibung")
+    /**
+     * Wegbeschr string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/wegbeschreibung")
 	public String wegbeschr() {
 		return "wegbeschreibung";
 	}
 
 
-
-
-
-
-
-	@RequestMapping("/lager")
+    /**
+     * Lag string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/lager")
 	public String lag() {
 		return "lager";
 	}
 
-	@RequestMapping("/mein-bereich")
+    /**
+     * Main mb string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/mein-bereich")
 	public String main_mb() {
 		return "mein-bereich";
 	}
 
-	@RequestMapping("/service")
+    /**
+     * Ser string.
+     *
+     * @return the string
+     */
+    @RequestMapping("/service")
 	public String ser() {
 		return "service";
 	}
-
-
-
-	@RequestMapping("/bestellung")
-	public String ser_b() {
-		return "bestellung";
-	}
-
-
-
 }

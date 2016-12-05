@@ -115,12 +115,12 @@
                                         <label for="F1" class="field">Name</label>
                                         <input th:field="*{nachname}" class="typetext  required" type="text" name="F1" id="F1"
                                                placeholder="Name"
-                                               value="" style="width: 200px; " maxlength="20"/>
+                                               value="" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="hidden" name="NAME2" id="NAME2" value="Vorname"/>
                                         <label for="F2" class="field">Vorname</label>
                                         <input th:field="*{vorname}" class="typetext  required" type="text" name="F2" id="F2"
-                                               placeholder="Vorname" style="width: 200px; " maxlength="20"/>
+                                               placeholder="Vorname" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="hidden" name="NAME3" id="NAME3" value="Geburtsdatum"/>
                                         <label for="F3" class="field">Geburtsdatum</label>
@@ -134,31 +134,31 @@
                                         <label for="F5" class="field">Straße</label>
                                         <input th:field="*{strasse}" class="typetext  required" type="text" name="F5" id="F5"
                                                placeholder="Straße"
-                                               value="" style="width: 200px; " maxlength="40"/>
+                                               value="" style="width: 200px; " maxlength="40" required="required"/>
 
                                         <input type="hidden" name="NAME5_2" id="NAME5_2" value="Ort"/>
                                         <label for="F5_2" class="field">Ort</label>
                                         <input th:field="*{ort}" class="typetext  required" type="text" name="F5_2" id="F5_2"
                                                placeholder="Ort"
-                                               value="" style="width: 200px; " maxlength="40"/>
+                                               value="" style="width: 200px; " maxlength="40" required="required"/>
 
                                         <input type="hidden" name="NAME6" id="NAME6" value="PLZ"/>
                                         <label for="F6" class="field">PLZ</label>
-                                        <input th:field="*{plz}" class="typetext  required" type="number" name="F6" id="F6"
-                                               placeholder="PLZ" style="width: 200px; " maxlength="20"/>
+                                        <input th:field="*{plz}" class="typetext  required" type="text" name="F6" id="F6"
+                                               placeholder="PLZ" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="hidden" name="NAME7" id="NAME7" value="—————————"/>
                                         <div class="separator">&nbsp;</div>
 
                                         <input type="hidden" name="NAME8" id="NAME8" value="Telefon"/>
                                         <label for="F8" class="field">Telefon</label>
-                                        <input class="typetext " type="tel" name="F8" id="F8"
-                                               placeholder="Telefon" style="width: 200px; " maxlength="20"/>
+                                        <input th:field="*{telefon}" class="typetext " type="tel" name="F8" id="F8"
+                                               placeholder="Telefon" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="hidden" name="NAME9" id="NAME9" value="E-Mail"/>
                                         <label for="F9" class="field">E-Mail</label>
                                         <input th:field="*{email}" class="typetext  required" type="email" name="F9" id="F9"
-                                               placeholder="E-Mail" style="width: 200px; " maxlength="200"/>
+                                               placeholder="E-Mail" style="width: 200px; " maxlength="200" required="required"/>
 
                                         <input type="text" name="url" id="url" class="asfield"
                                                aria-label="Please ignore this field."/>

@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Veranstaltungen</title>
+    <title>Kunden</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
@@ -32,13 +32,13 @@
                 <li class="haschilds dropdown active">
                     <a href="veranstaltungen.html">Admin</a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             <a href="veranstaltungen.html">Veranstaltungen</a>
                         </li>
                         <li class="dropdown">
                             <a href="personal.html">Personal</a>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown active">
                             <a href="kunden.html">Kunden</a>
                         </li>
                         <li class="dropdown">
@@ -71,9 +71,9 @@
             <div class="subnav low">
                 <div class="submenu clearme">
                     <ul>
-                        <li class="active">
+                        <li>
                             <form method="post" th:action="@{/veranstaltungen}">
-                                <a class="active" href="veranstaltungen.html">Veranstaltungen</a>
+                                <a href="veranstaltungen.html">Veranstaltungen</a>
                             </form>
                         </li>
                         <li>
@@ -81,9 +81,9 @@
                                 <a href="personal.html">Personal</a>
                             </form>
                         </li>
-                        <li>
+                        <li class="active">
                             <form method="post" th:action="@{/kunden}">
-                                <a href="kunden.html">Kunden</a>
+                                <a class="active" href="kunden.html">Kunden</a>
                             </form>
                         </li>
                         <li>
@@ -107,29 +107,17 @@
                                         <thead>
                                         <tr style="color: #333333; background-color: #0082D7">
                                             <th>Id</th>
-                                            <th>Eventart</th>
-                                            <th>Beginn</th>
-                                            <th>Schluss</th>
-                                            <th>Straße</th>
-                                            <th>Ort</th>
-                                            <th>Plz</th>
-                                            <th>Bemerkung</th>
-                                            <th>KundenId</th>
+                                            <th>Name</th>
+                                            <th>Menge</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each=" veranstaltung : ${veranstaltungsListe}"
+                                        <tr th:each=" ware : ${warenListe}"
                                             style="color: #6C6C6C; background-color: #EDEDED">
                                             <!--style="color: #777777; background-color: #D9D9D9"-->
-                                            <td th:text="${veranstaltung.id}"></td>
-                                            <td th:text="${veranstaltung.eventArt}"></td>
-                                            <td th:text="${veranstaltung.beginnDatum}"></td>
-                                            <td th:text="${veranstaltung.schlussDatum}"></td>
-                                            <td th:text="${veranstaltung.adresse.strasse}"></td>
-                                            <td th:text="${veranstaltung.adresse.ort}"></td>
-                                            <td th:text="${veranstaltung.adresse.plz}"></td>
-                                            <td th:text="${veranstaltung.bemerkung}"></td>
-                                            <td th:text="${veranstaltung.kundenId}"></td>
+                                            <td th:text="${ware.id}"></td>
+                                            <td th:text="${ware.name}"></td>  
+                                            <td th:text="${ware.menge}"></td>                                                                               
                                         </tr>
                                         </tbody>
                                     </table>
@@ -139,28 +127,9 @@
                     </div>
                 </div>
                 <div>
-                    <ul>
-                        <li><a class="formbuttons" th:href="@{/bestellung2}" >Veranstaltung
-                            hinzufügen</a></li>   
-                        <li><a class="formbuttons" th:href="@{/veranstaltungBeginnSortiert}">Veranstaltung nach
-                            beginn sortieren</a></li>
-                        <li><a class="formbuttons" th:href="@{/veranstaltungIdSortiert}">Veranstaltung nach Id
-                            sortieren</a></li>
-                        <li><a class="formbuttons" th:href="@{/veranstaltungKundenIdSortiert}">Veranstaltung nach KundenId
-                            sortieren</a></li>
-                        <li><a class="formbuttons" th:href="@{/veranstaltungEventArtSortiert}">Veranstaltung nach Eventart
-                            sortieren</a></li>
-                    </ul>
-                    <form name="sucheNachKundenId" action="/sucheKundenId" method="POST">
-                        <label>Kunden Id:</label>
-                        <input type='text' name='kundenId'/>
-                        <input type="submit" value="Suche"/>
-                    </form>
-                    <form name="zeigeWaren" action="/zeigeWaren" method="POST">
-                        <label>Veranstaltungs Id:</label>
-                        <input type='text' name='veranId'/>
-                        <input type="submit" value="zeige Waren"/>
-                    </form>
+	                <ul>
+	                    <li><a class="formbuttons" th:href="@{/veranstaltungen}" href="veranstaltungen.html">zurück</a></li>	
+	                </ul>
                 </div>
             </div>
         </div>

@@ -2,6 +2,9 @@ package kickstart.person;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * The type Kunden formular.
+ */
 public class KundenFormular {
 	@NotEmpty(message = "KundenFormular.vorname.NotEmpty")
 	private String vorname;
@@ -18,54 +21,125 @@ public class KundenFormular {
 	@NotEmpty(message = "KundenFormular.plz.NotEmpty")
 	private String plz;
 	
+	@NotEmpty(message = "KundenFormular.telefon.NotEmpty")
+	private String telefon;
+	
 	@NotEmpty(message = "KundenFormular.email.NotEmpty")
 	private String email;
 
-	public String getVorname() {
+    /**
+     * Gets vorname.
+     *
+     * @return the vorname
+     */
+    public String getVorname() {
 		return vorname;
 	}
 
-	public void setVorname(String vorname) {
+    /**
+     * Sets vorname.
+     *
+     * @param vorname the vorname
+     */
+    public void setVorname(String vorname) {
 		this.vorname = vorname;
 	}
 
-	public String getNachname() {
+    /**
+     * Gets nachname.
+     *
+     * @return the nachname
+     */
+    public String getNachname() {
 		return nachname;
 	}
 
-	public void setNachname(String nachname) {
+    /**
+     * Sets nachname.
+     *
+     * @param nachname the nachname
+     */
+    public void setNachname(String nachname) {
 		this.nachname = nachname;
 	}
 
-	public String getStrasse() {
+    /**
+     * Gets strasse.
+     *
+     * @return the strasse
+     */
+    public String getStrasse() {
 		return strasse;
 	}
 
-	public void setStrasse(String strasse) {
+    /**
+     * Sets strasse.
+     *
+     * @param strasse the strasse
+     */
+    public void setStrasse(String strasse) {
 		this.strasse = strasse;
 	}
 
-	public String getOrt() {
+    /**
+     * Gets ort.
+     *
+     * @return the ort
+     */
+    public String getOrt() {
 		return ort;
 	}
 
-	public void setOrt(String ort) {
+    /**
+     * Sets ort.
+     *
+     * @param ort the ort
+     */
+    public void setOrt(String ort) {
 		this.ort = ort;
 	}
 
-	public String getPlz() {
+    /**
+     * Gets plz.
+     *
+     * @return the plz
+     */
+    public String getPlz() {
 		return plz;
 	}
 
-	public void setPlz(String plz) {
+    /**
+     * Sets plz.
+     *
+     * @param plz the plz
+     */
+    public void setPlz(String plz) {
 		this.plz = plz;
 	}
 
-	public String getEmail() {
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
 	}	
 }

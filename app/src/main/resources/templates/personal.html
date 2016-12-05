@@ -106,19 +106,18 @@
                                     <table border="1" class="zptabledata">
                                         <thead>
                                         <tr>
-                                            <th>Vorame</th>
-                                            <th>Id</th>
+                                      		<th>Id</th>
+                                            <th>Vorname</th>
                                             <th>Username</th>
-                                            <th>Passwort</th>
                                             <th>Rolle</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr th:each=" mitarbeiter : ${mitarbeiterListe}">
-                                            <td th:text="${mitarbeiter.vorname}"></td>
+                                        <!--style="color: #777777; background-color: #D9D9D9"--> 
                                             <td th:text="${mitarbeiter.id}"></td>
+                                            <td th:text="${mitarbeiter.vorname}"></td>
                                             <td th:text="${mitarbeiter.userAccount.username}"></td>
-                                            <td th:text="${mitarbeiter.userAccount.password}"></td>
                                             <td th:text="${mitarbeiter.userAccount.roles}"></td>
                                         </tr>
                                         </tbody>
@@ -132,10 +131,16 @@
                     <ul>
                         <li><a class="formbuttons" th:href="@{/neues-personal}">Personal
                             hinzufügen</a></li>
+                        <li><a class="formbuttons" th:href="@{/personalVornameSortiert}" href="personal.html">Personal nach
+	                        Vorname sortieren</a></li>
+	                    <li><a class="formbuttons" th:href="@{/personalNachnameSortiert}" href="personal.html">Personal nach
+	                        Nachname sortieren</a></li>    	                        
+	                    <li><a class="formbuttons" th:href="@{/personalIdSortiert}" href="personal.html">Personal nach Id
+	                        sortieren</a></li>
                     </ul>
                     <form name="suchePersonalVorname" action="/suchePersonalVorname" method="POST">
-                        <label>Personal Id:</label>
-                        <input type='text' name='personalVorname'/>
+                        <label>Vorname:</label>
+                        <input type='text' name='mitarbeiterVorname'/>
                         <label></label>
                         <input type="submit" value="Suche"/>
                     </form>

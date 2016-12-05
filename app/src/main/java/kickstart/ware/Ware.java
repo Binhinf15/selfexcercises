@@ -23,6 +23,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The type Ware.
+ */
 @Entity
 @Table(name="WARE")
 public class Ware {
@@ -30,35 +33,69 @@ public class Ware {
 	@Id @GeneratedValue
 	private long id;
 	private String name;
-	private int menge;
-	
-	// Konstruktor
+	private long menge;
+
+    /**
+     * Instantiates a new Ware.
+     */
+// Konstruktor
 	public Ware(){
 	}
-	
-	public Ware(String name, int menge){
+
+    /**
+     * Instantiates a new Ware.
+     *
+     * @param name  the name
+     * @param menge the menge
+     */
+    public Ware(String name, long menge){
 		this.name = name;
 		this.menge = menge;
 	}
-	
-	// Methoden
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+// Methoden
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getMenge() {
+    /**
+     * Gets menge.
+     *
+     * @return the menge
+     */
+    public long getMenge() {
 		return menge;
 	}
 
-	public void setMenge(int menge) {
-		this.menge = menge;
+    /**
+     * Sets menge.
+     *
+     * @param warenMenge the waren menge
+     */
+    public void setMenge(long warenMenge) {
+		this.menge = warenMenge;
 	}
 
-	public long getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public long getId() {
 		return id;
 	}	
 }

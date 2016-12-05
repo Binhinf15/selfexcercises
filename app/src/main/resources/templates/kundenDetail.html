@@ -38,7 +38,7 @@
                             <a href="personal.html">Personal</a>
                         </li>
                         <li class="dropdown">
-                            <a href="personal.html">Personal</a>
+                            <a href="kunden.html">Kunden</a>
                         </li>
                         <li class="dropdown">
                             <a href="lager.html">Lager</a>
@@ -66,6 +66,24 @@
 <div class="clearx"></div>
 <div class="wrapper main">
     <div class="page">
+        <div class="frame">
+            <div class="subnav low">
+                <div class="submenu clearme">
+                    <ul>
+                        <li class="active">
+                            <form method="post" th:action="@{/neuer-kunde}">
+                                <a class="active" href="neuer-kunde.html">Neuer Kunde</a>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="post" th:action="@{/bestellung}">
+                                <a href="bestellung.html">Bestellung</a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="content">
             <div class="clearx"></div>
             <div class="contentbox zpgrid">
@@ -73,26 +91,25 @@
                     <div class="zpRow standard ">
                         <div class="zpColumn zpColumnWidth1 c8">
                             <div class="zpColumnItem">
-                                <div id="a1571" data-articleid="1571" class="articlearea zpwFormular"><h2>Neues Personal
-                                    hinzufügen</h2>
-                                    <noscript>
-                                        <div class="formvalidateerror"
-                                             style="color: #fff; background-color: red; padding: 6px 12px;"><p><strong>Um
-                                            das Kontaktformular zu nutzen, aktivieren Sie bitte JavaScript!</strong></p>
-                                            <p><strong>In order to use this form, you need to activate
-                                                JavaScript!</strong></p></div>
-                                    </noscript>
+                                <div id="a1571" data-articleid="1571" class="articlearea zpwFormular">
+                                	<h2>
+                                		<label th:text="'Details für Kunden-Nr.: ' + ${kundenId}">Details für Kunde</label>
+                                		
+                                	</h2>
+                                                                                                                                  
                                     <form enctype="multipart/form-data" class="zp-form" id="form1571" name="form1571"
-                                          th:object="${personalDaten}" th:action="@{/addPersonal}" method="post">
+                                          th:object="${kundenDaten}" th:action="@{/bearbeiteKunde}" method="post">
                                         <input type="hidden" name="f_receiver" value="4rF2V2jGFwxsXPnPD0asAw=="/>
-                                        <input type="hidden" name="f_title" value="Neues Personal"/>
-                                        <input type="hidden" name="f_success" value="neues-personal.html"/>
-                                        <input type="hidden" name="f_error" value="neues-personal.html"/>
+                                        <input type="hidden" name="f_title" value="Neuer Kunde"/>
+                                        <input type="hidden" name="f_success" value="neuer-kunde.html"/>
+                                        <input type="hidden" name="f_error" value="neuer-kunde.html"/>
                                         <input type="hidden" name="f_id" value="1571"/>
                                         <input type="hidden" name="f_alertPrefix"
                                                value="Bitte füllen Sie die rot markierten Felder aus:"/>
                                         <input type="hidden" name="f_invalidEmailMsg" value="keine gültige E-Mail"/>
-
+                                        
+                                        <input type="hidden" name="kundenId" th:value="${kundenId}"/>
+										
                                         <input type="hidden" name="NAME1" id="NAME1" value="Name"/>
                                         <label for="F1" class="field">Name</label>
                                         <input th:field="*{nachname}" class="typetext  required" type="text" name="F1" id="F1"
@@ -103,11 +120,6 @@
                                         <label for="F2" class="field">Vorname</label>
                                         <input th:field="*{vorname}" class="typetext  required" type="text" name="F2" id="F2"
                                                placeholder="Vorname" style="width: 200px; " maxlength="20" required="required"/>
-
-                                        <input type="hidden" name="NAME3" id="NAME3" value="Geburtsdatum"/>
-                                        <label for="F3" class="field">Geburtsdatum</label>
-                                        <input class="typetext " type="date" name="F3" id="F3"
-                                               placeholder="Geburtsdatum" style="width: 200px; " maxlength="20"/>
 
                                         <input type="hidden" name="NAME4" id="NAME4" value="—————————"/>
                                         <div class="separator">&nbsp;</div>
@@ -126,44 +138,30 @@
 
                                         <input type="hidden" name="NAME6" id="NAME6" value="PLZ"/>
                                         <label for="F6" class="field">PLZ</label>
-                                        <input th:field="*{plz}" class="typetext  required" type="number" name="F6" id="F6"
+                                        <input th:field="*{plz}" class="typetext  required" type="text" name="F6" id="F6"
                                                placeholder="PLZ" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="hidden" name="NAME7" id="NAME7" value="—————————"/>
                                         <div class="separator">&nbsp;</div>
-                                        
-                                        <input type="hidden" name="NAME12" id="NAME12" value="Telefon"/>
-                                        <label for="F12" class="field">Telefon</label>
-                                        <input th:field="*{telefon}" class="typetext " type="tel" name="F12" id="F12"
+
+                                        <input type="hidden" name="NAME8" id="NAME8" value="Telefon"/>
+                                        <label for="F8" class="field">Telefon</label>
+                                        <input th:field="*{telefon}" class="typetext " type="tel" name="F8" id="F8"
                                                placeholder="Telefon" style="width: 200px; " maxlength="20" required="required"/>
 
-                                        <input type="hidden" name="NAME8" id="NAME8" value="E-Mail"/>
-                                        <label for="F8" class="field">E-Mail</label>
-                                        <input th:field="*{email}" class="typetext  required" type="email" name="F8" id="F8"
+                                        <input type="hidden" name="NAME9" id="NAME9" value="E-Mail"/>
+                                        <label for="F9" class="field">E-Mail</label>
+                                        <input th:field="*{email}" class="typetext  required" type="email" name="F9" id="F9"
                                                placeholder="E-Mail" style="width: 200px; " maxlength="200" required="required"/>
-
-                                        <input type="hidden" name="NAME9" id="NAME9" value="Username"/>
-                                        <label for="F9" class="field">Username</label>
-                                        <input th:field="*{username}" class="typetext required" type="text" name="F9" id="F9"
-                                               placeholder="Username" style="width: 200px; " maxlength="20" required="required"/>
-
-                                        <input type="hidden" name="NAME10" id="NAME10" value="Passwort"/>
-                                        <label for="F10" class="field">Passwort</label>
-                                        <input th:field="*{password}" class="typetext required" type="password" name="F10" id="F10"
-                                               placeholder="Username" style="width: 200px; " maxlength="20" required="required"/>
-
-                                        <input type="hidden" name="NAME11" id="NAME11" value="Rolle"/>
-                                        <label for="F11" class="field">Rolle</label>
-                                        <input th:field="*{role}" class="typetext required" type="text" name="F11" id="F11"
-                                               placeholder="Username" style="width: 200px; " maxlength="20" required="required"/>
 
                                         <input type="text" name="url" id="url" class="asfield"
                                                aria-label="Please ignore this field."/>
 
                                         <div class="formbuttons">
-                                            <input type="submit" class="button" value="Absenden"/>
+                                            <input type="submit" class="button" value="Änderung speichern"/>
                                         </div>
                                     </form>
+                                    
                                     <!--<script>
                                         // if the browser doesn't support input type="date", use jQueryUI datepicker
                                         if (zp.html5support && !zp.html5support["date"]) {

@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The type Adresse.
+ */
 @Entity
 @Table(name="ADRESSE")
 public class Adresse {
@@ -14,43 +17,88 @@ public class Adresse {
 	private String strasse;
 	private String ort;
 	private String plz;
-	
-	// Konstruktor
+
+    /**
+     * Instantiates a new Adresse.
+     */
+// Konstruktor
 	public Adresse(){
 	}
-	
-	public Adresse(String strasse, String ort, String plz) {
+
+    /**
+     * Instantiates a new Adresse.
+     *
+     * @param strasse the String strasse
+     * @param ort     the String ort
+     * @param plz     the String plz
+     */
+    public Adresse(String strasse, String ort, String plz) {
 		this.strasse = strasse;
 		this.ort = ort;
 		this.plz = plz;
 	}
-	
-	// Methoden
+
+    /**
+     * Gets long id.
+     *
+     * @return long id
+     */
+// Methoden
 	public long getId() {
 		return id;
 	}
-	
-	public String getStrasse() {
+
+    /**
+     * Gets strasse.
+     *
+     * @return the strasse
+     */
+    public String getStrasse() {
 		return strasse;
 	}
-	
-	public void setStrasse(String strasse) {
+
+    /**
+     * Sets String strasse.
+     *
+     * @param strasse the String strasse
+     */
+    public void setStrasse(String strasse) {
 		this.strasse = strasse;
 	}
-	
-	public String getOrt() {
+
+    /**
+     * Gets String ort.
+     *
+     * @return the String ort
+     */
+    public String getOrt() {
 		return ort;
 	}
-	
-	public void setOrt(String ort) {
+
+    /**
+     * Sets String ort.
+     *
+     * @param ort the String ort
+     */
+    public void setOrt(String ort) {
 		this.ort = ort;
 	}
-	
-	public String getPlz() {
+
+    /**
+     * Gets String plz.
+     *
+     * @return the plz
+     */
+    public String getPlz() {
 		return plz;
 	}
-	
-	public void setPlz(String plz) {
+
+    /**
+     * Sets plz.
+     *
+     * @param plz the String plz
+     */
+    public void setPlz(String plz) {
 		this.plz = plz;
 	}
 

@@ -21,13 +21,24 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+/**
+ * The type Application.
+ */
 @EnableSalespoint
 public class Application {
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/**
+	 * The type Web security configuration.
+	 */
 	@Configuration
 	static class WebSecurityConfiguration extends SalespointSecurityConfiguration {
 

@@ -2,40 +2,43 @@ package kickstart.veranstaltung;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * The type Veranstaltungs formular.
+ */
 public class VeranstaltungsFormular {
 	
-	@NotEmpty(message = "VeranstaltungsFormular.preis.NotEmpty")
-	private String preis;	
+	//@NotEmpty(message = "VeranstaltungsFormular.preis.NotEmpty")
+	private int preis;	
 	
 	@NotEmpty(message = "VeranstaltungsFormular.beginnTag.NotEmpty")
-	private String beginnTag;
+	private int beginnTag;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.beginnMonat.NotEmpty")
-	private String beginnMonat;
+	private int beginnMonat;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.beginnJahr.NotEmpty")
-	private String beginnJahr;
+	private int beginnJahr;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.beginnStunde.NotEmpty")
-	private String beginnStunde;
+	private int beginnStunde;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.beginnMinute.NotEmpty")
-	private String beginnMinute;
+	private int beginnMinute;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.schlussTag.NotEmpty")
-	private String schlussTag;
+	private int schlussTag;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.schlussMonat.NotEmpty")
-	private String schlussMonat;
+	private int schlussMonat;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.schlussJahr.NotEmpty")
-	private String schlussJahr;
+	private int schlussJahr;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.schlussStunde.NotEmpty")
-	private String schlussStunde;
+	private int schlussStunde;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.schlussMinute.NotEmpty")
-	private String schlussMinute;
+	private int schlussMinute;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.strasse.NotEmpty")
 	private String strasse;
@@ -49,144 +52,316 @@ public class VeranstaltungsFormular {
 	private String bemerkung;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.eventArt.NotEmpty")
-	private EventArt eventArt;
+	private String eventArt;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.kundenId.NotEmpty")
 	private long kundenId;
 
-	public String getPreis() {
+    /**
+     * Gets preis.
+     *
+     * @return the preis
+     */
+    public int getPreis() {
 		return preis;
 	}
 
-	public void setPreis(String preis) {
+    /**
+     * Sets preis.
+     *
+     * @param preis the preis
+     */
+    public void setPreis(int preis) {
 		this.preis = preis;
 	}
 
-	public String getBeginnTag() {
+    /**
+     * Gets beginn tag.
+     *
+     * @return the beginn tag
+     */
+    public int getBeginnTag() {
 		return beginnTag;
 	}
 
-	public void setBeginnTag(String beginnTag) {
+    /**
+     * Sets beginn tag.
+     *
+     * @param beginnTag the beginn tag
+     */
+    public void setBeginnTag(int beginnTag) {
 		this.beginnTag = beginnTag;
 	}
 
-	public String getBeginnMonat() {
+    /**
+     * Gets beginn monat.
+     *
+     * @return the beginn monat
+     */
+    public int getBeginnMonat() {
 		return beginnMonat;
 	}
 
-	public void setBeginnMonat(String beginnMonat) {
+    /**
+     * Sets beginn monat.
+     *
+     * @param beginnMonat the beginn monat
+     */
+    public void setBeginnMonat(int beginnMonat) {
 		this.beginnMonat = beginnMonat;
 	}
 
-	public String getBeginnJahr() {
+    /**
+     * Gets beginn jahr.
+     *
+     * @return the beginn jahr
+     */
+    public int getBeginnJahr() {
 		return beginnJahr;
 	}
 
-	public void setBeginnJahr(String beginnJahr) {
+    /**
+     * Sets beginn jahr.
+     *
+     * @param beginnJahr the beginn jahr
+     */
+    public void setBeginnJahr(int beginnJahr) {
 		this.beginnJahr = beginnJahr;
 	}
 
-	public String getBeginnStunde() {
+    /**
+     * Gets beginn stunde.
+     *
+     * @return the beginn stunde
+     */
+    public int getBeginnStunde() {
 		return beginnStunde;
 	}
 
-	public void setBeginnStunde(String beginnStunde) {
+    /**
+     * Sets beginn stunde.
+     *
+     * @param beginnStunde the beginn stunde
+     */
+    public void setBeginnStunde(int beginnStunde) {
 		this.beginnStunde = beginnStunde;
 	}
 
-	public String getBeginnMinute() {
+    /**
+     * Gets beginn minute.
+     *
+     * @return the beginn minute
+     */
+    public int getBeginnMinute() {
 		return beginnMinute;
 	}
 
-	public void setBeginnMinute(String beginnMinute) {
+    /**
+     * Sets beginn minute.
+     *
+     * @param beginnMinute the beginn minute
+     */
+    public void setBeginnMinute(int beginnMinute) {
 		this.beginnMinute = beginnMinute;
 	}
 
-	public String getSchlussTag() {
+    /**
+     * Gets schluss tag.
+     *
+     * @return the schluss tag
+     */
+    public int getSchlussTag() {
 		return schlussTag;
 	}
 
-	public void setSchlussTag(String schlussTag) {
+    /**
+     * Sets schluss tag.
+     *
+     * @param schlussTag the schluss tag
+     */
+    public void setSchlussTag(int schlussTag) {
 		this.schlussTag = schlussTag;
 	}
 
-	public String getSchlussMonat() {
+    /**
+     * Gets schluss monat.
+     *
+     * @return the schluss monat
+     */
+    public int getSchlussMonat() {
 		return schlussMonat;
 	}
 
-	public void setSchlussMonat(String schlussMonat) {
+    /**
+     * Sets schluss monat.
+     *
+     * @param schlussMonat the schluss monat
+     */
+    public void setSchlussMonat(int schlussMonat) {
 		this.schlussMonat = schlussMonat;
 	}
 
-	public String getSchlussJahr() {
+    /**
+     * Gets schluss jahr.
+     *
+     * @return the schluss jahr
+     */
+    public int getSchlussJahr() {
 		return schlussJahr;
 	}
 
-	public void setSchlussJahr(String schlussJahr) {
+    /**
+     * Sets schluss jahr.
+     *
+     * @param schlussJahr the schluss jahr
+     */
+    public void setSchlussJahr(int schlussJahr) {
 		this.schlussJahr = schlussJahr;
 	}
 
-	public String getSchlussStunde() {
+    /**
+     * Gets schluss stunde.
+     *
+     * @return the schluss stunde
+     */
+    public int getSchlussStunde() {
 		return schlussStunde;
 	}
 
-	public void setSchlussStunde(String schlussStunde) {
+    /**
+     * Sets schluss stunde.
+     *
+     * @param schlussStunde the schluss stunde
+     */
+    public void setSchlussStunde(int schlussStunde) {
 		this.schlussStunde = schlussStunde;
 	}
 
-	public String getSchlussMinute() {
+    /**
+     * Gets schluss minute.
+     *
+     * @return the schluss minute
+     */
+    public int getSchlussMinute() {
 		return schlussMinute;
 	}
 
-	public void setSchlussMinute(String schlussMinute) {
+    /**
+     * Sets schluss minute.
+     *
+     * @param schlussMinute the schluss minute
+     */
+    public void setSchlussMinute(int schlussMinute) {
 		this.schlussMinute = schlussMinute;
 	}
 
-	public String getStrasse() {
+    /**
+     * Gets strasse.
+     *
+     * @return the strasse
+     */
+    public String getStrasse() {
 		return strasse;
 	}
 
-	public void setStrasse(String strasse) {
+    /**
+     * Sets strasse.
+     *
+     * @param strasse the strasse
+     */
+    public void setStrasse(String strasse) {
 		this.strasse = strasse;
 	}
 
-	public String getOrt() {
+    /**
+     * Gets ort.
+     *
+     * @return the ort
+     */
+    public String getOrt() {
 		return ort;
 	}
 
-	public void setOrt(String ort) {
+    /**
+     * Sets ort.
+     *
+     * @param ort the ort
+     */
+    public void setOrt(String ort) {
 		this.ort = ort;
 	}
 
-	public String getPlz() {
+    /**
+     * Gets plz.
+     *
+     * @return the plz
+     */
+    public String getPlz() {
 		return plz;
 	}
 
-	public void setPlz(String plz) {
+    /**
+     * Sets plz.
+     *
+     * @param plz the plz
+     */
+    public void setPlz(String plz) {
 		this.plz = plz;
 	}
 
-	public String getBemerkung() {
+    /**
+     * Gets bemerkung.
+     *
+     * @return the bemerkung
+     */
+    public String getBemerkung() {
 		return bemerkung;
 	}
 
-	public void setBemerkung(String bemerkung) {
+    /**
+     * Sets bemerkung.
+     *
+     * @param bemerkung the bemerkung
+     */
+    public void setBemerkung(String bemerkung) {
 		this.bemerkung = bemerkung;
 	}
 
-	public EventArt getEventArt() {
+    /**
+     * Gets event art.
+     *
+     * @return the event art
+     */
+    public String getEventArt() {
 		return eventArt;
 	}
 
-	public void setEventArt(EventArt eventArt) {
+    /**
+     * Sets event art.
+     *
+     * @param eventArt the event art
+     */
+    public void setEventArt(String eventArt) {
 		this.eventArt = eventArt;
 	}
 
-	public long getKundenId() {
+    /**
+     * Gets kunden id.
+     *
+     * @return the kunden id
+     */
+    public long getKundenId() {
 		return kundenId;
 	}
 
-	public void setKundenId(long kundenId) {
+    /**
+     * Sets kunden id.
+     *
+     * @param kundenId the kunden id
+     */
+    public void setKundenId(long kundenId) {
 		this.kundenId = kundenId;
 	}
+
+	
 }

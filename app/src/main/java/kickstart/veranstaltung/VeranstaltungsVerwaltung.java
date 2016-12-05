@@ -10,47 +10,97 @@ import kickstart.person.Kunde;
 import kickstart.person.KundenRepository;
 import kickstart.person.MitarbeiterRepository;
 
+/**
+ * The type Veranstaltungs verwaltung.
+ */
 @Component
 public class VeranstaltungsVerwaltung {
 
 	private final VeranstaltungsRepository vRepo;
 	private final KundenRepository kRepo;
 	private final MitarbeiterRepository mRepo;
-	
-	// Konstruktor
+
+    /**
+     * Instantiates a new Veranstaltungs verwaltung.
+     *
+     * @param vRepo the v repo
+     * @param kRepo the k repo
+     * @param mRepo the m repo
+     */
+// Konstruktor
 	@Autowired
 	public VeranstaltungsVerwaltung(VeranstaltungsRepository vRepo, KundenRepository kRepo, MitarbeiterRepository mRepo){
 		this.vRepo = vRepo;
 		this.kRepo = kRepo;
 		this.mRepo = mRepo;
 	}
-	
-	// Methoden
+
+    /**
+     * Create veranstaltung veranstaltung.
+     *
+     * @param beginnTag     the beginn tag
+     * @param beginnMonat   the beginn monat
+     * @param beginnJahr    the beginn jahr
+     * @param beginnStunde  the beginn stunde
+     * @param beginnMinute  the beginn minute
+     * @param schlussTag    the schluss tag
+     * @param schlussMonat  the schluss monat
+     * @param schlussJahr   the schluss jahr
+     * @param schlussStunde the schluss stunde
+     * @param schlussMinute the schluss minute
+     * @param strasse       the strasse
+     * @param ort           the ort
+     * @param plz           the plz
+     * @param bemerkung     the bemerkung
+     * @param kundenId      the kunden id
+     * @param eventArt      the event art
+     * @return the veranstaltung
+     */
+// Methoden
 	public Veranstaltung createVeranstaltung(int beginnTag, int beginnMonat, int beginnJahr, int beginnStunde, int beginnMinute, 
 											int schlussTag, int schlussMonat, int schlussJahr, int schlussStunde, int schlussMinute,
-											String strasse, String ort, String plz, String bemerkung, Kunde kunde, String eventArt){
+											String strasse, String ort, String plz, String bemerkung, long kundenId, String eventArt){
 		
 		LocalDateTime beginnDatum = LocalDateTime.of(beginnJahr, beginnMonat, beginnTag, beginnStunde, beginnMinute); 
 		LocalDateTime schlussDatum = LocalDateTime.of(schlussJahr, schlussMonat, schlussTag, schlussStunde, schlussMinute);
 		Adresse adresse = new Adresse(strasse, ort, plz);
-		long kundenId = kunde.getId();
 		Veranstaltung v = new Veranstaltung(beginnDatum, schlussDatum, adresse, bemerkung, kundenId, EventArt.valueOf(eventArt));
 		return v;
 	}
-	
-	public void saveVeranstaltung(Veranstaltung veranstaltung){
+
+    /**
+     * Save veranstaltung.
+     *
+     * @param veranstaltung the veranstaltung
+     */
+    public void saveVeranstaltung(Veranstaltung veranstaltung){
 		vRepo.save(veranstaltung);
 	}
 
-	public VeranstaltungsRepository getVeranstaltungsRepo() {
+    /**
+     * Gets veranstaltungs repo.
+     *
+     * @return the veranstaltungs repo
+     */
+    public VeranstaltungsRepository getVeranstaltungsRepo() {
 		return vRepo;
 	}
 
-	public KundenRepository getKundenRepo() {
+    /**
+     * Gets kunden repo.
+     *
+     * @return the kunden repo
+     */
+    public KundenRepository getKundenRepo() {
 		return kRepo;
 	}
 
-	public MitarbeiterRepository getMitarbeiterRepo() {
+    /**
+     * Gets mitarbeiter repo.
+     *
+     * @return the mitarbeiter repo
+     */
+    public MitarbeiterRepository getMitarbeiterRepo() {
 		return mRepo;
 	}
 }
