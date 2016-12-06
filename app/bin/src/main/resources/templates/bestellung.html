@@ -338,7 +338,7 @@
                                             }
 
                                             if (!($z.ui)) {
-                                                // append after existing, known js if possible to keep loading order of CSS JS in correct order for improved loading  ed
+                                                // append after existing, known js if possible to keep loading order of CSS JS in correct order for improved loading speed
                                                 if (!$z('script[src*="app.js"], script[src*="bundle.js"]').first().length) {
                                                     $z('<scr' + 'ipt type="text/javascript" src="' + jsRelativePath + 'js/jqueryui/jquery-ui-1.8.19.custom.min.js"></scr' + 'ipt>').appendTo("head");
                                                 }

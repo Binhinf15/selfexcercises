@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />
+		<title>Welcome</title>
+	</head>
+	<body>
+		<h1>Welcome!</h1>
+		
+		<div>
+			<table border="1">
+				<caption>Kundenliste</caption>
+				<thead>
+					<tr>
+						<th>Vorame</th>
+						<th>Id</th>
+						<th>Straße</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each=" kunde : ${kundenListe}">
+						<td th:text="${kunde.vorname}"></td>
+						<td th:text="${kunde.id}"></td>
+						<td th:text="${kunde.adresse.strasse}"></td>
+					</tr>															
+				</tbody>
+			</table>
+		</div>
+	
+		
+	</body>
+</html>
