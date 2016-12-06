@@ -1,5 +1,8 @@
 package kickstart.person;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManager;
@@ -16,6 +19,7 @@ public class PersonenVerwaltung {
 	private final UserAccountManager uaManager;
 	private final MitarbeiterRepository mRepo;
 	private final KundenRepository kRepo;
+	private final List<AccountRolle> enumAccountRolleList;
 
     /**
      * Instantiates a new Personen verwaltung.
@@ -30,6 +34,7 @@ public class PersonenVerwaltung {
 		this.uaManager = uaManager;
 		this.mRepo = mRepo;
 		this.kRepo = kRepo;
+		this.enumAccountRolleList = Arrays.asList(AccountRolle.values());
 	}
 	
     /**
@@ -121,5 +126,9 @@ public class PersonenVerwaltung {
      */
     public KundenRepository getKundenRepo() {
 		return kRepo;
+	}
+
+	public List<AccountRolle> getEnumAccountRolleList() {
+		return enumAccountRolleList;
 	}
 }

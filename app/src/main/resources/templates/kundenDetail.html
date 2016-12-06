@@ -68,19 +68,7 @@
     <div class="page">
         <div class="frame">
             <div class="subnav low">
-                <div class="submenu clearme">
-                    <ul>
-                        <li class="active">
-                            <form method="post" th:action="@{/neuer-kunde}">
-                                <a class="active" href="neuer-kunde.html">Neuer Kunde</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/bestellung}">
-                                <a href="bestellung.html">Bestellung</a>
-                            </form>
-                        </li>
-                    </ul>
+                <div class="submenu clearme">                
                 </div>
             </div>
         </div>
@@ -93,8 +81,7 @@
                             <div class="zpColumnItem">
                                 <div id="a1571" data-articleid="1571" class="articlearea zpwFormular">
                                 	<h2>
-                                		<label th:text="'Details für Kunden-Nr.: ' + ${kundenId}">Details für Kunde</label>
-                                		
+                                		<label th:text="'Details für Kunden-Nr.: ' + ${kundenId}">Details für Kunde</label>                               		
                                 	</h2>
                                                                                                                                   
                                     <form enctype="multipart/form-data" class="zp-form" id="form1571" name="form1571"
@@ -158,10 +145,15 @@
                                                aria-label="Please ignore this field."/>
 
                                         <div class="formbuttons">
-                                            <input type="submit" class="button" value="Änderung speichern"/>
+                                            <input name="anderungSpeichern" type="submit" class="button" value="Änderung speichern"/>                                           
                                         </div>
                                     </form>
-                                    
+                                    <form action="/kunden">
+                                    	<div class="formbuttons">
+                                            <input type="submit" class="button" value="zurück"/>
+                                        </div>
+                                    </form>
+                                                                        
                                     <!--<script>
                                         // if the browser doesn't support input type="date", use jQueryUI datepicker
                                         if (zp.html5support && !zp.html5support["date"]) {

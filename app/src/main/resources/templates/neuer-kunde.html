@@ -75,10 +75,8 @@
                                 <a class="active" href="neuer-kunde.html">Neuer Kunde</a>
                             </form>
                         </li>
-                        <li>
-                            <form method="post" th:action="@{/bestellung}">
-                                <a href="bestellung.html">Bestellung</a>
-                            </form>
+                        <li>                           
+                        	<label>Bestellung</label>
                         </li>
                     </ul>
                 </div>
@@ -165,6 +163,11 @@
 
                                         <div class="formbuttons">
                                             <input type="submit" class="button" value="Absenden"/>
+                                        </div>
+                                    </form>
+                                    <form action="/kunden">
+                                    	<div class="formbuttons">
+                                            <input type="submit" class="button" value="zurück"/>
                                         </div>
                                     </form>
                                     <!--<script>

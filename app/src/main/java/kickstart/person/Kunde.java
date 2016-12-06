@@ -30,6 +30,7 @@ public class Kunde extends Person {
 	 * @param nachname the nachname
 	 * @param adresse  the adresse
 	 * @param email    the email
+	 * @param telefon    the telefon
 	 */
 	public Kunde(String vorname, String nachname, Adresse adresse, String email, String telefon){
 		this.vorname = vorname;

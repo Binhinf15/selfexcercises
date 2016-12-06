@@ -15,6 +15,7 @@ import kickstart.person.Kunde;
 import kickstart.person.KundenFormular;
 import kickstart.person.PersonenVerwaltung;
 import kickstart.veranstaltung.VeranstaltungsFormular;
+import kickstart.ware.LagerVerwaltung;
 
 /**
  * The type Kunden controller.
@@ -23,6 +24,7 @@ import kickstart.veranstaltung.VeranstaltungsFormular;
 public class KundenController {
 	
 	private final PersonenVerwaltung pVerwaltung;
+	private final LagerVerwaltung lVerwaltung;
 
     /**
      * Instantiates a new Kunden controller.
@@ -31,8 +33,9 @@ public class KundenController {
      */
 // Konstruktor
 	@Autowired
-	public KundenController(PersonenVerwaltung pVerwaltung){
+	public KundenController(PersonenVerwaltung pVerwaltung, LagerVerwaltung lVerwaltung){
 		this.pVerwaltung = pVerwaltung;
+		this.lVerwaltung = lVerwaltung;
 	}
 	
 // Methoden
@@ -117,7 +120,7 @@ public class KundenController {
      * @param result      the result
      * @return the string
      */
-    @RequestMapping("/addKunde")
+    @RequestMapping(value="/addKunde", method=RequestMethod.POST)
 	public String addKunde(Model model, @ModelAttribute("kundenDaten") @Valid KundenFormular kundenDaten, BindingResult result) {
 		
 		if (result.hasErrors()) {
@@ -129,13 +132,16 @@ public class KundenController {
 										kundenDaten.getEmail(),kundenDaten.getTelefon());
 		pVerwaltung.saveKunde(k);
 		
-		model.addAttribute("kundenId", k.getId());
-		model.addAttribute("veranstaltungsDaten", new VeranstaltungsFormular());
-		
+		VeranstaltungsFormular vf = new VeranstaltungsFormular();
+		vf.setKundenId(k.getId());
+		model.addAttribute("veranstaltungsDaten", vf);
+		model.addAttribute("kundenListe", pVerwaltung.getKundenRepo().findAll());
+		model.addAttribute("warenListe", lVerwaltung.getWarenRepo().findAll());
+
 		return "bestellung";
 	}
 	
-	@RequestMapping("kundenDetail")
+	@RequestMapping("/kundenDetail")
 	public String kundenDetail(Model model, @RequestParam("kundenId") long kundenId){
 		
 		Kunde kunde = pVerwaltung.getKundenRepo().findOne(kundenId).get();
@@ -146,6 +152,8 @@ public class KundenController {
 		kf.setStrasse(kunde.getAdresse().getStrasse());
 		kf.setOrt(kunde.getAdresse().getOrt());
 		kf.setPlz(kunde.getAdresse().getPlz());
+		kf.setTelefon(kunde.getTelefon());
+		kf.setEmail(kunde.getEmail());
 		
 		model.addAttribute("kundenDaten", kf);
 		model.addAttribute("kundenId", kundenId);
@@ -160,12 +168,11 @@ public class KundenController {
 			return "neuer-kunde";
 		}
 		
-		System.out.println(kundenId);
 		Kunde kunde = pVerwaltung.bearbeiteKunde(kundenId, kundenDaten.getVorname(), kundenDaten.getNachname()
 									, kundenDaten.getStrasse(), kundenDaten.getOrt(), kundenDaten.getPlz()
 									, kundenDaten.getEmail(), kundenDaten.getEmail());
 		pVerwaltung.saveKunde(kunde);
-		System.out.println(kundenDaten.getVorname());
-		return "redirect:/kunden";	
+		
+		return "redirect:kunden";	
 	}
 }

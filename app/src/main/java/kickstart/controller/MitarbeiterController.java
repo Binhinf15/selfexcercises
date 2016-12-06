@@ -107,6 +107,7 @@ public class MitarbeiterController {
     @RequestMapping("/neues-personal")
 	public String registerMitarbeiter(Model model) {	
 		model.addAttribute("personalDaten", new MitarbeiterFormular());
+		model.addAttribute("enumAccountRolleList", pVerwaltung.getEnumAccountRolleList());
 		return "neues-personal";
 	}
 
@@ -130,6 +131,6 @@ public class MitarbeiterController {
 													mitarbeiterDaten.getEmail(), mitarbeiterDaten.getTelefon());
 		pVerwaltung.saveMitarbeiter(m);
 		
-		return "personal";
+		return "redirect:/personal";
 	}
 }

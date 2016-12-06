@@ -133,7 +133,7 @@
                                             <td><label th:for="${kunde.id}" th:text="${kunde.telefon}"></label></td>
                                             <td><label th:for="${kunde.id}" th:text="${kunde.email}"></label></td>
                                             <td>
-                                            	<form id="form1" action="/bestellung" method="POST">                                            		
+                                            	<form id="form1" th:action="@{/bestellung}" method="post">                                            		
                                             		<input th:id="${kunde.id}" form="form1" type="radio" name="kundenId" th:value="${kunde.id}" />
                                             	</form>
                                             </td>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kickstart.person.Kunde;
 import kickstart.person.KundenFormular;
+import kickstart.person.PersonenVerwaltung;
 import kickstart.veranstaltung.Veranstaltung;
 import kickstart.veranstaltung.VeranstaltungsFormular;
 import kickstart.veranstaltung.VeranstaltungsVerwaltung;
@@ -140,6 +141,7 @@ public class VeranstaltungsController {
 		model.addAttribute("veranstaltungsDaten", vf);
 		model.addAttribute("kundenListe", vVerwaltung.getKundenRepo().findAll());
 		model.addAttribute("warenListe", lVerwaltung.getWarenRepo().findAll());
+		model.addAttribute("enumEventArtList", vVerwaltung.getEnumEventArtList());
 		return "bestellung";
 	}
 
@@ -154,6 +156,8 @@ public class VeranstaltungsController {
 		model.addAttribute("veranstaltungsDaten", new VeranstaltungsFormular());
 		model.addAttribute("kundenListe", vVerwaltung.getKundenRepo().findAll());
 		model.addAttribute("warenListe", lVerwaltung.getWarenRepo().findAll());
+		model.addAttribute("mitarbeiterListe", vVerwaltung.getMitarbeiterRepo().findAll());
+		model.addAttribute("enumEventArtList", vVerwaltung.getEnumEventArtList());
 		return "bestellung";
 	}
 
@@ -173,15 +177,14 @@ public class VeranstaltungsController {
 		if (result.hasErrors()) {
 			return "bestellung";
 		}
-		System.out.println(verDaten.getKundenId());
+		
 		Veranstaltung v = vVerwaltung.createVeranstaltung(verDaten.getBeginnTag(), verDaten.getBeginnMonat(), verDaten.getBeginnJahr(), verDaten.getBeginnStunde(), verDaten.getBeginnMinute()
 														, verDaten.getSchlussTag(), verDaten.getSchlussMonat(), verDaten.getSchlussJahr(), verDaten.getSchlussStunde(), verDaten.getSchlussMinute()
 														, verDaten.getStrasse(), verDaten.getOrt(), verDaten.getPlz(), verDaten.getBemerkung(), verDaten.getKundenId(), verDaten.getEventArt());
-		System.out.print(verDaten.getKundenId());
 		lVerwaltung.getWarenRepo().findById(warenId).get(0).setMenge(warenMenge);
 		v.getWarenListe().add(lVerwaltung.getWarenRepo().findById(warenId).get(0));
 		vVerwaltung.saveVeranstaltung(v);
-	
+		System.out.println(verDaten.getMitarbeiterIdListe());
 		return "redirect:/veranstaltungen";
 	}
 }

@@ -1,11 +1,14 @@
 package kickstart.veranstaltung;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kickstart.adresse.Adresse;
+import kickstart.person.AccountRolle;
 import kickstart.person.Kunde;
 import kickstart.person.KundenRepository;
 import kickstart.person.MitarbeiterRepository;
@@ -19,6 +22,7 @@ public class VeranstaltungsVerwaltung {
 	private final VeranstaltungsRepository vRepo;
 	private final KundenRepository kRepo;
 	private final MitarbeiterRepository mRepo;
+	private final List<EventArt> enumEventArtList;
 
     /**
      * Instantiates a new Veranstaltungs verwaltung.
@@ -33,6 +37,7 @@ public class VeranstaltungsVerwaltung {
 		this.vRepo = vRepo;
 		this.kRepo = kRepo;
 		this.mRepo = mRepo;
+		this.enumEventArtList = Arrays.asList(EventArt.values());
 	}
 
     /**
@@ -102,5 +107,9 @@ public class VeranstaltungsVerwaltung {
      */
     public MitarbeiterRepository getMitarbeiterRepo() {
 		return mRepo;
+	}
+
+	public List<EventArt> getEnumEventArtList() {
+		return enumEventArtList;
 	}
 }

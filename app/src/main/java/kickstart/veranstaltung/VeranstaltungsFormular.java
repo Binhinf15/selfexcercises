@@ -1,5 +1,7 @@
 package kickstart.veranstaltung;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -56,6 +58,8 @@ public class VeranstaltungsFormular {
 	
 	@NotEmpty(message = "VeranstaltungsFormular.kundenId.NotEmpty")
 	private long kundenId;
+	
+	private List<Long> mitarbeiterIdListe;
 
     /**
      * Gets preis.
@@ -363,5 +367,11 @@ public class VeranstaltungsFormular {
 		this.kundenId = kundenId;
 	}
 
-	
+	public List<Long> getMitarbeiterIdListe() {
+		return mitarbeiterIdListe;
+	}
+
+	public void setMitarbeiterIdListe(List<Long> mitarbeiterIdListe) {
+		this.mitarbeiterIdListe = mitarbeiterIdListe;
+	}
 }

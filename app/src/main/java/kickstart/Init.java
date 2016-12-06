@@ -95,6 +95,8 @@ public class Init implements DataInitializer {
 		
 		Mitarbeiter m2 = pVerwaltung.createMitarbeiter("LULU", "nachname2", "userlulu", "straße haha","Berlin","12679", "22", "ADMIN", "Hans@Testmail.de", "0123456");
 		pVerwaltung.saveMitarbeiter(m2);
+		
+		System.out.println(pVerwaltung.getEnumAccountRolleList());
 	}
 
 	/**
