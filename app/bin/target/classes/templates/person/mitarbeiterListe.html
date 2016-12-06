@@ -1,0 +1,57 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />
+		<title>Welcome</title>
+	</head>
+	<body>
+		<h1>Welcome!</h1>
+		
+		<div>
+			<table border="1">
+				<caption>Mitarbeiterliste</caption>
+				<thead>
+					<tr>
+						<th>Vorame</th>
+						<th>Id</th>
+						<th>Username</th>
+						<th>Passwort</th>
+						<th>Rolle</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each=" mitarbeiter : ${mitarbeiterListe}">
+						<td th:text="${mitarbeiter.vorname}"></td>
+						<td th:text="${mitarbeiter.id}"></td>
+						<td th:text="${mitarbeiter.userAccount.username}"></td>
+						<td th:text="${mitarbeiter.userAccount.password}"></td>
+						<td th:text="${mitarbeiter.userAccount.roles}"></td>
+					</tr>															
+				</tbody>
+			</table>
+			<a th:href="@{/MitarbeiterFormular}" href="newMitarbeiterFormular.html">addMitarbeiter</a>
+		</div>
+		
+		<div>
+			<table border="1">
+				<caption>Kundenliste</caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Id</th>
+						<th>Straße</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each=" kunde : ${kundenListe}">
+						<td th:text="${kunde.vorname}"></td>
+						<td th:text="${kunde.id}"></td>
+						<td th:text="${kunde.adresse.strasse}"></td>
+					</tr>															
+				</tbody>
+			</table>
+		</div>
+		
+	</body>
+</html>

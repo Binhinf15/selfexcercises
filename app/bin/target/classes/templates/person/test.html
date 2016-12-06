@@ -1,0 +1,78 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Bestellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body>
+
+<form action="/addVeranstaltung" th:object="${veranstaltungsDaten}" method="POST">
+	<label for="F2" class="field">Kunden-Nr.</label>
+	<select  class="required" id="F2"  th:field="*{kundenId}">                                              	                                                                 	                                 
+	   	<option th:each=" kunde : ${kundenListe}" th:value="${kunde.id}" th:text="${kunde.id} + ' ' + ${kunde.vorname}" ></option>                                                                        
+	</select>
+		
+	<label for="label1" class="field">Kunden-Nr.</label>
+	<input type="text" id="Label1"
+	       placeholder="Kunden-Nr." th:field="*{kundenId}" style="width: 200px; " maxlength="20" />
+	<br />
+	
+	<label for="F9" class="field">Auswahl Art</label>
+    <select class="required" id="F9" name="F9" th:field="*{eventArt}">
+        <option value="">Bitte wählen:</option>
+        <option value="EVENTCATERING">Eventcatering</option>
+        <option value="PARTYSERVICE"> Partyservice</option>
+        <option value="MOBILEBREAKFAST"> Mobile Breakfest</option>
+        <option value="RENTACOOK"> Rent-a-Cook</option>
+    </select>
+    <br />
+	
+	<label for="label2" class="field">warenid.</label>
+	<input type="text" id="Label1"	name="warenId"
+	       placeholder="Kunden-Nr."   style="width: 200px; " maxlength="20"/>
+	<br />
+	       
+	<label for="label3" class="field">warenMenge</label>
+	<input type="text" id="Label1" name="warenMenge"
+	       placeholder="Kunden-Nr." style="width: 200px; " maxlength="20"/>
+	<br />
+	       
+	<label for="name">tag</label>
+	<input th:field="*{beginnTag}" type="text" id="name" name="name" />
+	<br />
+	
+	<label for="name">monat</label>
+	<input th:field="*{beginnMonat}" type="text" id="name" name="name" />
+	<br />
+	
+	<label for="name">Jahr</label>
+	<input th:field="*{beginnJahr}" type="text" id="name" name="name" />
+	<br />
+	
+	<label for="name">tag</label>
+	<input th:field="*{schlussTag}" type="text" id="name" name="name" />
+	<br />
+	
+	<label for="name">monat</label>
+	<input th:field="*{schlussMonat}" type="text" id="name" name="name" />
+	<br />
+	
+	<label for="username">jahr</label>
+	<input th:field="*{schlussJahr}" type="text" id="username" name="username" />
+	<br />
+
+	<input type="submit" value="absenden" /> 
+</form>
+
+
+</body>
+</html>
