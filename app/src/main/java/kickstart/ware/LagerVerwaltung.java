@@ -4,6 +4,8 @@ import org.salespointframework.catalog.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import kickstart.person.Kunde;
+
 /**
  * The type Lager verwaltung.
  */
@@ -27,11 +29,13 @@ public class LagerVerwaltung {
      *
      * @param name  the name
      * @param menge the menge
+     * @param preis the preis
+     * @param beschreibung the beschreibung
      * @return the ware
      */
 // Methoden
-    public Ware createWare(String name, int menge){
-    	Ware ware = new Ware(name, menge); 	
+    public Ware createWare(String name, long menge, double preis, String beschreibung){
+    	Ware ware = new Ware(name, menge, preis, beschreibung); 	
         return ware;
     }
 
@@ -52,5 +56,14 @@ public class LagerVerwaltung {
     public WarenRepository getWarenRepo(){
         return wRepo;
     }
+    
+    public Ware bearbeiteWare(long id, String name, long menge, double preis, String beschreibung){
+		Ware w = wRepo.findOne(id).get();
+		w.setName(name);
+		w.setMenge(menge);
+		w.setPreis(preis);
+		w.setBeschreibung(beschreibung);
+		return w;
+	}
 
 }

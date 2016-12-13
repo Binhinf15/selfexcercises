@@ -15,4 +15,8 @@ public interface WarenRepository extends SalespointRepository<Ware, Long> {
      * @return the list
      */
     public List <Ware> findById(long Id);
+	public List <Ware> findByName(String name);
+	public List <Ware> findAllByOrderByName();
+	public List <Ware> findAllByOrderByMenge(long menge);
+	public List <Ware> findAllByOrderById();
 }

@@ -3,6 +3,7 @@ package kickstart.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,21 +11,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kickstart.person.Kunde;
 import kickstart.person.KundenFormular;
 import kickstart.person.PersonenVerwaltung;
 import kickstart.veranstaltung.VeranstaltungsFormular;
+import kickstart.veranstaltung.VeranstaltungsVerwaltung;
 import kickstart.ware.LagerVerwaltung;
 
 /**
  * The type Kunden controller.
  */
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_VERWALTUNG')")
 public class KundenController {
 	
 	private final PersonenVerwaltung pVerwaltung;
 	private final LagerVerwaltung lVerwaltung;
+	private final VeranstaltungsVerwaltung vVerwaltung;
 
     /**
      * Instantiates a new Kunden controller.
@@ -33,9 +38,10 @@ public class KundenController {
      */
 // Konstruktor
 	@Autowired
-	public KundenController(PersonenVerwaltung pVerwaltung, LagerVerwaltung lVerwaltung){
+	public KundenController(PersonenVerwaltung pVerwaltung, LagerVerwaltung lVerwaltung, VeranstaltungsVerwaltung vVerwaltung){
 		this.pVerwaltung = pVerwaltung;
 		this.lVerwaltung = lVerwaltung;
+		this.vVerwaltung = vVerwaltung;
 	}
 	
 // Methoden
@@ -107,7 +113,7 @@ public class KundenController {
      * @return the string
      */
     @RequestMapping("/neuer-kunde")
-	public String ser_nk(Model model) {
+	public String neuerKunde(Model model) {
 		model.addAttribute("kundenDaten", new KundenFormular());
 		return "neuer-kunde";
 	}
@@ -121,7 +127,7 @@ public class KundenController {
      * @return the string
      */
     @RequestMapping(value="/addKunde", method=RequestMethod.POST)
-	public String addKunde(Model model, @ModelAttribute("kundenDaten") @Valid KundenFormular kundenDaten, BindingResult result) {
+	public String addKunde(Model model, RedirectAttributes redirectAttributes, @ModelAttribute("kundenDaten") @Valid KundenFormular kundenDaten, BindingResult result) {
 		
 		if (result.hasErrors()) {
 			return "neuer-kunde";
@@ -130,15 +136,10 @@ public class KundenController {
 		Kunde k = pVerwaltung.createKunde(kundenDaten.getVorname(), kundenDaten.getNachname(), 
 										kundenDaten.getOrt(), kundenDaten.getStrasse(), kundenDaten.getPlz(),
 										kundenDaten.getEmail(),kundenDaten.getTelefon());
-		pVerwaltung.saveKunde(k);
-		
-		VeranstaltungsFormular vf = new VeranstaltungsFormular();
-		vf.setKundenId(k.getId());
-		model.addAttribute("veranstaltungsDaten", vf);
-		model.addAttribute("kundenListe", pVerwaltung.getKundenRepo().findAll());
-		model.addAttribute("warenListe", lVerwaltung.getWarenRepo().findAll());
+		pVerwaltung.saveKunde(k);	
+		redirectAttributes.addAttribute("kundenId", k.getId());
 
-		return "bestellung";
+		return "redirect:/bestellung";
 	}
 	
 	@RequestMapping("/kundenDetail")
@@ -173,6 +174,6 @@ public class KundenController {
 									, kundenDaten.getEmail(), kundenDaten.getEmail());
 		pVerwaltung.saveKunde(kunde);
 		
-		return "redirect:kunden";	
+		return "redirect:/kunden";	
 	}
 }

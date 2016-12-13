@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" type="image/x-icon"
+          th:href="@{resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abel:regular,400"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+</head>
+
+<body>
+	<nav th:fragment="topNav">	    	        
+	    <div id="navbar">
+	        <ul data-breakpointmobilemenu="768" class="mainmenu touchhovermenu clickhovermenu">
+	        
+	            <li sec:authorize="isAuthenticated()" class="dropdown">
+	           		<a href="main.html">Main </a>
+	           	</li>
+	           	
+	           	<li sec:authorize="!isAuthenticated()" class="loginlogout">
+					<a class="topmenu" th:href="@{/login}" >Login</a>
+				</li>	
+	           	           
+	            <li sec:authorize="isAuthenticated()" class="loginlogout">
+					<form th:action="@{/logout}" method="post">
+						<button type="submit" style="border: 0; background: none transparent;" th:text="Logout" >Logout</button>
+					</form>
+				</li>
+				<li sec:authorize="isAuthenticated()" >
+					<p th:text="${'Hallo ' + #authentication?.name}">Hallo Nutzer</p>
+				</li>
+	        </ul>
+	    </div>
+	</nav>
+</body>
+</html>

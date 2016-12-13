@@ -23,13 +23,9 @@
             }
         }
     </script>
-
-
     <!-- RSS -->
 
-
 </head>
-
 
 <body id="Lime">
 
@@ -39,9 +35,7 @@
         <div id="header_top">
             <!-- Teaser "Banner" -->
 
-
             <div class="header_content_inner">
-
                 <div id="webdescription">
                     <!-- Logo -->
 
@@ -52,56 +46,19 @@
 
                     <!-- Webname -->
 
-                    <div id="webtext"
-
-                         data-type="inline-editing"
-                         data-context="webtitle"
-                         data-item-id="webtitle"
-
+                    <div id="webtext" 
+                    	data-type="inline-editing"
+                        data-context="webtitle"
+                        data-item-id="webtitle"
                     >
                         <div id="webname"><a th:href="@{welcome}">Mampf</a></div>
-
                         <div id="slogan">Cateringservice</div>
-
                     </div>
-
-
                     <div class="clearx"></div>
-
-                </div>
-
-
-                <div id="mainmenu">
-
-                    <ul>
-                        <li>
-                            <form method="post" th:action="@{/welcome}">
-                                <a class="topmenuactive" href="welcome.html">Home</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/kontakt}">
-                                <a class="topmenu" href="kontakt.html">Kontakt</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/impressum}">
-                                <a class="topmenu" href="impressum.html">Impressum</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/login}">
-                                <a class="topmenu" href="login.html">Login</a>
-                            </form>
-                        </li>
-
-                    </ul>
-
-
-                </div>
+               	</div>            
+            	<nav th:include="mainNav :: mainNav"></nav>             
             </div>
         </div>
-
         <div id="header_bottom">
             <div class="header_content_inner">
                 <div id="breadcrumb"
@@ -168,12 +125,32 @@
 
                                         <h2>Anmeldung:</h2>
 
-
+										<p th:if="${loginError}">Wrong user or password</p>
+								        <form th:action="@{/login}" method="post">
+								            <label for="username">Username</label>:
+								            <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+								            <label for="password">Password</label>:
+								            <input type="password" id="password" name="password" /> <br />
+								            <input type="submit" value="Log in" />
+								        </form>
+										<!-- 
                                         <form enctype="multipart/form-data" class="zp-form" id="form1548"
                                               name="form1548" th:action="@{main.html}"
                                               method="post">
                                             <input type="hidden" name="f_receiver"
                                                    value="ZTVmXP2jxPetHs6u14nWuqMlndWPHjvS"/>
+
+                                            <input type="hidden" name="f_title" value="anmeldung"/>
+                                            <input type="hidden" name="f_success"
+                                                   value="login.html"/>
+                                            <input type="hidden" name="f_error"
+                                                   value="login.html"/>
+                                            <input type="hidden" name="f_id" value="1548"/>
+                                            <input type="hidden" name="f_alertPrefix"
+                                                   value="Bitte f&#252;llen Sie die rot markierten Felder aus:"/>
+                                            <input type="hidden" name="f_invalidEmailMsg"
+                                                   value="keine g&#252;ltige E-Mail"/>
+
 
                                             <input type="hidden" name="f_title" value="anmeldung"/>
                                             <input type="hidden" name="f_success"
@@ -212,7 +189,7 @@
 
                                             </div>
                                         </form>
-
+										-->
                                         <!--<script>
                                             // if the browser doesn't support input type="date", use jQueryUI datepicker
                                             if (zp.html5support && !zp.html5support["date"]) {

@@ -22,15 +22,18 @@
                 <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
             </a>
         </div>
+
         <div id="webtext">
             <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
             <div id="slogan" class="ellipsis">Cateringservice</div>
         </div>
+
+        <nav th:include="topNav :: topNav"></nav>
+        <!-- 
         <div id="navbar">
-            <ul data-breakpointmobilemenu="768" class="mainmenu touchhovermenu clickhovermenu">
+            <ul class="mainmenu touchhovermenu clickhovermenu">
                 <li class="dropdown"><a href="main.html">Main </a></li>
-                <li class="haschilds dropdown active">
-                    <a href="veranstaltungen.html">Admin</a>
+                <li class="dropdown"><a href="veranstaltungen.html">Admin</a>                                  
                     <ul class="dropdown-menu">
                         <li class="dropdown active">
                             <a href="veranstaltungen.html">Veranstaltungen</a>
@@ -45,23 +48,17 @@
                             <a href="lager.html">Lager</a>
                         </li>
                     </ul>
+                    
                 </li>
                 <li class="dropdown">
                     <a href="mein-bereich.html">Personal </a>
                 </li>
-                <li class="haschilds dropdown">
+                <li class="dropdown">
                     <a href="service.html">Service </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown">
-                            <a class="active" href="neuer-kunde.html">Neuer Kunde</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="Bestellung.html">Bestellung</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
+        -->
     </div>
 </div>
 <div class="clearx"></div>
@@ -69,30 +66,33 @@
     <div class="page">
         <div class="frame">
             <div class="subnav low">
-                <div class="submenu clearme">
-                    <ul>
-                        <li class="active">
-                            <form method="post" th:action="@{/veranstaltungen}">
-                                <a class="active" href="veranstaltungen.html">Veranstaltungen</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/personal}">
-                                <a href="personal.html">Personal</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/kunden}">
-                                <a href="kunden.html">Kunden</a>
-                            </form>
-                        </li>
-                        <li>
-                            <form method="post" th:action="@{/lager}">
-                                <a href="lager.html">Lager</a>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                <nav th:include="subNav:: subNav"></nav>
+                <!--
+             <div class="submenu clearme">
+                 <ul>
+                     <li class="active">
+                         <form method="post" th:action="@{/veranstaltungen}">
+                             <a class="active" href="veranstaltungen.html">Veranstaltungen</a>
+                         </form>
+                     </li>
+                     <li>
+                         <form method="post" th:action="@{/personal}">
+                             <a href="personal.html">Personal</a>
+                         </form>
+                     </li>
+                     <li>
+                         <form method="post" th:action="@{/kunden}">
+                             <a href="kunden.html">Kunden</a>
+                         </form>
+                     </li>
+                     <li>
+                         <form method="post" th:action="@{/lager}">
+                             <a href="lager.html">Lager</a>
+                         </form>
+                     </li>
+                 </ul>
+             </div>
+             -->
             </div>
         </div>
         <div class="content">
@@ -138,17 +138,18 @@
                         </div>
                     </div>
                 </div>
-                <div>
+
                     <ul>
-                        <li><a class="formbuttons" th:href="@{/bestellung2}" >Veranstaltung
-                            hinzufügen</a></li>   
+                        <li><a class="formbuttons" th:href="@{/bestellung}">Veranstaltung hinzufügen</a></li>
                         <li><a class="formbuttons" th:href="@{/veranstaltungBeginnSortiert}">Veranstaltung nach
                             beginn sortieren</a></li>
                         <li><a class="formbuttons" th:href="@{/veranstaltungIdSortiert}">Veranstaltung nach Id
                             sortieren</a></li>
-                        <li><a class="formbuttons" th:href="@{/veranstaltungKundenIdSortiert}">Veranstaltung nach KundenId
+                        <li><a class="formbuttons" th:href="@{/veranstaltungKundenIdSortiert}">Veranstaltung nach
+                            KundenId
                             sortieren</a></li>
-                        <li><a class="formbuttons" th:href="@{/veranstaltungEventArtSortiert}">Veranstaltung nach Eventart
+                        <li><a class="formbuttons" th:href="@{/veranstaltungEventArtSortiert}">Veranstaltung nach
+                            Eventart
                             sortieren</a></li>
                     </ul>
                     <form name="sucheNachKundenId" action="/sucheKundenId" method="POST">
@@ -161,7 +162,7 @@
                         <input type='text' name='veranId'/>
                         <input type="submit" value="zeige Waren"/>
                     </form>
-                </div>
+
             </div>
         </div>
         <div class="frame">

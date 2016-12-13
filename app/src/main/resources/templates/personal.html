@@ -105,7 +105,7 @@
                                 <div id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">
                                     <table border="1" class="zptabledata">
                                         <thead>
-                                        <tr>
+                                        <tr style="color: #333333; background-color: #0082D7">
                                       		<th>Id</th>
                                             <th>Vorname</th>
                                             <th>Username</th>
@@ -113,8 +113,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each=" mitarbeiter : ${mitarbeiterListe}">
-                                        <!--style="color: #777777; background-color: #D9D9D9"--> 
+                                        <tr th:each=" mitarbeiter : ${mitarbeiterListe}"
+                                        	style="color: #6C6C6C; background-color: #EDEDED">                                                                          
                                             <td th:text="${mitarbeiter.id}"></td>
                                             <td th:text="${mitarbeiter.vorname}"></td>
                                             <td th:text="${mitarbeiter.userAccount.username}"></td>

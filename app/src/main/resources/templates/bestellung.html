@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Bestellung</title>
+    <title>Veranstaltung</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
@@ -79,22 +79,16 @@
 
 
                 <li class="dropdown">
-                    <form method="post" th:action="@{/mein-bereich}">
-                        <a href="mein-bereich.html">Personal </a>
-                    </form>
+                    <a href="mein-bereich.html">Personal </a>
                 </li>
 
                 <li class="haschilds dropdown active open">
-                    <form method="post" th:action="@{/service}">
-                        <a href="service.html">Service </a>
-                    </form>
+                    <a href="service.html">Service</a>
 
                     <ul class="dropdown-menu">
 
                         <li class="dropdown">
-                            <form method="post" th:action="@{/neuer-kunde}">
-                                <a href="neuer-kunde.html">Neuer Kunde</a>
-                            </form>
+                            <a href="neuer-kunde.html">Neuer Kunde</a>
                         </li>
 
 
@@ -167,7 +161,9 @@
                                      data-row-id="231"
                                      data-item-inherited="false"
                                 >
-                                    <h2>Bestellung</h2>
+                                    <h2>Veranstaltung</h2>
+
+                                    <!--  
                                     <noscript>
                                         <div class="formvalidateerror"
                                              style="color: #fff; background-color: red; padding: 6px 12px;">
@@ -177,11 +173,14 @@
                                                 JavaScript!</strong></p>
                                         </div>
                                     </noscript>
-                                    
-                                    <form enctype="multipart/form-data" class="zp-form" id="form1578" name="form1578"
-                                          th:object="${veranstaltungsDaten}" th:action="@{/addVeranstaltung}" method="post">
-                                        <input type="hidden" name="f_receiver" value="4rF2V2jGFwxsXPnPD0asAw=="/>
+                                    -->
 
+                                    <form enctype="multipart/form-data" class="zp-form" id="form1578" name="form1578"
+                                          th:object="${veranstaltungsDaten}" th:action="@{/neue-veranstaltung2}"
+                                          method="post">
+
+                                        <!-- 
+                                        <input type="hidden" name="f_receiver" value="4rF2V2jGFwxsXPnPD0asAw=="/>
                                         <input type="hidden" name="f_title" value="Bestellung"/>
                                         <input type="hidden" name="f_success"
                                                value="bestandskunde.html"/>
@@ -191,18 +190,24 @@
                                         <input type="hidden" name="f_alertPrefix"
                                                value="Bitte f&#252;llen Sie die rot markierten Felder aus:"/>
                                         <input type="hidden" name="f_invalidEmailMsg" value="keine g&#252;ltige E-Mail"/>
-                                      
-                                        <label for="F2" class="field">Kunden-Nr.</label>
-										<select  class="required" id="F2"  th:field="*{kundenId}">                                             	                                                                 	                                 
-										   	<option th:each=" kunde : ${kundenListe}" th:value="${kunde.id}" th:text="${kunde.id} + ' ' + ${kunde.vorname}" ></option>                                                                        
-										</select>                                   
+                                      	-->
 
-                                        <input type="hidden" name="NAME3" id="NAME3" value="—————————"/>
+                                        <label for="F2" class="field">Id; Name</label>
+                                        <select class="required" id="F2" th:field="*{kundenId}">
+                                            <option th:each=" kunde : ${kundenListe}" th:value="${kunde.id}"
+                                                    th:text="${kunde.id} + '; ' + ${kunde.nachname}"></option>
+                                        </select>
+
+                                        <label for="F9" class="field">Auswahl Art</label>
+                                        <select class="required" id="F9" name="F9[]" size="1" th:field="*{eventArt}">
+                                            <option value="">Bitte wählen:</option>
+                                            <option th:each="eventArt : ${enumEventArtList}" th:value="${eventArt}"
+                                                    th:text="${eventArt}"></option>
+                                        </select>
 
                                         <div class="separator">&nbsp;</div>
 
-                                        <input type="hidden" name="NAME4" id="NAME4" value="Lieferadresse abweichend"/>
-
+                                        <!--
                                         <label class="field" id="F4">Lieferadresse abweichend</label>
 
                                         <input class="required" type="radio" name="F4" id="F4_0" value="ja"/>
@@ -210,66 +215,35 @@
 
                                         <input class="" type="radio" name="F4" id="F4_1" value=" nein"/>
                                         <label for="F4_1"> nein</label>
-
-                                        <input type="hidden" name="NAME5" id="NAME5" value="Straße"/>
+                                        -->
 
                                         <label for="F5" class="field">Straße</label>
                                         <input class="typetext required" type="text" name="F5" id="F5"
-                                               th:field="*{strasse}" placeholder="Straße" value="" style="width: 200px; " maxlength="40"/>
-
-                                        <input type="hidden" name="NAME6" id="NAME6" value="Ort"/>
+                                               th:field="*{strasse}" placeholder="Straße" value=""
+                                               style="width: 200px; " maxlength="40"/>
 
                                         <label for="F6" class="field">Ort</label>
                                         <input class="typetext required" type="text" name="F6" id="F6" placeholder="Ort"
                                                th:field="*{ort}" value="" style="width: 200px; " maxlength="20"/>
 
-                                        <input type="hidden" name="NAME7" id="NAME7" value="PLZ"/>
-
                                         <label for="F7" class="field">PLZ</label>
                                         <input class="typetext required" type="text" name="F7" id="F7"
-                                               th:field="*{plz}" placeholder="PLZ" value="" style="width: 200px; " maxlength="20"/>
-
-                                        <input type="hidden" name="NAME8" id="NAME8" value="—————————"/>
+                                               th:field="*{plz}" placeholder="PLZ" value="" style="width: 200px; "
+                                               maxlength="20"/>
 
                                         <div class="separator">&nbsp;</div>
 
-                                        <input type="hidden" name="NAME9" id="NAME9" value="Auswahl"/>
+                                        <label for="F10" class="field">Beginn:</label>
+                                        <input class="typetext required" type="date" name="F10" id="F10"
+                                               th:field="*{beginnDatum}" style="width: 200px;"/>
+                                        <input class="typetext required" type="time" name="F10" id="F10"
+                                               th:field="*{beginnZeit}" style="width: 80px;"/>
 
-                                        <label for="F9" class="field">Auswahl Art</label>
-                                        <select class="required" id="F9" name="F9[]" size="1" th:field="*{eventArt}">
-                                            <option value="">Bitte wählen:</option>
-                                            <option th:each="eventArt : ${enumEventArtList}" th:value="${eventArt}" th:text="${eventArt}"></option>                                          
-                                        </select>
-
-                                        <input type="hidden" name="NAME10" id="NAME10" value="Datum"/>
-
-                                        <label for="F10" class="field">Datum beginn:</label>
+                                        <label for="F10" class="field">Schluss:</label>
                                         <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{beginnTag}" placeholder="TT" value="01" style="width: 30px; " maxlength="2"/>
-										<input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{beginnMonat}" placeholder="MM" value="01" style="width: 30px; " maxlength="2"/>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{beginnJahr}" placeholder="JJJJ" value="01" style="width: 60px; " maxlength="4"/>
-                                       
-                                        <label>Uhrzeit:</label>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{beginnStunde}" placeholder="hh" value="01" style="width: 30px; " maxlength="2"/>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{beginnMinute}" placeholder="mm" value="01" style="width: 30px; " maxlength="2"/>
-                                        
-                                        <label for="F10" class="field">Datum schluss:</label>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{schlussTag}" placeholder="TT" value="01" style="width: 30px; " maxlength="2"/>
-										<input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{schlussMonat}" placeholder="MM" value="01" style="width: 30px; " maxlength="2"/>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{schlussJahr}" placeholder="JJJJ" value="01" style="width: 60px; " maxlength="4"/>
-                                       
-                                        <label>Uhrzeit:</label>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{schlussStunde}" placeholder="hh" value="01" style="width: 30px; " maxlength="2"/>
-                                        <input class="typetext required" type="date" name="F10" id="F10"
-                                              th:field="*{schlussMinute}" placeholder="mm" value="01" style="width: 30px; " maxlength="2"/>
+                                               th:field="*{schlussDatum}" style="width: 200px;"/>
+                                        <input class="typetext required" type="time" name="F10" id="F10"
+                                               th:field="*{schlussZeit}" style="width: 80px;"/>
 
                                         <div class="separator">&nbsp;</div>
 
@@ -278,23 +252,63 @@
                                                placeholder="Personenzahl" value="" style="width: 200px; "
                                                maxlength="20"/>
 
+                                        <!--
                                         <label for="F19" class="field">Waren</label>
+                                        <select class="required" id="F19" th:field="*{warenIdListe}">
+                                            <option value="0">Bitte wählen:</option>
+                                            <option th:each="ware : ${warenListe}" th:value="${ware.id}" th:text="${ware.name}"></option>                                    
+                                        </select>-->
+
+                                        <!--
                                         <select class="required" id="F19" name="warenId">
                                             <option value="-1">Bitte wählen:</option>
-                                            <option th:each="ware : ${warenListe}" th:value="${ware.id}" th:text="${ware.name}"></option>                                    
+                                            <option th:each="ware : ${warenListe}" th:value="${ware.id}"
+                                                    th:text="${ware.name}"></option>
                                         </select>
                                         <input class="typetext required" type="number" name="warenMenge" id="F19_1"
                                                placeholder="Anzahl" value="" style="width: 100px; "
                                                maxlength="20"/>
                                         <input type="submit" class="button" value="+" id="B1"/>
-                                
+                                            -->
 
+                                        <!--
                                         <label for="F21" class="field">benötigtes Personal</label>                                                                           
                                         <div th:each="mitarbeiter : ${mitarbeiterListe}">
-                                        	<input type="checkbox" th:field="*{mitarbeiterIdListe}" th:value="${mitarbeiter.id}" th:text="${mitarbeiter.id} + ' ' + ${mitarbeiter.vorname}"/>
+                                            <input type="checkbox" th:field="*{mitarbeiterIdListe}" th:value="${mitarbeiter.id}" th:text="${mitarbeiter.id} + '-' + ${mitarbeiter.vorname}"/>
                                         </div>
-                                        
-										
+                                        -->
+
+                                        <div id="readroot" style="display: none">
+
+                                            <input type="button" value="Remove review"
+                                                   onclick="this.parentNode.parentNode.removeChild(this.parentNode);"/><br/><br/>
+
+                                            <input name="cd" value="title"/>
+                                            <select name="rankingsel">
+                                                <option>Rating</option>
+                                                <option value="excellent">Excellent</option>
+                                                <option value="good">Good</option>
+                                                <option value="ok">OK</option>
+                                                <option value="poor">Poor</option>
+                                                <option value="bad">Bad</option>
+                                            </select><br /><br />
+
+                                            <textarea rows="5" cols="20" name="review">Short review</textarea>
+                                            <br />Radio buttons included to test them in Explorer:<br />
+                                            <input type="radio" name="something" value="test1" />Test 1<br />
+                                            <input type="radio" name="something" value="test2" />Test 2
+
+
+                                        </div>
+
+                                        <form method="post" th:action="@{../resources/js/addInpprod.js}">
+
+                                            <span id="writeroot"></span>
+
+                                            <input type="button" id="moreFields" value="Give me more fields!"/>
+
+                                        </form>
+
 
                                         <input type="hidden" name="NAME22" id="NAME22" value="benötigtes Zubehör"/>
 
@@ -307,7 +321,7 @@
 
                                         <label for="F23" class="field">Bemerkungen</label>
                                         <textarea class="" id="F23" name="F23" placeholder="Bemerkungen" rows="5"
-                                                  style="width:400px; "></textarea>
+                                                  style="width:400px;"></textarea>
 
 
                                         <input type="text" name="url" id="url" value="" class="asfield"
@@ -315,7 +329,7 @@
 
 
                                         <div class="formbuttons">
-                                            <input type="submit" class="button" value="Absenden"/>
+                                            <input type="submit" class="button" value="Weiter"/>
 
                                         </div>
                                     </form>

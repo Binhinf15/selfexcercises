@@ -1,8 +1,12 @@
 package kickstart.person;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import org.salespointframework.time.Interval;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManager;
@@ -10,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kickstart.adresse.Adresse;
+import kickstart.veranstaltung.Veranstaltung;
+import kickstart.veranstaltung.VeranstaltungsRepository;
 
 /**
  * The type Personen verwaltung.
@@ -19,6 +25,7 @@ public class PersonenVerwaltung {
 	private final UserAccountManager uaManager;
 	private final MitarbeiterRepository mRepo;
 	private final KundenRepository kRepo;
+	private final VeranstaltungsRepository vRepo;
 	private final List<AccountRolle> enumAccountRolleList;
 
     /**
@@ -30,10 +37,11 @@ public class PersonenVerwaltung {
      */
 // Konstruktor
 	@Autowired
-	public PersonenVerwaltung(UserAccountManager uaManager, MitarbeiterRepository mRepo, KundenRepository kRepo){
+	public PersonenVerwaltung(UserAccountManager uaManager, MitarbeiterRepository mRepo, KundenRepository kRepo, VeranstaltungsRepository vRepo){
 		this.uaManager = uaManager;
 		this.mRepo = mRepo;
 		this.kRepo = kRepo;
+		this.vRepo = vRepo;
 		this.enumAccountRolleList = Arrays.asList(AccountRolle.values());
 	}
 	
@@ -54,13 +62,42 @@ public class PersonenVerwaltung {
 // Methoden
 	public Mitarbeiter createMitarbeiter(String vorname, String nachname, String username,String strasse, String ort, String plz
 										, String passwort, String roles, String email, String telefon){
-
 		UserAccount ua = uaManager.create(username, passwort, Role.of(roles));
 		uaManager.save(ua);
 		Adresse adresse = new Adresse(strasse, ort, plz);
 		Mitarbeiter m = new Mitarbeiter(vorname, nachname, adresse, ua, email, telefon);
 		
 		return m;
+	}
+
+	private List<Long> getBeschaeftigteMitarbeiterIdListe(LocalDateTime beginn,LocalDateTime schluss){		
+		
+		List<Long> beschaeftigteMitarbeiterIdListe = new ArrayList<Long>();	
+		Interval interval1 = Interval.from(beginn).to(schluss);	
+		
+		for(Veranstaltung v : vRepo.findAll()){					
+			Interval interval2 = Interval.from(v.getBeginnDatum()).to(v.getSchlussDatum());			
+			if(interval1.overlaps(interval2) == true){
+				List<Long> x = v.getMitarbeiterIdListe();
+				beschaeftigteMitarbeiterIdListe.removeAll(x);
+				beschaeftigteMitarbeiterIdListe.addAll(x);
+			}
+		}
+		Collections.sort(beschaeftigteMitarbeiterIdListe);
+		return beschaeftigteMitarbeiterIdListe;		
+	}
+	
+	public List<Mitarbeiter> getFreieMitarbeiter(LocalDateTime beginn, LocalDateTime schluss){
+		List<Long> beschaeftigteMitIdListe = getBeschaeftigteMitarbeiterIdListe(beginn, schluss);
+		List<Mitarbeiter> freieMitarbeiter;
+	
+		if(beschaeftigteMitIdListe.isEmpty()){
+			freieMitarbeiter =  (List<Mitarbeiter>) mRepo.findAll();
+		}else{
+			freieMitarbeiter = mRepo.findByIdNotIn(beschaeftigteMitIdListe);	
+		}
+				
+		return freieMitarbeiter;
 	}
 
     /**
@@ -130,5 +167,9 @@ public class PersonenVerwaltung {
 
 	public List<AccountRolle> getEnumAccountRolleList() {
 		return enumAccountRolleList;
+	}
+	
+	public UserAccountManager getUserAccountManager(){
+		return uaManager;
 	}
 }

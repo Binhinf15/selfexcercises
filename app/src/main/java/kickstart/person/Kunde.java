@@ -20,7 +20,8 @@ public class Kunde extends Person {
 	 * Instantiates a new Kunde.
 	 */
 // Konstruktor
-	public Kunde(){		
+	public Kunde(){	
+		//default Konstruktor wird für Hibernate benötigt
 	}
 
 	/**

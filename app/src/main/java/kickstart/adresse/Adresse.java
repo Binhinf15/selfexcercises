@@ -23,6 +23,7 @@ public class Adresse {
      */
 // Konstruktor
 	public Adresse(){
+		//default Konstruktor wird für Hibernate benötigt
 	}
 
     /**

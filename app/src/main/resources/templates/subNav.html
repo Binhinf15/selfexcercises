@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" type="image/x-icon"
+          th:href="@{resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abel:regular,400"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+</head>
+
+<body>
+	<nav th:fragment="subNav">	    	        
+	    <div class="submenu clearme">
+			<ul>
+			    <li>                           
+			        <a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_VERWALTUNG')" href="veranstaltungen.html">Veranstaltungen</a>
+			    </li>
+			    <li>
+			    	<a sec:authorize="hasRole('ROLE_ADMIN')" href="personal.html">Personal</a>
+			    </li>
+			    <li >
+			        <a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_VERWALTUNG')" href="kunden.html">Kunden</a>
+			    </li>
+			    <li>
+			        <a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_VERWALTUNG') or hasRole('ROLE_KOCH')" href="lager.html">Lager</a>
+			    </li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>

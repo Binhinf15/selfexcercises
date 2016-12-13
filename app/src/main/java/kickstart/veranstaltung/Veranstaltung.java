@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.salespointframework.time.Interval;
+
 import kickstart.adresse.Adresse;
 import kickstart.ware.Ware;
 
@@ -36,11 +38,12 @@ public class Veranstaltung {
 	@ElementCollection(targetClass=Ware.class)
 	private List<Ware> warenListe;
 
-    /**
+	/**
      * Instantiates a new Veranstaltung.
      */
 // Konstruktor
 	public Veranstaltung(){	
+		//default Konstruktor wird für Hibernate benötigt
 	}
 
     /**

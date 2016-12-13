@@ -1,5 +1,9 @@
 package kickstart;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.salespointframework.core.DataInitializer;
@@ -52,7 +56,7 @@ public class Init implements DataInitializer {
 	public void initialize() {
 		
 		initUser(pVerwaltung);
-		initVeranstaltung(vVerwaltung, lVerwaltung);
+		initVeranstaltung(vVerwaltung, lVerwaltung, pVerwaltung);
 		initRechnung(bVerwaltung);
 		initGehalt(bVerwaltung);
 		initWare(lVerwaltung);
@@ -60,43 +64,17 @@ public class Init implements DataInitializer {
 
 	private void initUser(PersonenVerwaltung pVerwaltung){	
 	
-		Mitarbeiter m1 = pVerwaltung.createMitarbeiter("vornameHans", "nachname", "userHans", "straße haha","Berlin","12679", "22", "ADMIN", "Hans@Testmail.de", "01734556");
-		pVerwaltung.saveMitarbeiter(m1);
-		System.out.println("");
-		System.out.println(m1.getId());
-		System.out.println(m1.getVorname());
-		System.out.println(m1.getUserAccount().getUsername());
-		System.out.println(m1.getUserAccount().getPassword());
-		System.out.println(m1.toString());
-		System.out.println("");
+		Mitarbeiter m1 = pVerwaltung.createMitarbeiter("vornameHans", "nachname", "boss", "straße haha","Berlin","12679", "123", "ROLE_ADMIN", "Hans@Testmail.de", "01734556");
+		pVerwaltung.saveMitarbeiter(m1);	
+		Mitarbeiter m2 = pVerwaltung.createMitarbeiter("lulu", "nachname2", "lulu", "straße haha","Berlin","12679", "123", "ROLE_KOCH", "Hans@Testmail.de", "0123456");
+		pVerwaltung.saveMitarbeiter(m2);
 		
 		Kunde k1 = pVerwaltung.createKunde("vornamePeter","nachnameKLug", "Straße mimi", "Dresden", "01069", "Peter@testmail.de", "012342345");
 		pVerwaltung.saveKunde(k1);
-		System.out.println("");
-		System.out.println(k1.getId());
-		System.out.println(k1.getVorname());
-		System.out.println(k1.getAdresse().getStrasse());
-		System.out.println(k1.getAdresse().getOrt());
-		System.out.println(k1.getAdresse().getPlz());
-		System.out.println(k1.getAdresse().toString());
-		System.out.println(k1.toString());
-		System.out.println("");		
 		Kunde k2 = pVerwaltung.createKunde("A","asdf", "Straße haha", "Dresden", "01069", "a@testmail.de", "017634343");
 		pVerwaltung.saveKunde(k2);
 		Kunde k3 = pVerwaltung.createKunde("B","yxcv", "Straße kiki", "Dresden", "01069", "b@testmail.de", "01787446");
 		pVerwaltung.saveKunde(k3);
-		Kunde k4 = pVerwaltung.createKunde("BCD","qwer", "Straße lala", "Dresden", "01069", "bcd@testmail.de", "017647737");
-		pVerwaltung.saveKunde(k4);
-		Kunde k5 = pVerwaltung.createKunde("LKJH","lkjjh", "Straße ohoh", "Dresden", "01069", "lkjh@testmail.de", "7876543");
-		pVerwaltung.saveKunde(k5);
-		System.out.println(k5.toString());
-		pVerwaltung.bearbeiteKunde(5, "g", "g", "g", "g", "g", "g", "g");
-		System.out.println(k5.toString());
-		
-		Mitarbeiter m2 = pVerwaltung.createMitarbeiter("LULU", "nachname2", "userlulu", "straße haha","Berlin","12679", "22", "ADMIN", "Hans@Testmail.de", "0123456");
-		pVerwaltung.saveMitarbeiter(m2);
-		
-		System.out.println(pVerwaltung.getEnumAccountRolleList());
 	}
 
 	/**
@@ -105,46 +83,19 @@ public class Init implements DataInitializer {
 	 * @param vVerwaltung the v verwaltung
 	 * @param lVerwaltung the l verwaltung
 	 */
-	public void initVeranstaltung(VeranstaltungsVerwaltung vVerwaltung, LagerVerwaltung lVerwaltung){
+	public void initVeranstaltung(VeranstaltungsVerwaltung vVerwaltung, LagerVerwaltung lVerwaltung, PersonenVerwaltung pVerwaltung){
 		
 		vVerwaltung.getKundenRepo().findAll().forEach((Kunde x)->System.out.println("Kunde hat Id:" + x.getId()));
-		
+			
 		Optional<Kunde> k1 = vVerwaltung.getKundenRepo().findOne((long) 1);
-		Veranstaltung v1 = vVerwaltung.createVeranstaltung(20, 10, 2016, 8, 0, 20, 11, 2016, 15, 0, "Pragerstraße", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k1.get().getId(), "EVENTCATERING");
-		vVerwaltung.saveVeranstaltung(v1);
-		System.out.println("");
-		System.out.println(v1.getBeginnDatum().toString());
-		System.out.println(v1.getSchlussDatum().toString());
-		System.out.println(v1.getAdresse().toString());
-		System.out.println(v1.getBemerkung());
-		System.out.println(v1.getKundenId());
-		System.out.println(v1.getId());
-		System.out.println(v1.getEventArt().name());
-		System.out.println(vVerwaltung.getVeranstaltungsRepo().findByKundenId(1).toString());
-		System.out.println("");	
-		
-		
 		Optional<Kunde> k2 = vVerwaltung.getKundenRepo().findOne((long) 2);
-		Optional<Kunde> k3 = vVerwaltung.getKundenRepo().findOne((long) 3);
-		Optional<Kunde> k4 = vVerwaltung.getKundenRepo().findOne((long) 4);
-		Veranstaltung v2 = vVerwaltung.createVeranstaltung(16, 10, 2017, 8, 0, 20, 11, 2016, 15, 0, "sdfg", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k3.get().getId(), "EVENTCATERING");
-		Veranstaltung v3 = vVerwaltung.createVeranstaltung(17, 11, 2016, 14, 0, 20, 11, 2016, 15, 0, "qwer", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k1.get().getId(), "RENTACOOK");
-		Veranstaltung v4 = vVerwaltung.createVeranstaltung(17, 11, 2016, 8, 0, 20, 11, 2016, 15, 0, "yxcvb", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k4.get().getId(), "MOBILEBREAKFAST");
-		vVerwaltung.saveVeranstaltung(v2);
-		vVerwaltung.saveVeranstaltung(v3);
-		vVerwaltung.saveVeranstaltung(v4);
-		
-		
-		System.out.println(vVerwaltung.getMitarbeiterRepo().findOne((long) 1).get().getId());
-		v2.getMitarbeiterIdListe().add(vVerwaltung.getMitarbeiterRepo().findOne((long) 1).get().getId());
-		v2.getMitarbeiterIdListe().add(vVerwaltung.getMitarbeiterRepo().findOne((long) 2).get().getId());
-		
-		System.out.println(v2.toString());
-		
-		Ware w1 = lVerwaltung.createWare("apfel", 12);
-		Ware w2 = lVerwaltung.createWare("honig", 3);
-		lVerwaltung.saveWare(w1);
-		lVerwaltung.saveWare(w2);
+		Veranstaltung v1 = vVerwaltung.createVeranstaltung("2010-05-16", "08:00", "2011-05-16", "15:00", "Pragerstraße", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k1.get().getId(), "EVENTCATERING");
+		Veranstaltung v2 = vVerwaltung.createVeranstaltung("2010-05-16", "10:00", "2011-05-16", "17:30", "sdfg", "Dresden", "01069", "Bemerkung zu der Veranstaltung", k2.get().getId(), "EVENTCATERING");
+		v1.getMitarbeiterIdListe().add(2L);
+		v1.getMitarbeiterIdListe().add(1L);
+		v2.getMitarbeiterIdListe().add(2L);
+		vVerwaltung.saveVeranstaltung(v1);
+		vVerwaltung.saveVeranstaltung(v2);		
 	}
 
 
@@ -178,9 +129,9 @@ public class Init implements DataInitializer {
 	 * @param lVerwaltung the l verwaltung
 	 */
 	public void initWare(LagerVerwaltung lVerwaltung){
-		Ware w1 = lVerwaltung.createWare("Brot", 12345);
-		Ware w2 = lVerwaltung.createWare("Wasser", 566);
-		Ware w3 = lVerwaltung.createWare("Schinken", 653);
+		Ware w1 = lVerwaltung.createWare("Brot", 12345, 2.1, "honig");
+		Ware w2 = lVerwaltung.createWare("Wasser", 566, 0.5, "cola");
+		Ware w3 = lVerwaltung.createWare("Schinken", 653, 3.99, "schaf");
 		
 		lVerwaltung.saveWare(w1);
 		lVerwaltung.saveWare(w2);

@@ -10,37 +10,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class VeranstaltungsFormular {
 	
 	//@NotEmpty(message = "VeranstaltungsFormular.preis.NotEmpty")
-	private int preis;	
+	private int preis;
 	
-	@NotEmpty(message = "VeranstaltungsFormular.beginnTag.NotEmpty")
-	private int beginnTag;
+	private String beginnDatum;
 	
-	@NotEmpty(message = "VeranstaltungsFormular.beginnMonat.NotEmpty")
-	private int beginnMonat;
+	private String beginnZeit;
 	
-	@NotEmpty(message = "VeranstaltungsFormular.beginnJahr.NotEmpty")
-	private int beginnJahr;
+	private String schlussDatum;
 	
-	@NotEmpty(message = "VeranstaltungsFormular.beginnStunde.NotEmpty")
-	private int beginnStunde;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.beginnMinute.NotEmpty")
-	private int beginnMinute;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.schlussTag.NotEmpty")
-	private int schlussTag;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.schlussMonat.NotEmpty")
-	private int schlussMonat;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.schlussJahr.NotEmpty")
-	private int schlussJahr;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.schlussStunde.NotEmpty")
-	private int schlussStunde;
-	
-	@NotEmpty(message = "VeranstaltungsFormular.schlussMinute.NotEmpty")
-	private int schlussMinute;
+	private String schlussZeit;
 	
 	@NotEmpty(message = "VeranstaltungsFormular.strasse.NotEmpty")
 	private String strasse;
@@ -60,6 +38,8 @@ public class VeranstaltungsFormular {
 	private long kundenId;
 	
 	private List<Long> mitarbeiterIdListe;
+	
+	private List<Long> warenIdListe;
 
     /**
      * Gets preis.
@@ -78,187 +58,39 @@ public class VeranstaltungsFormular {
     public void setPreis(int preis) {
 		this.preis = preis;
 	}
-
-    /**
-     * Gets beginn tag.
-     *
-     * @return the beginn tag
-     */
-    public int getBeginnTag() {
-		return beginnTag;
+    
+    public String getBeginnDatum() {
+		return beginnDatum;
 	}
 
-    /**
-     * Sets beginn tag.
-     *
-     * @param beginnTag the beginn tag
-     */
-    public void setBeginnTag(int beginnTag) {
-		this.beginnTag = beginnTag;
+	public void setBeginnDatum(String beginnDatum) {
+		this.beginnDatum = beginnDatum;
 	}
 
-    /**
-     * Gets beginn monat.
-     *
-     * @return the beginn monat
-     */
-    public int getBeginnMonat() {
-		return beginnMonat;
+	public String getBeginnZeit() {
+		return beginnZeit;
 	}
 
-    /**
-     * Sets beginn monat.
-     *
-     * @param beginnMonat the beginn monat
-     */
-    public void setBeginnMonat(int beginnMonat) {
-		this.beginnMonat = beginnMonat;
+	public void setBeginnZeit(String beginnZeit) {
+		this.beginnZeit = beginnZeit;
 	}
 
-    /**
-     * Gets beginn jahr.
-     *
-     * @return the beginn jahr
-     */
-    public int getBeginnJahr() {
-		return beginnJahr;
+	public String getSchlussDatum() {
+		return schlussDatum;
 	}
 
-    /**
-     * Sets beginn jahr.
-     *
-     * @param beginnJahr the beginn jahr
-     */
-    public void setBeginnJahr(int beginnJahr) {
-		this.beginnJahr = beginnJahr;
+	public void setSchlussDatum(String schlussDatum) {
+		this.schlussDatum = schlussDatum;
 	}
 
-    /**
-     * Gets beginn stunde.
-     *
-     * @return the beginn stunde
-     */
-    public int getBeginnStunde() {
-		return beginnStunde;
+	public String getSchlussZeit() {
+		return schlussZeit;
 	}
 
-    /**
-     * Sets beginn stunde.
-     *
-     * @param beginnStunde the beginn stunde
-     */
-    public void setBeginnStunde(int beginnStunde) {
-		this.beginnStunde = beginnStunde;
+	public void setSchlussZeit(String schlussZeit) {
+		this.schlussZeit = schlussZeit;
 	}
-
-    /**
-     * Gets beginn minute.
-     *
-     * @return the beginn minute
-     */
-    public int getBeginnMinute() {
-		return beginnMinute;
-	}
-
-    /**
-     * Sets beginn minute.
-     *
-     * @param beginnMinute the beginn minute
-     */
-    public void setBeginnMinute(int beginnMinute) {
-		this.beginnMinute = beginnMinute;
-	}
-
-    /**
-     * Gets schluss tag.
-     *
-     * @return the schluss tag
-     */
-    public int getSchlussTag() {
-		return schlussTag;
-	}
-
-    /**
-     * Sets schluss tag.
-     *
-     * @param schlussTag the schluss tag
-     */
-    public void setSchlussTag(int schlussTag) {
-		this.schlussTag = schlussTag;
-	}
-
-    /**
-     * Gets schluss monat.
-     *
-     * @return the schluss monat
-     */
-    public int getSchlussMonat() {
-		return schlussMonat;
-	}
-
-    /**
-     * Sets schluss monat.
-     *
-     * @param schlussMonat the schluss monat
-     */
-    public void setSchlussMonat(int schlussMonat) {
-		this.schlussMonat = schlussMonat;
-	}
-
-    /**
-     * Gets schluss jahr.
-     *
-     * @return the schluss jahr
-     */
-    public int getSchlussJahr() {
-		return schlussJahr;
-	}
-
-    /**
-     * Sets schluss jahr.
-     *
-     * @param schlussJahr the schluss jahr
-     */
-    public void setSchlussJahr(int schlussJahr) {
-		this.schlussJahr = schlussJahr;
-	}
-
-    /**
-     * Gets schluss stunde.
-     *
-     * @return the schluss stunde
-     */
-    public int getSchlussStunde() {
-		return schlussStunde;
-	}
-
-    /**
-     * Sets schluss stunde.
-     *
-     * @param schlussStunde the schluss stunde
-     */
-    public void setSchlussStunde(int schlussStunde) {
-		this.schlussStunde = schlussStunde;
-	}
-
-    /**
-     * Gets schluss minute.
-     *
-     * @return the schluss minute
-     */
-    public int getSchlussMinute() {
-		return schlussMinute;
-	}
-
-    /**
-     * Sets schluss minute.
-     *
-     * @param schlussMinute the schluss minute
-     */
-    public void setSchlussMinute(int schlussMinute) {
-		this.schlussMinute = schlussMinute;
-	}
-
+    
     /**
      * Gets strasse.
      *
@@ -373,5 +205,13 @@ public class VeranstaltungsFormular {
 
 	public void setMitarbeiterIdListe(List<Long> mitarbeiterIdListe) {
 		this.mitarbeiterIdListe = mitarbeiterIdListe;
+	}
+
+	public List<Long> getWarenIdListe() {
+		return warenIdListe;
+	}
+
+	public void setWarenIdListe(List<Long> warenIdListe) {
+		this.warenIdListe = warenIdListe;
 	}
 }

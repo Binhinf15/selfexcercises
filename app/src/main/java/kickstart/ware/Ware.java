@@ -32,14 +32,17 @@ public class Ware {
 	
 	@Id @GeneratedValue
 	private long id;
-	private String name;
+	private String beschreibung;
 	private long menge;
+	private double preis; 
+	private String name;
 
     /**
      * Instantiates a new Ware.
      */
 // Konstruktor
 	public Ware(){
+		//default Konstruktor wird für Hibernate benötigt
 	}
 
     /**
@@ -48,9 +51,11 @@ public class Ware {
      * @param name  the name
      * @param menge the menge
      */
-    public Ware(String name, long menge){
+    public Ware(String name, long menge, double preis, String beschreibung){
+		this.beschreibung = beschreibung;
 		this.name = name;
 		this.menge = menge;
+		this.preis = preis;
 	}
 
     /**
@@ -89,7 +94,35 @@ public class Ware {
     public void setMenge(long warenMenge) {
 		this.menge = warenMenge;
 	}
+    
+	public String getBeschreibung(){
+		return beschreibung;
+	}
+	
+	/**
+     * Sets beschreibung.
+     *
+     * @param warenBeschreibung the waren beschreibung
+     */
+	
+	public void setBeschreibung(String warenBeschreibung) {
+		this.beschreibung = warenBeschreibung;
+	}
 
+	public double getPreis(){
+		return preis;
+	}
+	
+	/**
+     * Sets preis.
+     *
+     * @param warenPreis the waren preis
+     */
+	
+	public void setPreis(double warenPreis) {
+		this.preis = warenPreis;
+	}
+	
     /**
      * Gets id.
      *
@@ -98,4 +131,9 @@ public class Ware {
     public long getId() {
 		return id;
 	}	
+    
+	@Override
+	public String toString() {
+		return "Ware [ name=" + name +", menge=" + menge +", preis=" + preis + ", beschreibung=" + beschreibung + "]";
+	}
 }

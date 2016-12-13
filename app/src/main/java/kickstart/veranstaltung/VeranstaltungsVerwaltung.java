@@ -1,6 +1,9 @@
 package kickstart.veranstaltung;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,14 +65,21 @@ public class VeranstaltungsVerwaltung {
      * @return the veranstaltung
      */
 // Methoden
-	public Veranstaltung createVeranstaltung(int beginnTag, int beginnMonat, int beginnJahr, int beginnStunde, int beginnMinute, 
-											int schlussTag, int schlussMonat, int schlussJahr, int schlussStunde, int schlussMinute,
-											String strasse, String ort, String plz, String bemerkung, long kundenId, String eventArt){
+	public Veranstaltung createVeranstaltung(String beginnDatum, String beginnZeit, String schlussDatum, String schlussZeit
+											, String strasse, String ort, String plz, String bemerkung, long kundenId, String eventArt){
 		
-		LocalDateTime beginnDatum = LocalDateTime.of(beginnJahr, beginnMonat, beginnTag, beginnStunde, beginnMinute); 
-		LocalDateTime schlussDatum = LocalDateTime.of(schlussJahr, schlussMonat, schlussTag, schlussStunde, schlussMinute);
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate beginnDate = LocalDate.parse(beginnDatum,dateFormatter);
+        LocalTime beginnTime = LocalTime.parse(beginnZeit,timeFormatter);
+        LocalDate schlussDate = LocalDate.parse(schlussDatum,dateFormatter);
+        LocalTime schlussTime = LocalTime.parse(schlussZeit,timeFormatter);	
+		LocalDateTime beginn = beginnDate.atTime(beginnTime); 
+		LocalDateTime schluss = schlussDate.atTime(schlussTime); 
+		
 		Adresse adresse = new Adresse(strasse, ort, plz);
-		Veranstaltung v = new Veranstaltung(beginnDatum, schlussDatum, adresse, bemerkung, kundenId, EventArt.valueOf(eventArt));
+		Veranstaltung v = new Veranstaltung(beginn, schluss, adresse, bemerkung, kundenId, EventArt.valueOf(eventArt));
+		
 		return v;
 	}
 

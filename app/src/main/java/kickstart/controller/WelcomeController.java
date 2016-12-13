@@ -85,10 +85,7 @@ public class WelcomeController {
      *
      * @return the string
      */
-    @RequestMapping("/lager")
-	public String lag() {
-		return "lager";
-	}
+    
 
     /**
      * Main mb string.

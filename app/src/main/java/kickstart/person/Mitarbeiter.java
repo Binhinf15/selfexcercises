@@ -26,7 +26,8 @@ public class Mitarbeiter extends Person {
 	 * Instantiates a new Mitarbeiter.
 	 */
 // Konstruktor
-	public Mitarbeiter(){		
+	public Mitarbeiter(){
+		//default Konstruktor wird für Hibernate benötigt
 	}
 
 	/**

@@ -1,8 +1,10 @@
 package kickstart.person;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.salespointframework.core.SalespointRepository;
+import org.salespointframework.useraccount.UserAccount;
 
 /**
  * The interface Mitarbeiter repository.
@@ -36,5 +38,9 @@ public interface MitarbeiterRepository extends SalespointRepository<Mitarbeiter,
      * @return the list
      */
     public List <Mitarbeiter> findAllByOrderById();
+    
+    public List <Mitarbeiter> findByIdNotIn(List<Long> Id);
+    
+    public Mitarbeiter findByUserAccount(Optional<UserAccount> userAccount);
 	
 }

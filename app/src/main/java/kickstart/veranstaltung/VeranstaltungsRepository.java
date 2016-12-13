@@ -51,4 +51,6 @@ public interface VeranstaltungsRepository extends SalespointRepository<Veranstal
      * @return the list
      */
     public List <Veranstaltung> findAllByOrderByKundenId();
+    
+    public List <Veranstaltung> findByMitarbeiterIdListe(Long MitarbeiterId);
 }
