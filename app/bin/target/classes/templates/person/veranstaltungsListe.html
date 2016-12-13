@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div>
+		<table border="1" class="zptabledata">
+		    <thead>
+		    <tr style="color: #333333; background-color: #0082D7">
+		        <th>Id</th>
+		        <th>Eventart</th>
+		        <th>Beginn</th>
+		        <th>Schluss</th>
+		        <th>Straße</th>
+		        <th>Ort</th>
+		        <th>Plz</th>
+		        <th>Bemerkung</th>
+		        <th>KundenId</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <tr th:each=" veranstaltung : ${veranstaltungsListe}"
+		        style="color: #6C6C6C; background-color: #EDEDED">
+		        <!--style="color: #777777; background-color: #D9D9D9"-->
+		        <td th:text="${veranstaltung.id}"></td>
+		        <td th:text="${veranstaltung.eventArt}"></td>
+		        <td th:text="${veranstaltung.beginnDatum}"></td>
+		        <td th:text="${veranstaltung.schlussDatum}"></td>
+		        <td th:text="${veranstaltung.adresse.strasse}"></td>
+		        <td th:text="${veranstaltung.adresse.ort}"></td>
+		        <td th:text="${veranstaltung.adresse.plz}"></td>
+		        <td th:text="${veranstaltung.bemerkung}"></td>
+		        <td th:text="${veranstaltung.kundenId}"></td>
+		    </tr>
+		    </tbody>
+		</table>
+	</div>
+	
+	<div>
+		<ul>
+		    <li><a class="formbuttons" th:href="@{/bestellung}" href="bestellung.html">Veranstaltung hinzufügen</a></li>
+		    <li><a class="formbuttons" th:href="@{/veranstaltungBeginnSortiert}" href="veranstaltungsListe.html">Veranstaltung nach
+		        beginn sortieren</a></li>
+		    <li><a class="formbuttons" th:href="@{/veranstaltungIdSortiert}" href="veranstaltungsListe.html">Veranstaltung nach Id
+		        sortieren</a></li>
+	        <li><a class="formbuttons" th:href="@{/veranstaltungKundenIdSortiert}" href="veranstaltungsListe.html">Veranstaltung nach KundenId
+		        sortieren</a></li>
+	        <li><a class="formbuttons" th:href="@{/veranstaltungEventArtSortiert}" href="veranstaltungsListe.html">Veranstaltung nach Eventart
+		        sortieren</a></li>
+		</ul>
+		<form name="sucheNachKundenId" action="/sucheKundenId" method="POST">
+		    <label>Kunden Id:</label>
+		    <input type='text' name='kundenId'/>
+		    <label></label>
+		    <input type="submit" value="Suche"/>
+		</form>	
+	</div>
+
+</body>
+</html>
