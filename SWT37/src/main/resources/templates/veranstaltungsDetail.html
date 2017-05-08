@@ -1,0 +1,208 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Veranstaltungs Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body id="square-responsive"><a id="top"></a>
+<div class="wrapper top">
+    <div class="header"><a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <div id="logo">
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Eventcatering</div>
+        </div>
+        <div id="navbar">
+        	<nav th:include="topNav :: topNav"></nav>
+        </div>
+    </div>
+</div>
+<div class="clearx"></div>
+<div class="wrapper main">
+    <div class="page">
+        <div class="frame">
+            <div class="subnav low">
+                <div class="submenu clearme">                
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="clearx"></div>
+            <div class="contentbox zpgrid">
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+                    <div class="zpRow standard ">
+                        <div class="zpColumn zpColumnWidth1 c8">
+                            <div class="zpColumnItem">
+                                <div id="a1571" data-articleid="1571" class="articlearea zpwFormular">
+                                	<h2>
+                                		<label th:text="'Details für Veranstaltung: ' + ${veranstaltungsId}">Details für Veranstaltung</label>                               		
+                                	</h2>
+                                                                                                                                  
+                                    <form enctype="multipart/form-data" class="zp-form" id="form1571" name="form1571"
+                                          th:object="${veranstaltungsDaten}" th:action="@{/bearbeiteVeranstaltung}" method="post">
+     
+                                        <input type="hidden" name="veranstaltungsId" th:value="${veranstaltungsId}"/>
+										
+										<label for="F2" class="field">Kunden-Nr.</label>
+										<select  class="required" id="F2"  th:field="*{kundenId}">                                             	                                                                 	                                 
+										   	<option th:each=" kunde : ${kundenListe}" th:value="${kunde.id}" th:text="${kunde.id} + ' ' + ${kunde.vorname}" ></option>                                                                        
+										</select>   
+										
+										<label for="F2.1" class="field">Titel</label>
+                                        <input class="typetext required" type="text" name="F2.1" id="F2.1"
+                                               th:field="*{titel}" placeholder="Titel" style="width: 200px; " maxlength="40" th:required="required"/>          
+										
+										<label for="F9" class="field">Auswahl Art</label>
+                                        <select class="required" id="F9" name="F9[]" size="1" th:field="*{eventArt}">                                           
+                                            <option th:each="eventArt : ${enumEventArtList}" th:value="${eventArt}" th:text="${eventArt}" th:required="required" ></option>
+                                        </select>                          
+
+                                        <div class="separator">&nbsp;</div>
+										
+                                        <label for="F5" class="field">Straße</label>
+                                        <input class="typetext required" type="text" name="F5" id="F5"
+                                               th:field="*{strasse}" placeholder="Straße" style="width: 200px; " maxlength="40" th:required="required"/>
+
+                                        <label for="F6" class="field">Ort</label>
+                                        <input class="typetext required" type="text" name="F6" id="F6" placeholder="Ort"
+                                               th:field="*{ort}" value="" style="width: 200px; " maxlength="20" th:required="required"/>
+
+                                        <label for="F7" class="field">PLZ</label>
+                                        <input class="typetext required" type="text" name="F7" id="F7"
+                                               th:field="*{plz}" placeholder="PLZ" value="" style="width: 200px; " maxlength="20" th:required="required"/>
+
+                                        <div class="separator">&nbsp;</div>
+                                                                          
+                                        <label for="F10" class="field">Beginn:</label>
+                                        <input class="typetext required" type="date" name="F10" id="F10"
+                                              th:field="*{beginnDatum}" style="width: 200px;" th:required="required"/>
+                                        <input class="typetext required" type="time" name="F10" id="F10"
+                                              th:field="*{beginnZeit}" style="width: 80px;" th:required="required"/>
+                                              
+                                        <label for="F10" class="field">Schluss:</label>
+                                        <input class="typetext required" type="date" name="F10" id="F10"
+                                              th:field="*{schlussDatum}" style="width: 200px;" th:required="required"/>
+                                        <input class="typetext required" type="time" name="F10" id="F10"
+                                              th:field="*{schlussZeit}" style="width: 80px;" th:required="required"/>
+                                      										
+                                        <div class="separator">&nbsp;</div>									
+
+                                        <label for="F22" class="field">benötigtes Zubehör</label>
+                                        <textarea th:field="*{zubehoer}" class="" id="F22" name="F22" placeholder="benötigtes Zubehör" rows="5"
+                                                  style="width:400px; "></textarea>
+
+                                        <label for="F23" class="field">Bemerkungen</label>
+                                        <textarea th:field="*{bemerkung}" class="" id="F23" name="F23" placeholder="Bemerkungen" rows="5"
+                                                  style="width:400px;"></textarea>
+                                                  
+                                        <div class="separator">&nbsp;</div>
+                                        
+                                        <div>
+	                                        <label for="F21" class="field">zugewiesenes Personal</label>
+	                                        <div th:each="mitarbeiter : ${zugeordneteMitarbeiter}">
+	                                        	<input type="checkbox" th:field="*{mitarbeiterIdListe}" th:value="${mitarbeiter.id}" th:text="${mitarbeiter.id} + '-' + ${mitarbeiter.vorname}" checked="checked"/>
+	                                        </div>
+	                                        <label th:if="${zugeordneteMitarbeiter.isEmpty()} == True">keine Mitarbeiter zugewiesen</label>
+                                        </div>
+                                        <div>
+	                                        <label for="F21" class="field">freies Personal</label>                                                                           
+	                                        <div th:each="mitarbeiter : ${freieMitarbeiterListe}">
+	                                        	<input type="checkbox" th:field="*{mitarbeiterIdListe}" th:value="${mitarbeiter.id}" th:text="${mitarbeiter.id} + '-' + ${mitarbeiter.vorname}"/>                                        	
+	                                        </div>
+	                                        <label th:if="${freieMitarbeiterListe.isEmpty()} == True">keine freien Mitarbeiter</label>        
+                                        </div>
+                                        
+                                        <div class="separator">&nbsp;</div>
+                                                                                
+                                        <div>
+                                        	<label>Waren</label>
+                                        	<select th:field="*{ware}">
+                                        		<option th:each="waren : ${warenRepo}"  th:value="${waren.id}" th:text="${waren.getName()}"></option>
+                                        	</select>
+                                        	<label>Menge</label>
+                                        	<input th:unless="${autofokus} == True" type="number" min="0" pattern="[0-9]" name="menge" value="0" required="required" style="width: 50px"/>
+                                        	<input th:if="${autofokus} == True" type="number" min="0" pattern="[0-9]" name="menge" value="0" required="required" autofocus="autofocus" style="width: 50px"/>
+                                        	<input type="submit" name="action" value="hinzufügen" />                                    	
+                                        </div>                                      
+
+                                        <div th:unless="${cart.empty}" id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">
+											<table border="1" class="zptabledata">
+												<caption th:text="Warenkorb">Warenkorb</caption>
+												<thead>
+
+                                                <tr style="color: #333333; background-color: #3887ff">
+														<th th:text="Name">Name</th>
+														<th th:text="Anzahl">Anzahl</th>
+														<th th:text="Preis">Preis</th>
+													</tr>
+												</thead>
+												<tbody >						
+													<tr th:each="item : ${cart} ">
+														<td th:text="${item.productName}"></td>
+														<td th:text="${item.quantity}"></td>
+														<td th:text="${item.getPrice().getNumber().doubleValueExact()}"></td>
+														<td >															
+															<input type="radio" name="zuLöschen" th:value="${item.id}" required="required" checked="checked"/>
+														</td>
+													</tr>
+                                       			</tbody>
+                                       		</table>
+                                       	</div>
+                                        <div th:each="ware: ${warenliste}">
+                                        	<input type="checkbox"  th:value="${ware.name}" th:text="${ware.name} + '-' + ${ware.quantity}"/>
+                                        </div>
+                                        
+                                       	<div th:unless="${cart.empty}">
+                                       		<input type="submit" name="action" value="Ware löschen"/>
+                                       	</div>
+	
+										<div class="separator">&nbsp;</div>
+
+                                        <div class="formbuttons">
+                                            <input name="action" type="submit" class="button" value="Änderung speichern"/>                                           
+                                        </div>
+                                    </form>
+                                    
+                                    <form class="zp-form" method="POST" action="/deleteVeranstaltung">
+                                   		<input type="hidden" name="veranstaltungsId"  th:value="${veranstaltungsId}"/>
+                                    	<div class="formbuttons">
+                                            <input type="submit" class="button" value="lösche Veranstaltung"/>
+                                        </div>
+                                    </form>
+                                    
+                                    <form method="POST" action="/veranstaltungen">
+                                    	<div class="formbuttons">
+                                            <input type="submit" class="button" value="zurück"/>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo"> © 2016 Mampf.</div>
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

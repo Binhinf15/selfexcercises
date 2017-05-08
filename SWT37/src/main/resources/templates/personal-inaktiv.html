@@ -1,0 +1,118 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Personal inaktiv</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body id="square-responsive"><a id="top"></a>
+<div class="wrapper top">
+    <div class="header"><a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <div id="logo">
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Cateringservice</div>
+        </div>
+        <div id="navbar">
+        	<nav th:include="topNav:: topNav"></nav>
+        </div>
+    </div>
+</div>
+<div class="clearx"></div>
+<div class="wrapper main">
+    <div class="page">
+        <div class="frame">
+            <div class="subnav low">
+            	<nav th:include="subNav:: subNav"></nav>            	
+            </div>
+        </div>
+        <div class="content">
+       		<h2 style="color: #003557; ">Personal Inaktiv</h2>
+        	<div class="submenu clearme">
+        		<ul>
+        			<li><a th:href="@{/personal}">Aktive Mitarbeiter</a></li>
+        			<li><a th:href="@{/personal-inaktiv}">Inaktive Mitarbeiter</a></li>
+        		</ul>
+        	</div>
+            <div class="clearx"></div>
+            <div class="contentbox zpgrid">
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+                    <div class="zpRow standard ">
+                        <div class="zpColumn zpColumnWidth1 c12" style=" ">
+                            <div class="zpColumnItem">
+                                <div id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">
+                                    <table border="1" class="zptabledata">
+                                        <thead>
+                                        <tr style="color: #333333; background-color: #0082D7">
+                                      		<th>Id</th>
+                                            <th>Vorname</th>
+                                            <th>Nachname</th>                               
+                                            <th>Username</th>
+                                            <th>Rolle</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each=" mitarbeiter : ${mitarbeiterListe}"
+                                        	style="color: #6C6C6C; background-color: #EDEDED">                                                                          
+                                            <td> 
+                                            	<form action="/personalDetail">                                               	                              		
+                                            		<input type="submit" th:value="${mitarbeiter.id}" name="mitarbeiterId"/>
+                                            	</form>	
+                                            </td>  
+                                            <td th:text="${mitarbeiter.vorname}"></td>
+                                            <td th:text="${mitarbeiter.Nachname}"></td>
+                                            <td th:text="${mitarbeiter.userAccount.username}"></td>
+                                            <td th:text="${mitarbeiter.userAccount.roles}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul>                      
+                        <li><a class="formbuttons" th:href="@{/personalInaktivVornameSortiert}" >Personal nach
+	                        Vorname sortieren</a></li>
+	                    <li><a class="formbuttons" th:href="@{/personalInaktivNachnameSortiert}" >Personal nach
+	                        Nachname sortieren</a></li>    	                        
+	                    <li><a class="formbuttons" th:href="@{/personalInaktivIdSortiert}" >Personal nach Id
+	                        sortieren</a></li>
+	                        
+	                    <li><a class="formbuttons" th:href="@{/personalInaktivRolleSortiert}" >Personal nach Rolle
+	                        sortieren</a></li>  
+	                        
+                    </ul>
+                    <form name="suchePersonalInaktivName" action="/suchePersonalInaktivName" method="POST">
+                        <label>Name:</label>
+                        <input type='text' name='mitarbeiterName'/>
+                        <label></label>
+                        <input type="submit" value="Suche"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo"> © 2016 Mampf.</div>
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

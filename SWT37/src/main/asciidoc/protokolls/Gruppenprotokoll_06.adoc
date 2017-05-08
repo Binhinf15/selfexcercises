@@ -1,0 +1,42 @@
+= Protokoll Gruppe 37
+
+__Treffen am__ 27.11.2016
+
+__Schriftführer: __ Sebastian Lindner
+
+__Nächstes Treffen:__ 06.12.2016
+
+__Teilnehmer: Viet Butter, Xin Liang, Sebastian Lindner, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|#7    |Gruppenprotokoll      |GP wöchentlich aktualisiert    | keine
+|#17 | Entwurfsklassendiagramm | aktualisiert | EKD wird während Implementierung immer laufgehend aktualisiert
+|#18 | Testplan | noch nicht fertig | keine
+|#21 | Implementierung Basisfunktionalität | im Entwicklungsprozess | Basisfunktionalitäten müssen erweitert werden
+|===
+
+
+== Aktueller Stand
+- alles veläuft nach Plan
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#7    |Gruppenprotokoll      |GP wird wöchentlich aktualisiert    | alle | aktualisiert
+|#18 | Testplan | Funktionalitäten/Methoden testen | alle | in Arbeit
+|#17	|Entwurfsklassendiagramm		|EKD an Implementierung fortlaufend anpassen				|alle				|in Arbeit
+|#21  |Implementierung Basisfunktionalität | im Entwicklungsprozess | alle | in Arbeit
+|===

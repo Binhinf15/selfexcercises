@@ -1,0 +1,72 @@
+= Test-Plan
+
+Dieser Testplan stellt eine vereinfachte Version der IEEE 829-1998 Vorlage dar.
+
+== Einführung
+Dieses Dokument befasst sich mit dem Testen der Web-Applikation Mampf - Cateringservice.
+Dazu werden erst die zu testenden bzw. nicht zu testenden Funktionalitäten beschrieben, welche Umgebungsvoraussetzungen existieren und letztendlich konkrete Anwendungsfälle in einer Tabelle angegeben.
+
+== Aufbau der Testbezeichner
+Nach welchem Schema sind die Tests benannt?
+
+*U - Unit Test, I - Integrationstest*
+
+*U-1, U-2, I-1*
+
+== Test Gegenstände
+
+== Zu testende Funktionalitäten
+* *Modelklassen:* Korrekte Eingabe (Datentypen) und keine Nullpointer-Exceptions, Returntypes der Methoden in den Verwaltungen
+
+== Nicht zu testende Funktionalitäten
+** Salespoint-Framework
+** Spring-Framework
+** Java Collection
+** GUI (Thyme-leaf, html resources, javascript)
+
+== Herangehensweise
+*Methoden werden mit JUnit 5 getestet.*
+
+== Umgebungsvoraussetzungen
+=== Wird spezielle Hardware benötigt?
+Es wird lediglich ein Computer mit installierter IDE benötigt.
+
+=== Welche Daten müssen bereitgestellt werden? Wie werden die Daten bereitgestellt?
+Es werden Daten der Personen im System, das Lager, Veranstaltungen und Buchhaltung bereitgestellt. Diese werden durch Hibernate in einer persistenten Datenbank abgespeichert.
+
+=== Wird zusätzliche Software für das Testen benötigt?
+Außer dem JUnit-Framework wird keine weitere Software benötigt.
+
+=== Wie kommuniziert die Software während des Testens? Internet? Netzwerk?
+Für ein realistisches Testen der Software im System wird höchstens eine Netzwerkverbindung benötigt, aber keine konkrete Internetverbindung.
+
+== Testfälle und Verantwortlichkeit
+Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
+
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="headers"]
+|===
+|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe
+|Integrationstests: I - [Nummer]||||
+|I-1  |Kunde registrieren             |-            | Konstruktor mit null Argumenten  | NullPointerException
+|I-1  |Kunde registrieren             |-            | valide Daten  | Kunde wird registriert
+|I-2  |Kunde bearbeiten             | Kunde muss registriert sein | falsche Datentypen und oder null Daten | IllegalArgumentException, NullPointerException
+|I-2  |Kunde bearbeiten             | Kunde muss registriert sein | Anmelden mit Boss-Daten | Kunde mit neuen Daten
+|I-3  |Kundenrechnung erstellen            | Es müssen ein Kunde und eine Veranstaltung mit jeweiliger ID existieren, sowie ein Veranstaltungswarenkorb   | Konstruktor wird leeren Warenkorb übergeben | NullPointerException
+|I-3  |Kundenrechnung erstellen             |Es müssen ein Kunde und eine Veranstaltung mit jeweiliger ID existieren, sowie ein Veranstaltungswarenkorb   | Konstruktor bekommt Warenkorb mit Ware(n) übergeben | Kundenrechnung wird erstellt
+|I-4  |Gehaltrechnung erstellen              | Es muss ein Mitarbeiter mit ID und Gehaltsangabe existieren  | Konstruktor mit Nulldaten | NullPointerException
+|I-4  |Gehaltrechnung erstellen              | Es muss ein Mitarbeiter mit ID und Gehaltsangabe existieren  | Konstruktor korrekte Daten mit existieren Mitarbeiter und Gehaltsangabe übergeben | Gehaltrechnung wird erstellt
+|I-5  |Personal anmelden          | Personal muss bereits angelegt sein     | falsche bzw. nicht existierende Daten eingegeben | Daten werden nicht akzeptiert
+|I-5  |Personal anmelden              | Personal muss bereits angelegt sein      | Korrekte bzw. existierende Daten | Personal meldet sich an
+|I-6  |Mitarbeiter aktivieren             | Mitarbeiter muss existieren und bereits deaktiviert sein            | Konstruktor mit falschen Daten | NullPointerException, IllegalArgumentException
+|I-6  |Mitarbeiter aktivieren            | Mitarbeiter muss existieren und bereits deaktiviert sein            | Korrekte Daten (deaktivierter Mitarbeiter) | Mitarbeiter wird deaktiviert
+|I-7  |Mitarbeiter deaktivieren             |Mitarbeiter muss existieren und nicht bereits deaktiviert sein            | Konstruktor mit falschen Daten oder von deaktivierten Mitarbeiter übergeben | NullPointerException
+|I-7  |Mitarbeiter deaktivieren            |Mitarbeiter muss existieren und nicht bereits deaktiviert sein            | Korrekte Daten | Mitarbeiter deaktiviert
+|I-8  |Veranstaltung hinzufügen            | Veranstaltung muss valide Termininformationen (String) und Kundenid bekommen   | Konstruktor mit null Argumenten, falschen Datentypen | NullPointerException, IllegalArgumentException
+|I-8  |Veranstaltung hinzufügen              |Veranstaltung muss valide Termininformationen (String) und Kundenid bekommen | Korrekte Daten | Veranstaltung wird hinzugefügt
+|UnitTests: U - [Nummer]||||
+|U-1 | Kundenübersicht einsehen | Kunden müssen existieren | - | Datenübersicht von Kunden
+|U-2 | Mitarbeiter bearbeiten | Nur als eingeloggter Boss möglich  | nicht mögliche Daten eigegeben | IllegalStateException
+|U-2 | Mitarbeiter bearbeiten | Nur als eingeloggter Boss möglich   | korrekte Datentypen | Neue Mitarbeiterdaten
+|U-3  |  Personal einer Veranstaltung hinzufügen   | Mitarbeiter muss verfügbar und darf nicht deaktiviert sein  | Zuteilung der (Service-) Mitarbeiter zu Veranstaltung  |  -
+|===

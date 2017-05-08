@@ -1,0 +1,28 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2016/17
+
+**Von: Xin Liang**
+
+**Gruppe 37**
+
+== Was habe ich gelernt?
+* --In dem Praktikum habe ich gelernt, was der Vorgang eines Projekts ist und wie die Funktionen durch html realisiert werden. Dabei habe
+ich noch gelernt, wie und mit welchen Apps man gut mit anderen kooperieren kann. Wichtig ist es, dass ich auch ein paar Programierungstechnike
+gelernt habe, mit den ich schneller programmieren oder debuggen kann.
+
+= Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+* Durch Teamarbeit erhalte ich mehr Unterstützung und Verständnis für die Leistungen. Mit anderen Mitgliedern die Probleme zusammen zu 
+finden und lösen, kann ich ein paar Kenntnisse aus anderen wissen, gleichzeitig die Fähigkeit besitzen, was der Lehrer in der Vorlesung 
+nicht lehren kann.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+* Am Anfang war es schwer passende Programmierschnittstelle zu finden und zu benutzen, und auch bei der Benutzung der Methoden und Klassen.
+Ich muss immer im Internet fragen und Beispiel gucken. Nach mehrmals Probieren finde ich, die Bibliotheken/Frameworks günstig für die 
+eigene Code hinzufügen sind. Und es ist sehr hilfreich neue Funktionen zu erweitern.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+* Meiner Meinung nach könne das Praktikum bis ein ganzes Semester verlängert werden. Die Gruppe kann in den Ferientagen nach Prüfungen 
+weiter zusammenarbeiten, überlegen und diskutieren, was noch verbessert werden kann, und ob man aus dem Original Neuigkeit machen kann. 
+Und für den bevor nicht so erfahrenen Java Programmierer wäre es auch eine gute Chance zu festigen und erweitern.
+
+== Sonstiges und Anmerkungen
+keine

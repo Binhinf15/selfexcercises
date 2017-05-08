@@ -1,0 +1,49 @@
+= Protokoll Gruppe 37
+
+__Treffen am 01.11.2016__
+
+__Schriftführer: Viet Butter__
+
+__Nächstes Treffen:__ 08.11.2016
+
+__Teilnehmer:Viet Butter, Xin Liang, Sebastian Lindner, Tung Nguyen, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue 	|Aufgabe |Status |Bemerkung
+|#7		|Gruppenprotokoll						        |in Arbeit |Gruppenprotokoll_00 fertig
+|#8	 |Top-Level-Architektur	 		     |erledigt  |
+|#10	|Anwendungsfalldiagramm	       |in Arbeit |kleine Änderungen vornehmen
+|===
+
+
+== Aktueller Stand
+Analysephase: +
+ Top-Level-Architektur fertig +
+ Kontextdiagramm bearbeiten +
+ Anwendungsfalldiagramm in arbeit +
+ CRC-Kartenmethode und Analyseklassendiagramm muss noch erstellt werden
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#2    	|Analyseklassendiagramm    	|AKD muss erstellt werden         	|alle               |in Arbeit
+|#3    	|Kontextdiagramm            	|bearbeiten                       	|Viet              	|in Arbeit
+|#4   	 |Sequenzdiagramme			|4 Sequenzdiagramme erstellen		|Viet,Xin,Tung,Sebastian | in Arbeit
+|#5	   	|GUI Entwurf				|Mockups erstellen					|Jakob				|in Arbeit
+|#6		   |Pflichtenheft				|Pflichtenheft erstellen			|					|in Arbeit
+|#7		   |Gruppenprotokoll			|wöchentlich ein GP erstellen		|Sebastian			|in Arbeit
+|#10    |Anwendungsfalldiagramm  |bearbeiten    |Viet  |in Arbeit
+|#12    |CRC-Kartenmethode  |erstellen  |alle  |in Arbeit
+|===

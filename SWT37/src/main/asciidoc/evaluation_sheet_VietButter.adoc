@@ -1,0 +1,25 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2015/16
+
+**Von: Viet Butter**
+
+**Gruppe: 37**
+
+== Was habe ich gelernt?
+* Ich habe gelernt, wie bei Webseiten das Front-End mit dem Back-End verknüpft ist. 
+Dabei konnte ich mir vorallem eine bessere Sicht auf das Model-View-Controller Konzept erlangen. 
+Desweiteren konnte ich meine Programmierkenntnisse in Java festigen und erweitern. 
+Außerdem habe ich gelernt, mit welchen Hilfsmitteln mann gleichzeitig als Team an einem Softwareprojekt arbeiten kann.
+
+= Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+* Es war zum Teil schwierig gemeinsame Termine zu finden.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+* Bibliotheken/Frameworks sind eine gute Hilfe um schnell Funktionalitäten zu erreichen.
+Vorallem grundlegende Klassen und Funktionen können sehr hilfreich sein.
+Andererseits kann die Anpassung und Erweiterung an den eigenen Code auch sehr komplex werden. Dies ist mit vorallem bei einigen Funktionen von Salespoint aufgefallen. 
+Oftmals war es einfacher meinen eigenen Code anzupassen , als eine SalesPoint funktion zu integrieren.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+* SalesPoint und die Beispielprojekte boten einen guten Überblick über das MVC Konzept. vllt sollte man auf den Zwang SalesPoint zu verwenden verzichten.
+
+== Sonstiges und Anmerkungen

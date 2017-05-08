@@ -1,0 +1,40 @@
+= Protokoll Gruppe 37
+
+__Treffen am 25.10.2016__
+
+__Schriftführer: Sebastian Lindner__
+
+__Nächstes Treffen:__ 01.11.2016
+
+__Teilnehmer: Viet Butter, Xin Liang, Sebastian Lindner, Tung Nguyen, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|#7		|Gruppenprotokoll			|in Arbeit	|keine
+|#9		|Gruppenorganisation		|erledigt |keine
+|===
+
+
+== Aktueller Stand
+Gruppenorganisation und Scrum-Master ernannt,
+Kundengespräch vorbereitet
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#7		|Gruppenprotokoll			|wöchentlich ein GP erstellen		|Sebastian			|in Arbeit
+|#8 	|Top-Level-Architektur		|TLA erstellen						|Viet				|in Arbeit
+|#10	|Anwendungsfalldiagramm		|AFD erstellen						|Viet				|in Arbeit
+|===

@@ -1,0 +1,28 @@
+= Zeiterfassung für Gruppe 37
+
+Notieren Sie die Zeit in Minuten für jeden Entwickler und für Team-Treffen pro Woche.
+Die verwendete Zeit beinhaltet auch das Lesen von Dokumentationen, Besprechungen mit Teamkollegen und sonstige auf das Praktikum bezogene Aufgaben.
+
+// See http://asciidoctor.org/docs/user-manual/#tables
+[option="headers"]
+|===
+|Von |Bis |Viet Butter |Jakob Ryl |Sebastian Lindner |Xin Liang |Meeting
+|10.10.2016  |16.10.2016  |240    |180    |  310   |210    | 60
+|17.10.2016  |23.10.2016  |360  |690    |  300 |360    | 60
+|24.10.2016  |30.10.2016  |1320   |810    |  390   |600    | 90
+|31.10.2016  |06.11.2016  |720   |960    | 480  |360    | 90
+|07.11.2016  |13.11.2016  |420    |840    | 510   |300    | 180
+|14.11.2016  |20.11.2016  |1200    |1020    | 430  |1080    | 180
+|21.11.2016  |27.11.2016  |780   |900    | 560   |960    | 420
+|28.11.2016  |04.12.2016  |1020    |840    | 720   |480    | 120
+|05.12.2016  |11.12.2016  |1110   |250    | 790 |540    | 120
+|12.12.2016  |18.12.2016  |810    |720    |200   |630    | 120
+|19.12.2016  |25.12.2016  |750   |690    |780   |120    | 300
+|26.12.2016  |01.01.2017  |120    |120    |250   |240    | --
+|02.01.2017  |08.01.2017  |180   |180    |180    |360    | 480
+|09.01.2017  |15.01.2017  |600   |960    |260  |660    | 480
+|Gesammt in h |            |13,4   |12,7  |8,6   |9,6    |3,8
+|Meeting + Einzelarbeitszeit ||17,2|16,5  |12,3  |13,3   |
+|===
+
+=== Arbeitszeit pro Student pro Woche beträgt: 14,8 h (889 min)

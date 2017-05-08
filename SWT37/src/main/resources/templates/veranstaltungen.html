@@ -1,0 +1,210 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Veranstaltungen</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+    
+    <link th:href='@{/resources/css/fullcalendar.min.css}' rel='stylesheet' />
+    <link th:href='@{/resources/css/fullcalendar.print.min.css}' rel='stylesheet' media='print' />
+    <script th:src='@{/resources/js/moment.min.js}'></script>
+    <script th:src='@{/resources/js/jquery.min.js}'></script>
+    <script th:src='@{/resources/js/fullcalendar.min.js}'></script>
+    
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    	var m = [[${kalenderDatenListe}]];
+    	console.log(m);
+    
+    
+    	console.log(m);
+    	var neueListe = [];
+    	for (var i=0; i<m.length; i++) {
+    		var title = m[i].titel;
+    		console.log(title);
+    		var start = m[i].beginnJasonKalender;
+    		console.log(start);
+    		var end = m[i].schlussJasonKalender;
+    		console.log(end);
+    		var url = "http://localhost:8080/veranstaltungsDetail?veranstaltungsId="+m[i].id;
+    		console.log(url);
+    		var veranstaltung = {title , start, end, url};
+    		  		
+    		neueListe.push(veranstaltung);
+   		}
+    		
+    	console.log(neueListe);
+    
+    	
+    /*]]>*/
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events:
+
+                    neueListe
+            });
+
+
+        });
+    </script>
+</head>
+<body id="square-responsive"><a id="top"></a>
+<div class="wrapper top">
+    <div class="header"><a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <div id="logo">
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+        
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Cateringservice</div>
+        </div>
+        
+        
+         
+        <div id="navbar">
+       		<nav th:include="topNav :: topNav"></nav>
+        </div>      
+    </div>
+</div>
+<div class="clearx"></div>
+<div class="wrapper main">
+    <div class="page">     
+        <div class="frame">
+            <div class="subnav low">
+            	<nav th:include="subNav :: subNav"></nav>
+            </div>
+        </div>
+        <div class="content">
+            <div class="clearx"></div>
+            <div class="contentbox zpgrid">
+                <div class="zpColumn zpColumnWidth1 c12">
+                    <div class="zpColumnItem">
+                        <div id="a1566" data-articleid="1566" class="articlearea zpwText">
+                            <h2 style="color: #003557; ">Veranstaltungen</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+                    <div class="zpRow standard ">
+                        <div class="zpColumn zpColumnWidth1 c12" style=" ">
+                            <div class="zpColumnItem">
+                                <div id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">
+                                    <table border="1" class="zptabledata">
+                                        <thead>
+                                        <tr style="color: #333333; background-color: #0082D7">
+                                            <th>Id</th>
+                                            <th>Titel</th>
+                                            <th>Eventart</th>
+                                            <th>Beginn</th>
+                                            <th>Schluss</th>
+                                            <th>Straße</th>
+                                            <th>Ort</th>
+                                            <th>Plz</th>                                           
+                                            <th>KundenId</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each=" veranstaltung : ${veranstaltungsListe}"
+                                            style="color: #6C6C6C; background-color: #EDEDED">                                                                                
+                                            <td>
+                                             	<form action="/veranstaltungsDetail">
+                                                    <input type="submit" th:value="${veranstaltung.id}" name="veranstaltungsId"/>  
+                                                </form>
+                                            </td>
+                                            <td th:text="${veranstaltung.titel}"></td>
+                                            <td th:text="${veranstaltung.eventArt}"></td>
+                                            <td th:text="${veranstaltung.getBeginn()}"></td>
+                                            <td th:text="${veranstaltung.getSchluss()}"></td>
+                                            <td th:text="${veranstaltung.adresse.strasse}"></td>
+                                            <td th:text="${veranstaltung.adresse.ort}"></td>
+                                            <td th:text="${veranstaltung.adresse.plz}"></td>
+                                            <td th:text="${veranstaltung.kundenId}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <ul>
+                        <li><!--  
+                        	<form th:action="@{/bestellung}" method="post">
+                        		<input type="hidden" name="kundenId" value="0" />
+                        		<input type="submit" value="Veranstaltung hinzufügen"/>
+                        		<a class="formbuttons" th:href="@{/bestellung}" >Veranstaltung hinzufügen</a>
+                       	 	</form>-->
+                        	<a class="formbuttons" th:href="@{/bestellung}" >Veranstaltung hinzufügen</a> 
+                        </li>   
+                        <li><a class="formbuttons" th:href="@{/veranstaltungBeginnSortiert}">Veranstaltung nach
+                            beginn sortieren</a></li>
+                        <li><a class="formbuttons" th:href="@{/veranstaltungIdSortiert}">Veranstaltung nach Id
+                            sortieren</a></li>
+                        <li><a class="formbuttons" th:href="@{/veranstaltungKundenIdSortiert}">Veranstaltung nach KundenId
+                            sortieren</a></li>
+                        <li><a class="formbuttons" th:href="@{/veranstaltungEventArtSortiert}">Veranstaltung nach Eventart
+                            sortieren</a></li>
+                        <li>
+                            <form name="sucheNachKundenId" action="/sucheKundenId" method="POST">
+		                        <label>Kunden Id:</label>
+		                        <input type='text' name='kundenId'/>
+		                        <input type="submit" value="Suche"/>
+                    		</form>  
+                    	</li>
+                    </ul>
+                                    
+                </div>
+                
+                <div class="separator">&nbsp;</div>
+                
+                <div class="zpColumn zpColumnWidth2 c12 " id='calendar'></div>
+            </div>
+        </div>
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo"> © 2016 Mampf.</div>
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $z(document).ready(function () {
+        // switches the Mobile Navigation-Menu on/off, when "Menu" link is clicked.
+        $z("a#mobilenavtoggle").on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $z("#navbar").slideToggle(300, function () {
+                $z("#navbar, #mobilenavtoggle").toggleClass("on");
+                //clear inline styles set by "slideToggle" so the don't stick around e.g. after window enlargement or orientation change
+                $z(this).css("display", "");
+            });
+
+        });
+    });
+</script>
+</body>
+</html>

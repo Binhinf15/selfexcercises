@@ -1,0 +1,165 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Gehaltrechnung</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body id="square-responsive"><a id="top"></a>
+<div class="wrapper top">
+    <div class="header"><a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <div id="logo">
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Cateringservice</div>
+        </div>
+        <div id="navbar">
+            <nav th:include="topNav :: topNav"></nav>
+        </div>
+    </div>
+</div>
+<div class="clearx"></div>
+<div class="wrapper main">
+    <div class="page">
+        <div class="frame">
+            <div class="subnav low">
+                <nav th:include="subNav :: subNav"></nav>
+            </div>
+        </div>
+        <div class="content">
+            <div class="clearx"></div>
+            <div class="contentbox zpgrid">
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+                    <div class="zpRow standard ">
+                        <div class="zpColumn zpColumnWidth1 c12" style=" ">
+                            <div class="zpColumnItem">
+                                <div id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">  
+                                	<h2 style="color: #003557; ">Gehaltsabrechnungen</h2>
+                                	<ul> 
+	                                	<li><a class="formbuttons" th:href="@{/gehaltRechnung}" >Gehaltsabrechnungen</a></li>
+	                					<li><a class="formbuttons" th:href="@{/kundenRechnung}" >Kundenrechnungen</a></li>   
+                					</ul>                           
+                                    <table border="1" class="zptabledata">
+                                        <thead>
+                                        <tr style="color: #333333; background-color: #0082D7">
+                                            <th>RechnungsId</th>
+                                            <th>MitarbeiterId</th>
+                                            <th>Datum</th>
+                                            <th>Betrag</th>
+                                            <th>bezahlt</th>     
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each=" rechnung : ${gehaltRechnungsList}"
+                                            style="color: #6C6C6C; background-color: #EDEDED"  >
+
+                                            <td><label th:text="${rechnung.id}" ></label></td>
+                                            <td><label th:text="${rechnung.mitarbeiterId}"></label></td>
+                                            <td><label th:text="${rechnung.getStringDatum()}" ></label></td>
+                                            <td><label th:text="${rechnung.preis} + ' EUR'"></label></td>
+                                            <td>                                          	
+                                            	<form action="/bezahltGehalt">
+                                            		<input type="hidden" th:value="${rechnung.id}" name="gehaltRechnungId" />
+                                            		<input type="submit" th:value="${rechnung.isBezahltJaNein()}"/>
+                                            	</form>
+                                            </td> 
+                                            <td>                                          	
+                                            	<form action="/löscheGehaltRechnung">
+                                            		<input type="hidden" th:value="${rechnung.id}" name="gehaltRechnungId" />
+                                            		<input type="submit" th:value="löschen"/>
+                                            	</form>
+                                            </td> 
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                	<ul>
+                		<li><a class="formbuttons" th:href="@{/offeneGehaltRechnung}" >nicht bezahlte Gehaltsabrechnungen</a></li>
+                		<li><a class="formbuttons" th:href="@{/sortiereGehaltRechnungDatum}" >sortiere nach Datum</a></li> 
+                		<li>
+                			<form name="sucheNachMitarbeiterId" action="/gehaltRechnungFuerMitarbeiter" method="POST">
+		                        <label>MitarbeiterId:</label>
+		                        <input type='text' name='mitarbeiterId'/>
+		                        <input type="submit" value="Suche"/>
+                			</form>
+                		</li> 
+                		<li>
+	                  		<form name="erstelleGehaltRechnungFuerAlle" action="/erstelleGehaltRechnungFuerAlle" method="POST">
+	                  			<label>erstelle fehlende Gehaltsabrechnungen für den Monat: </label>
+		                        <input required="required" type='date' name='start'/>
+		                        <input type="submit" value="Los"/>
+	                    	</form>
+                    	</li>
+                		<li>
+	                  		<form name="zeigeBilanz" action="/zeigeBilanz" method="POST">
+	                  			<label>Bilanz für Zeitraum</label>
+		                        <label>vom:</label>
+		                        <input required="required" type='date' name='start'/>
+		                        <label>bis:</label>
+		                        <input required="required"  type='date' name='ende'/>
+		                        <input type="submit" value="Suche"/>
+	                    	</form>
+                    	</li>
+                	</ul>
+                	
+                    
+                </div>
+            </div>
+        </div>
+        <!--<div class="frame">
+            <div id="search">
+                <form id="searchform" name="searchengine1" onsubmit="return search1()" action="suche.html" method="get">
+                    <fieldset id="searchfieldset"><input id="searchfield" type="text" name="q" value="Suchbegriff"
+                                                         onfocus="if(this.value=='Suchbegriff'){this.value=''}"
+                                                         onblur="if(this.value==''){this.value='Suchbegriff'}"/> <input
+                            id="searchbutton" type="image" name="submit"
+                            th:src="@{resources/images/stock-images/magnifier.png}"
+                            alt="searchbutton"/></fieldset>
+                </form>
+            </div>
+        </div>-->
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo"> © 2016 Mampf.</div>
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $z(document).ready(function () {
+        // switches the Mobile Navigation-Menu on/off, when "Menu" link is clicked.
+        $z("a#mobilenavtoggle").on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $z("#navbar").slideToggle(300, function () {
+                $z("#navbar, #mobilenavtoggle").toggleClass("on");
+                //clear inline styles set by "slideToggle" so the don't stick around e.g. after window enlargement or orientation change
+                $z(this).css("display", "");
+            });
+
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kontakt</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<meta name="robots" content="index, follow"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../static/resources/images/stock-images/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+		<!--<script type="text/javascript" th:src="@{java/kickstart/controller/bundle.js}"></script>-->
+		<script type="text/javascript">
+			function search1() {
+				if (document.forms.searchengine1.q.value.length == 0) {
+					alert("Bitte geben Sie einen Suchbegriff ein.");
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body id="Lime"><a id="top"></a>
+	<div id="master_wrapper">
+		<div id="header_wrapper">
+			<div id="header_top">
+				<div class="header_content_inner">
+					<div id="webdescription">
+						<div id="logo"><a href="welcome.html"><img th:src="@{resources/images/logo-white.png}" width="172" height="46"
+																 alt="welcome.html"/></a></div>
+						<div id="webtext">
+							<div id="webname"><a href="welcome.html">Mampf</a></div>
+							<div id="slogan">Cateringservice</div>
+						</div>
+						<div class="clearx"></div>
+					</div>
+					<nav th:include="mainNav :: mainNav"></nav>
+					<!-- 
+					<div id="mainmenu">
+						<ul>
+							<li>
+								<form method="post" th:action="@{/welcome}">
+									<a class="topmenu" href="welcome.html">Home</a>
+								</form>
+							</li>
+							<li>
+								<form method="post" th:action="@{/kontakt}">
+									<a class="topmenuactive" href="kontakt.html">Kontakt</a>
+								</form>
+							</li>
+							<li>
+								<form method="post" th:action="@{/impressum}">
+									<a class="topmenu" href="impressum.html">Impressum</a>
+								</form>
+							</li>
+							<li>
+								<form method="post" th:action="@{/login}">
+									<a class="topmenu" href="login.html">Login</a>
+								</form>
+							</li>
+						</ul>
+					</div>
+					-->
+				</div>
+			</div>
+			<div id="header_bottom">
+				<div class="header_content_inner">
+					<div id="breadcrumb"> &nbsp; </div>
+					<div id="search_wrapper">
+						<form class="searchform" name="searchengine1" onsubmit="return search1()" th:action="@{/suche}"
+							  method="get">
+							<!--<fieldset id="fieldset"><input id="searchfield" type="text" name="q" value="Suchbegriff"
+	                                                       onfocus="if(this.value=='Suchbegriff'){this.value=''}"
+	                                                       onblur="if(this.value==''){this.value='Suchbegriff'}"/>
+	                            <input id="button_suche" type="image" th:src="@{resources/images/view.png}"
+	                                   alt="searchbutton"/></fieldset>-->
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content_wrapper">
+			<div id="content" class="clearfix">
+				<div id="page" class="clearfix">
+					<div class="zparea zpgrid" data-numcolumns="" data-areaname="Standard">
+						<div class="zpRow standard ">
+							<div class="zpColumn zpColumnWidth1 c12" style=" ">
+								<div class="zpColumnItem">
+									<div id="a1524" data-articleid="1524" class="articlearea zpwText"><h1
+											style="text-align:left;">Ihre Mitteilung an uns</h1>
+										<p>Hier können Sie Ihre Adresse und ein Kontaktformular einfügen.</p></div>
+								</div>
+							</div>
+						</div>
+						<div class="zpRow standard ">
+							<div class="zpColumn zpColumnWidth2 c8" style=" ">
+								<div class="zpColumnItem">
+									<div id="a1526" data-articleid="1526" class="articlearea zpwFormular">
+										<noscript>
+											<div class="formvalidateerror"
+												 style="color: #fff; background-color: red; padding: 6px 12px;"><p><strong>Um
+												das Kontaktformular zu nutzen, aktivieren Sie bitte JavaScript!</strong></p>
+												<p><strong>In order to use this form, you need to activate
+													JavaScript!</strong></p></div>
+										</noscript>
+										<form enctype="multipart/form-data" class="zp-form" id="form1526" name="form1526"
+											  action="kontakt.html" method="post"><input
+												type="hidden" name="f_receiver" value="MnNuM+WvvqJiFHfRswZ0Mhk2iaispZmP"/>
+											<input type="hidden" name="f_title" value="Nachricht über Kontaktformular"/>
+											<input type="hidden" name="f_success" value="nachricht-erfolgreich-gesendet"/>
+											<input type="hidden" name="f_error"
+												   value="nachricht-konnte-nicht-versendet-werden.html"/>
+											<input type="hidden" name="f_id" value="1526"/> <input type="hidden"
+																								  name="f_alertPrefix"
+																								  value="Bitte füllen Sie die rot markierten Felder aus:"/>
+											<input type="hidden" name="f_invalidEmailMsg" value="keine gültige E-Mail"/>
+											<input type="hidden" name="NAME1" id="NAME1" value="Name"/> <label for="F1"
+																											  class="field">Name</label>
+											<input class="typetext required" type="text" name="F1" id="F1"
+												   placeholder="Name" value="" style="width: 500px; " th:required="required"/> <input type="hidden"
+																											  name="NAME2"
+																											  id="NAME2"
+																											  value="E-Mail"/>
+											<label for="F2" class="field">E-Mail</label> <input class="typetext required"
+																								type="email" name="F2"
+																								id="F2" placeholder="E-Mail"
+																								value=""
+																								style="width: 500px; " th:required="required"/>
+											<input type="hidden" name="NAME3" id="NAME3" value="Nachricht"/> <label for="F3"
+																												   class="field">Nachricht</label>
+											<textarea class="" id="F3" name="F3" placeholder="Nachricht" rows="10"
+													  style="width:500px; " th:required="required"></textarea> <input type="text" name="url"
+																							   id="url"
+																							   class="asfield"
+																							   aria-label="Please ignore this field."/>
+											<div class="formbuttons"><input type="submit" class="button" value="Absenden"/>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="zpColumn zpColumnWidth2 c4" style=" ">
+								<div class="zpColumnItem">
+									<div id="a1527" data-articleid="1527" class="articlearea zpwText"><h3>Mustermann
+										GmbH</h3>
+										<p>Musterstraße 1<br/>00000 Musterstadt</p>
+										<p>Telefon: +49 40 000000<br/>Telefax: +49 40 000000</p>
+										<p><a href="mailto:info@example.com">info@example.com</a></p></div>
+								</div>
+								<!--<div class="zpColumnItem">
+									<div id="a1528" data-articleid="1528" class="articlearea zpwButton"><p
+											style="text-align:left"><a th:href="@{/wegbeschreibung.html}" class="button"
+																	   style="margin-top: 20px;">
+										<span>Ihr Weg zu uns</span> </a></p></div>
+								</div>-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div id="sidebar">
+					<div id="sidebar_inner_wrap">
+						<div id="submenu1">
+							<div class="submenu1heading">Kontakt</div>
+							<ul>
+								<li><a class="subnav1" href="wegbeschreibung.html">Wegbeschreibung</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<div id="footer_wrapper">
+			<div id="footer" class="clearfix">
+				<div id="xmenu"><a href="welcome.html">Startseite</a> &nbsp;&nbsp;<a href="kontakt.html">Kontakt</a> &nbsp;&nbsp;<a
+						href="impressum.html">Impressum</a></div>
+				<div id="copy"> © 2016 Mampf.</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

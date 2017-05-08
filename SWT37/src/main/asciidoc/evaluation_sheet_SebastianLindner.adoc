@@ -1,0 +1,21 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2016/17
+
+**Von: Sebastian Lindner**
+
+**Gruppe 37**
+
+== Was habe ich gelernt?
+* Ich habe einige Programmiertechniken in Java gelernt, die es ermöglichen (für mich) komplexeren, und vor allem zusammenhängenden Code, zu schreiben, dabei konnte ich viel praktische Erfahrung sammeln mit Java in einem bestimmten bzw. vorgegebenen Framework (Spring) und einer spezifischen Programmierschnittstelle (SalesPoint) zu programmieren.
+
+= Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+* Es war interessant in einem Team über einen längeren Zeitraum an einem größeren Projekt zu arbeiten. Jedes Teammitglied musste dabei einen individuellen Teil beitragen und sich auf die anderen verlassen können, damit eine kompatible und effektive Arbeitsweise entsteht.
+Auch war es neu, im Rahmen eines (zumindest simulierten) Softwareentwicklungsprozess zu entwickeln, wodurch natürlich oftmals Stress entstand, die wöchentlichen Termine einzuh.alten
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+* Teilweise war es sehr bequem schon vordefinierte Klassen, Methoden und Interfaces benutzen zu können, jedoch stellte es das Team manchmal auch wiederum vor Problemen, Vordefiniertes an den individuellen Code anzupassen bzw. zu verändern.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+* Eventuell wäre es hilfreich, Studenten, die noch nicht so viel Erfahrum im Programmieren haben, mehr Hilfestellungen, Hinweise oder effektive Programmiertechniken anzubieten, um eventuelle Rückstände zu erfahreneren Kommilitonen zu kompensieren.
+
+== Sonstiges und Anmerkungen
+keine

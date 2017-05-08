@@ -1,0 +1,38 @@
+= Protokoll Gruppe 37
+
+__Treffen am__ 10.01.2017
+
+__Schriftführer: __ Sebastian Lindner
+
+__Nächstes Treffen:__ 10.01.2017
+
+__Teilnehmer: Viet Butter, Xin Liang, Sebastian Lindner, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|#7    |Gruppenprotokoll      |GP wöchentlich aktualisiert    | keine
+|#18 | Testplan | noch nicht fertig | keine
+|#23 | finale Implementierung abschließen | nahezu fertig | wird bis zum Abgabetermin am 13.01 fertiggestellt
+|===
+
+
+== Aktueller Stand
+- alles veläuft nach Plan
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#24    | Endräsentation    |Endräsentation vorbereiten     | alle | Planung und Vorbereitung erfolgt zum letzten Gruppentreffen
+|===

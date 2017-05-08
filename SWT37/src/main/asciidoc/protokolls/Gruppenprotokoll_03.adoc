@@ -1,0 +1,48 @@
+= Protokoll Gruppe 37
+
+__Treffen am__ 08.11.2016
+
+__Schriftführer: __ Viet Butter
+
+__Nächstes Treffen:__ 15.11.2016
+
+__Teilnehmer:Viet Butter, Xin Liang, Sebastian Lindner, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue 	|Aufgabe |Status |Bemerkung
+|#7		|Gruppenprotokoll				|in Arbeit 	|Gruppenprotokoll_01 fertig
+|#2    	|Analyseklassendiagramm   		|erledigt	|
+|#3    	|Kontextdiagramm 				|erledigt 	|
+|#4   	|Sequenzdiagramme				|erledigt	|
+|#5	   	|GUI Entwurf					|in Arbeit	|
+|#6		|Pflichtenheft					|in Arbeit	|
+|#10	|Anwendungsfalldiagramm	      	|erledigt 	|
+|#12    |CRC-Kartenmethode 				|erledigt	|
+|===
+
+
+== Aktueller Stand
+Analysephase: +
+- GUI und Akzeptantztestfälle müssen in das Pflichtenheft , ansonsten OOA fertig
+
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#7    	|Gruppenprotokoll	    	|GP_02 muss erstellt werden         |Sebastian          |in Arbeit
+|#11    |kleiner Prototyp           |erstellen                      	|alle              	|in Arbeit
+|#13	|Akzeptanztestfälle			|jeder min 2 schreiben				|alle				|in Arbeit
+|#20    |Pom.xml Kickstarter Projekt      | Pom.xml Name ändern | alle | in Arbeit
+|===

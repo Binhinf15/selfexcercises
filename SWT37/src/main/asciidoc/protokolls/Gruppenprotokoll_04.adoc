@@ -1,0 +1,45 @@
+= Protokoll Gruppe 37
+
+__Treffen am__ 15.11.2016
+
+__Schriftführer: __ Sebastian Lindner
+
+__Nächstes Treffen:__ 22.11.2016
+
+__Teilnehmer: Viet Butter, Xin Liang, Sebastian Lindner, Jakob Ryl__
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue 	|Aufgabe |Status |Bemerkung
+|#7    	|Gruppenprotokoll	    	|erledigt       |Gruppenprotokolle aufgeteilt und geupdatet
+|#11    |kleiner Prototyp           |erledigt                     	|
+|#13	|Akzeptanztestfälle			|erledigt				|
+|#20    | Pom.xml Name ändern | erledigt |
+|===
+
+
+== Aktueller Stand
+Entwurfsklassendiagramm fast fertig (Controller müssen noch hinzugefügt werden), erste Klassen für Implementierung bereits geschrieben
+
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|#7    	|Gruppenprotokoll	    	|GP wöchentlich aktualisiert         |Sebastian          |in Arbeit
+|#15    |2. Prototyp           |fertig erstellen                      	|alle              	|fast fertig
+|#17	|Entwurfsklassendiagramm		|Controller hinzufügen, EKD an Implementierung fortlaufend anpassen				|alle				|in Arbeit
+|#18 | Testplan | Funktionalitäten/Methoden testen | alle | in Arbeit
+|#19 | Entwicklerdoku | Entwicklung der Software beschreiben | alle | in Arbeit
+|#21 | Implementierung Basisfunktionalität | erste Funktionalitäten implementieren |alle | in Arbeit
+|===

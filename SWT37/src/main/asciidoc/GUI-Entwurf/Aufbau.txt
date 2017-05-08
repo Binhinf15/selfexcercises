@@ -1,0 +1,13 @@
+- Kundenseite
+- Login
++ Script {	- Main 
+
+	+ Service { - Auswahl
+		- Neuanmeldung
+		- Bestellung ( + Eventcatering, Partyservice, Mobile-Breakfest,  Rent-a-Cook)
+	                    }
+
+	+ Mein Bereich { 	- Adimin (Veranstaltung, Kunden, Personal, Lager)
+			- Personal
+		          }
+	}

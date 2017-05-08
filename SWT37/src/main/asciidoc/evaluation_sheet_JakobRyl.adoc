@@ -1,0 +1,22 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2015/16
+
+**Von: Jakob Ryl**
+
+**Gruppe: 37**
+
+== Was habe ich gelernt?
+* Durch das Praktikum habe ich sehr viel gelernt. Von HTML Design bis hin zum Back-End, welches dem Front-End erst die ganze Funktionalität ermöglicht.
+Die Programmierkenntnisse konnte ich dadurch sehr erweitern, besonders was Javascript und Java angeht.
+
+= Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+* Wenn man sich im Team sehr gut versteht, macht das zusammenarbeiten viel mehr Spaß, und funktioniert einfach besser.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+* Bibliotheken/Frameworks sind eine gute Hilfe um schnell etwas zum funktionieren zu bekommen.
+Frameworks und Bibliotheken geben einem sehr viele neue Möglichkeiten den eigenen Code zu perfektonieren und zu erweitern,
+können aber nervig sein wenn es um die Anpassung des Codes an das Framework geht
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+* Den Zwang zu Salespoint zu abzuschaffen, da man viele Funktionen von Salespoint auch anderweitig implementieren kann.
+
+== Sonstiges und Anmerkungen

@@ -1,0 +1,148 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Veranstaltungs Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/stock-images/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/prog_bundle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bundle-print.css}" media="print"/>
+    <!-- <script type="text/javascript" th:src="@{/java/kickstart/controller/bundle.js}"></script> -->
+</head>
+<body id="square-responsive"><a id="top"></a>
+<div class="wrapper top">
+    <div class="header"><a href="#" id="mobilenavtoggle" class="tabletonly" aria-label="Menü ein-/ausblenden">Menü</a>
+        <div id="logo">
+            <a th:href="@{main}">
+                <img th:src="@{/resources/images/logo-black.png}" width="172" height="46" alt="main.html"/>
+            </a>
+        </div>
+        <div id="webtext">
+            <div id="webname" class="ellipsis"><a href="main.html">Mampf</a></div>
+            <div id="slogan" class="ellipsis">Eventcatering</div>
+        </div>
+        <div id="navbar">
+        	<nav th:include="topNav :: topNav"></nav>
+        </div>
+    </div>
+</div>
+<div class="clearx"></div>
+<div class="wrapper main">
+    <div class="page">
+        <div class="frame">
+            <div class="subnav low">
+                <div class="submenu clearme">                
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="clearx"></div>
+            <div class="contentbox zpgrid">
+                <div class="zparea " data-numcolumns="12" data-areaname="Standard">
+                    <div class="zpRow standard ">
+                        <div class="zpColumn zpColumnWidth1 c8">
+                            <div class="zpColumnItem">
+                                <div id="a1571" data-articleid="1571" class="articlearea zpwFormular">
+                                	<h2>
+                                		<label th:text="'Details für Veranstaltung: ' + ${veranstaltungsId}">Details für Veranstaltung</label>                               		
+                                	</h2>
+                                                                                                                                  
+                                    <form enctype="multipart/form-data" class="zp-form" id="form1571" name="form1571"
+                                          th:object="${veranstaltungsDaten}"  method="post">
+     
+                                        <input type="hidden" name="veranstaltungsId" th:value="${veranstaltungsId}"/>
+										
+										<label style="font-weight:bold" for="F2" class="field">Kunde</label>
+										<label  class="required" id="F2"  th:text="${kunde.id} + ' ' + ${kunde.vorname} + ' ' + ${kunde.nachname}" ></label>                                           	                                                                 	                                 
+										 			
+										<label style="font-weight:bold" for="F2.1" class="field" >Titel</label>                                          
+										<label for="F2.1" class="field" th:text="${veranstaltungsDaten.titel}"></label> 
+										
+										<label style="font-weight:bold" for="F9" class="field">Eventart</label>
+										<label for="F9" class="field" th:text="${veranstaltungsDaten.eventArt}"></label>
+                                                               
+                                        <div class="separator">&nbsp;</div>
+										
+                                        <label style="font-weight:bold" for="F5" class="field">Adresse</label>
+                                        <label for="F5" class="field" th:text="${veranstaltungsDaten.adresse.strasse} + ' ' + ${veranstaltungsDaten.adresse.plz} + ' ' + ${veranstaltungsDaten.adresse.ort}"></label>
+
+                                        <div class="separator">&nbsp;</div>
+                                                                          
+                                        <label style="font-weight:bold" for="F10" class="field">Beginn</label>
+                                        <label for="F10" class="field" th:text="${veranstaltungsDaten.getBeginn()}"></label>
+                                       
+                                   
+                                        <label style="font-weight:bold" for="F10" class="field">Schluss</label>
+                                        <label for="F10" class="field" th:text="${veranstaltungsDaten.getSchluss()}"></label>
+                                      
+                                      										
+                                        <div class="separator">&nbsp;</div>									
+
+                                        <label style="font-weight:bold" for="F22" class="field">benötigtes Zubehör</label>
+                                        <textarea th:field="*{zubehoer}" class="" id="F22" name="F22" placeholder="benötigtes Zubehör" rows="5"
+                                                  style="width:400px; "></textarea>
+
+                                        <label style="font-weight:bold" for="F23" class="field">Bemerkungen</label>
+                                        <textarea th:field="*{bemerkung}" class="" id="F23" name="F23" placeholder="Bemerkungen" rows="5"
+                                                  style="width:400px;"></textarea>
+                                       
+                                                  
+                                        <div class="separator">&nbsp;</div>
+                                        
+                                        <div>
+	                                        <label style="font-weight:bold" for="F21" class="field">zugewiesenes Personal</label>
+	                                        <div th:each="mitarbeiter : ${zugeordneteMitarbeiter}">
+	                                        	<label th:text="${mitarbeiter.id} + '-' + ${mitarbeiter.vorname} + ' ' + ${mitarbeiter.nachname}"></label>
+	                                        </div>
+	                                        <label th:if="${zugeordneteMitarbeiter.isEmpty()} == True">keine Mitarbeiter zugewiesen</label>
+                                        </div>
+                                        
+                                        <div class="separator">&nbsp;</div>
+                                        
+                                        <div id="a1561" data-articleid="1561" class="articlearea zpwTabellarische_Daten">
+                                        	<label style="font-weight:bold" th:text="Warenkorb">Warenkorb</label>                         	
+                                        	<label th:if="${veranstaltungsDaten.warenliste.isEmpty()} == True" ><br />keine Ware</label>
+											<table th:unless="${veranstaltungsDaten.warenliste.isEmpty()}" border="1" class="zptabledata">											
+												<thead>
+                                                <tr style="color: #333333; background-color: #3887ff">
+														<th th:text="Name">Name</th>
+														<th th:text="Anzahl">Anzahl</th>
+													</tr>
+												</thead>
+												<tbody>						
+													<tr th:each="item : ${veranstaltungsDaten.warenliste} ">
+														<td th:text="${item.key.name}"></td>
+														<td th:text="${item.value}"></td>
+													</tr>
+                                       			</tbody>
+                                       		</table>
+                                       	</div>
+                                    </form>
+                                                        
+                                    <form method="POST" action="/main">
+                                    	<div class="formbuttons">
+                                            <input type="submit" class="button" value="zurück"/>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="frame">
+            <div id="footer">
+                <div id="footerinfo"> © 2016 Mampf.</div>
+                <div style="clear:left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
